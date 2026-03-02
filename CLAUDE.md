@@ -38,10 +38,11 @@
 
 # IMPLEMENTATION STATUS
 
-## Step 1: 기초 인프라
-- [ ] src/models.py + schema.sql + src/db.py
-- [ ] config/*.yaml (전체)
-- [ ] src/crawlers/base.py
+## Step 1: 기초 인프라 ✅ DONE (2026-03-02)
+- [x] src/models.py + schema.sql + src/db.py
+- [x] config/*.yaml (전체)
+- [x] src/crawlers/base.py
+- Commit: b3e54b6
 
 ## Step 2: 크롤러 + 인덱서
 - [ ] src/crawlers/precedent.py + tests
