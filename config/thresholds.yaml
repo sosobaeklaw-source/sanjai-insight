@@ -1,0 +1,31 @@
+# 임계값 설정 (v2 신규)
+# SelfDiagnoseEngine이 자동 조정 가능
+
+insight:
+  confidence_threshold: 0.7  # 이 이상만 보고
+  confidence_auto_range: [0.65, 0.80]  # 자동 조정 허용 범위 (Tier 1)
+  daily_proposal_limit: 3  # 일일 제안 한도
+  duplicate_cooldown_days: 7  # 유사 제안 재전송 방지 기간 (일)
+
+cost:
+  monthly_budget_krw: 50000  # 월간 예산
+  warning_ratio: 0.8  # 경고 비율 (80%)
+  critical_ratio: 0.9  # 배치 모드 전환 (90%)
+  shutdown_ratio: 1.0  # 신규 분석 중단 (100%)
+
+crawler:
+  circuit_breaker_threshold: 3  # 연속 실패 횟수
+  retry_max: 3  # 재시도 횟수
+  backoff_base_sec: 2  # 지수 백오프 기본 (초)
+  rate_limit_sec: 2  # 요청 간 최소 간격 (초)
+
+marketing:
+  draft_word_count_min: 2000  # 초안 최소 분량 (자)
+  draft_word_count_max: 3000  # 초안 최대 분량 (자)
+  seo_keyword_density_min: 0.01  # 키워드 밀도 최소 (1%)
+  seo_keyword_density_max: 0.03  # 키워드 밀도 최대 (3%)
+
+# 자동 조정 로그
+auto_adjustments:
+  log_file: "data/auto_adjustments.log"
+  max_history: 100  # 최대 기록 개수

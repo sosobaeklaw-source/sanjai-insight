@@ -1,0 +1,71 @@
+# LLM 모델 설정 및 단가
+# 2026년 3월 기준
+
+models:
+  # Claude 모델
+  claude_opus_4:
+    provider: anthropic
+    model_id: claude-opus-4-20250514
+    pricing:
+      input_per_1m_tokens: 15.0  # USD
+      output_per_1m_tokens: 75.0
+    pricing_krw:  # 환율 1,300원 가정
+      input_per_1m_tokens: 19500.0
+      output_per_1m_tokens: 97500.0
+    rate_limit:
+      requests_per_minute: 50
+      tokens_per_minute: 40000
+    use_for:
+      - marketing_mb  # 마케팅 콘텐츠 초안 (품질 최우선)
+
+  claude_sonnet_4:
+    provider: anthropic
+    model_id: claude-sonnet-4-20250514
+    pricing:
+      input_per_1m_tokens: 3.0
+      output_per_1m_tokens: 15.0
+    pricing_krw:
+      input_per_1m_tokens: 3900.0
+      output_per_1m_tokens: 19500.0
+    rate_limit:
+      requests_per_minute: 50
+      tokens_per_minute: 40000
+    use_for:
+      - think  # Think 엔진 (분석)
+      - marketing_mc  # 마케팅 법적 검증
+
+  # Gemini 모델
+  gemini_flash_2_0:
+    provider: google
+    model_id: gemini-2.0-flash-exp
+    pricing:
+      input_per_1m_tokens: 0.075  # 무료 티어 이후
+      output_per_1m_tokens: 0.3
+    pricing_krw:
+      input_per_1m_tokens: 97.5
+      output_per_1m_tokens: 390.0
+    rate_limit:
+      requests_per_minute: 100
+      tokens_per_minute: 100000
+    use_for:
+      - marketing_ma  # 마케팅 키워드 분석 (대량 처리)
+      - marketing_md  # 마케팅 포맷팅
+
+# 비용 통제 설정
+budget:
+  monthly_limit_krw: 50000
+  warning_threshold: 0.8  # 80% 도달 시 경고
+  critical_threshold: 0.9  # 90% 도달 시 배치 모드 전환
+  shutdown_threshold: 1.0  # 100% 도달 시 신규 분석 중단
+
+# 모델 다운그레이드 규칙
+downgrade_rules:
+  - trigger: budget_warning  # 80% 도달
+    actions:
+      - from: claude_opus_4
+        to: claude_sonnet_4
+        modules: [marketing_mb]
+
+  - trigger: budget_critical  # 90% 도달
+    actions:
+      - enable_batch_mode: true

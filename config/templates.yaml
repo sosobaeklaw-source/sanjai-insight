@@ -1,0 +1,124 @@
+# 제안 메시지 템플릿
+# Propose 엔진에서 사용
+
+templates:
+  case_impact:
+    emoji: "⚡"
+    title_template: "{case_name}에 영향을 줄 수 있는 {precedent_type} 발견"
+    message_template: |
+      ⚡ **{case_name} 사건 관련 인사이트**
+
+      **판례:** {precedent_title}
+      **선고일:** {precedent_date}
+      **영향:** {impact_summary}
+
+      **제안 액션:**
+      {suggested_actions}
+
+      **신뢰도:** {confidence}%
+
+    buttons:
+      - text: "✅ 진행"
+        callback_data: "accept:{insight_id}"
+      - text: "❌ 불필요"
+        callback_data: "reject:{insight_id}"
+      - text: "⏸️ 보류"
+        callback_data: "defer:{insight_id}"
+
+  market_opportunity:
+    emoji: "📈"
+    title_template: "시장 기회: {keyword} 검색량 {change}% 증가"
+    message_template: |
+      📈 **선점 기회 발견**
+
+      **키워드:** {keyword}
+      **변화:** 전주 대비 +{change}%
+      **경쟁 강도:** {competition_level}
+      **예상 효과:** {expected_impact}
+
+      **제안:**
+      {suggested_actions}
+
+      **기회 점수:** {opportunity_score}/1.0
+
+    buttons:
+      - text: "✅ 진행"
+        callback_data: "accept:{insight_id}"
+      - text: "❌ 불필요"
+        callback_data: "reject:{insight_id}"
+      - text: "⏸️ 보류"
+        callback_data: "defer:{insight_id}"
+
+  strategy_shift:
+    emoji: "📊"
+    title_template: "{area} 분야 전략적 변화 감지"
+    message_template: |
+      📊 **전략 시프트 제안**
+
+      **분야:** {area}
+      **변화 내용:** {shift_summary}
+      **시장 영향:** {market_impact}
+
+      **SWOT 분석:**
+      {swot_summary}
+
+      **제안 방향:**
+      {suggested_actions}
+
+    buttons:
+      - text: "✅ 검토"
+        callback_data: "accept:{insight_id}"
+      - text: "❌ 나중에"
+        callback_data: "reject:{insight_id}"
+
+  # 리마인더 (3일 미응답 시)
+  reminder:
+    message_template: |
+      🔔 **리마인더**
+
+      {original_message}
+
+      (3일 전 제안. 응답이 없어 리마인드합니다.)
+
+  # 주간 자기진단 보고서
+  weekly_diagnosis:
+    message_template: |
+      📋 **주간 자기진단 보고서 ({period})**
+
+      **성과:**
+      - 인사이트 {total_insights}건 생성
+      - 채택률 {acceptance_rate}%
+      - 평균 응답 시간 {avg_latency}초
+
+      **비용:**
+      - 이번 주: ₩{weekly_cost:,}
+      - 이번 달: ₩{monthly_cost:,} (예산 대비 {budget_ratio}%)
+
+      **크롤러 건강:**
+      - 가동률 {uptime}%
+
+      **자동 조정:**
+      {auto_adjustments}
+
+      **대기 중 제안:**
+      {pending_suggestions}
+
+  # 월간 보고서
+  monthly_report:
+    message_template: |
+      📊 **월간 성과 보고서 ({month})**
+
+      **주요 지표:**
+      - 인사이트 {total_insights}건 (채택 {accepted_count}건)
+      - 채택률 {acceptance_rate}%
+      - 마케팅 콘텐츠 {marketing_count}건
+
+      **비용:**
+      - 총 ₩{total_cost:,}
+      - 인사이트당 ₩{cost_per_insight:,}
+
+      **거절 사유 Top 3:**
+      {top_rejection_reasons}
+
+      **다음 달 계획:**
+      {next_month_plan}
