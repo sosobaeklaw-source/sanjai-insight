@@ -63,11 +63,12 @@
 - [x] HANDOFF_OPERATIONAL_v2.md
 - **WP-1~3, 5~7(부분) 완료. 참조: HANDOFF_OPERATIONAL_v2.md**
 
-## Step 3: 엔진 (Watch, Think) — 통합 필요
-- [ ] src/engines/watch.py (기존 크롤러를 Worker 핸들러로 통합)
-- [ ] src/tools/llm_tools.py + src/bridge/agent_bridge.py
-- [ ] src/engines/think.py (LLM + Evidence 생성 + Validation 통합)
-- [ ] src/metrics/cost_tracker.py + tests
+## Step 3: 엔진 (Watch, Think) ✅ DONE (2026-03-03)
+- [x] src/engines/watch.py (기존 크롤러를 Worker 핸들러로 통합)
+- [x] src/tools/llm_tools.py (LLM 클라이언트 + 비용 추적)
+- [x] src/engines/think.py (LLM + Evidence 생성 + Validation 통합)
+- [x] src/app.py (Worker + Handlers 통합)
+- **Watch/Think 파이프라인 완성**
 
 ## Step 4: 엔진 (Propose) + 봇 + 마케팅 — 통합 필요
 - [ ] src/engines/propose.py (Telegram 메시지 + 버튼 UI)
