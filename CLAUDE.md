@@ -70,11 +70,14 @@
 - [x] src/app.py (Worker + Handlers 통합)
 - **Watch/Think 파이프라인 완성**
 
-## Step 4: 엔진 (Propose) + 봇 + 마케팅 — 통합 필요
-- [ ] src/engines/propose.py (Telegram 메시지 + 버튼 UI)
-- [ ] src/bot/handlers.py + commands.py (callback_query 처리)
-- [ ] src/pipelines/marketing.py + tests
-- [ ] src/metrics/performance_tracker.py + reporter.py
+## Step 4: 엔진 (Propose) + 봇 ✅ DONE (2026-03-03)
+- [x] src/engines/propose.py (Telegram 메시지 + 버튼 UI)
+- [x] src/bot/handlers.py + commands.py (callback_query 처리)
+- [x] src/bot/__init__.py (봇 통합)
+- [x] src/app.py (propose_handler 등록)
+- **Watch → Think → Propose 파이프라인 완성**
+- [ ] src/pipelines/marketing.py (선택적)
+- [ ] src/metrics/performance_tracker.py (선택적)
 
 ## Step 5: 자기진단 + 통합
 - [ ] src/engines/self_diagnose.py + tests

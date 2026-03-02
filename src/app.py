@@ -12,6 +12,7 @@ from .core.worker import Worker
 from .core.jobs import JobManager
 from .engines.watch import WatchEngine
 from .engines.think import ThinkEngine
+from .engines.propose import ProposeEngine
 from .models import TerminationCondition
 
 logger = logging.getLogger(__name__)
@@ -50,6 +51,22 @@ async def think_handler(
     )
 
 
+async def propose_handler(
+    correlation_id: str,
+    payload: Dict[str, Any],
+    ctx: Dict[str, Any],
+    checker,
+    checkpoint_manager,
+    event_logger,
+) -> Dict[str, Any]:
+    """Propose 핸들러"""
+    db_path = os.getenv("DB_PATH", "data/insight.db")
+    engine = ProposeEngine(db_path)
+    return await engine.run(
+        correlation_id, payload, ctx, checker, checkpoint_manager, event_logger
+    )
+
+
 async def main():
     """Application main"""
     logging.basicConfig(level=logging.INFO)
@@ -60,7 +77,7 @@ async def main():
     handlers = {
         "WATCH": watch_handler,
         "THINK": think_handler,
-        # "PROPOSE": propose_handler,  # TODO
+        "PROPOSE": propose_handler,
     }
 
     # Termination 조건
