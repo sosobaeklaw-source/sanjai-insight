@@ -44,11 +44,12 @@
 - [x] src/crawlers/base.py
 - Commit: b3e54b6
 
-## Step 2: 크롤러 + 인덱서
-- [ ] src/crawlers/precedent.py + tests
-- [ ] src/crawlers/trend.py + tests
-- [ ] src/crawlers/policy.py + competitor.py + tests
-- [ ] src/indexers/ + tests
+## Step 2: 크롤러 + 인덱서 ✅ DONE (2026-03-02)
+- [x] src/crawlers/precedent.py + tests
+- [x] src/crawlers/trend.py + tests
+- [x] src/crawlers/policy.py + competitor.py + tests
+- [x] src/indexers/ + tests
+- Tests: 7 passed
 
 ## Step 3: 엔진 (Watch, Think)
 - [ ] src/engines/watch.py + tests
