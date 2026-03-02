@@ -330,3 +330,319 @@ class DiagnosisReport(BaseModel):
     top_rejection_reasons: list[tuple[str, int]]
     auto_adjustments: list[str]
     pending_suggestions: list[str]
+
+
+# ========== Operational Models (v2.0 운영화) ==========
+
+
+class JobStatus(str, Enum):
+    PENDING = "PENDING"
+    RUNNING = "RUNNING"
+    COMPLETED = "COMPLETED"
+    FAILED = "FAILED"
+
+
+class RunStatus(str, Enum):
+    RUNNING = "RUNNING"
+    COMPLETED = "COMPLETED"
+    FAILED = "FAILED"
+    TERMINATED = "TERMINATED"
+
+
+class EventType(str, Enum):
+    WATCH_START = "WATCH_START"
+    WATCH_END = "WATCH_END"
+    ITEM_COLLECTED = "ITEM_COLLECTED"
+    INDEX_START = "INDEX_START"
+    INDEX_END = "INDEX_END"
+    THINK_START = "THINK_START"
+    THINK_END = "THINK_END"
+    INSIGHT_CREATED = "INSIGHT_CREATED"
+    INSIGHT_REJECTED = "INSIGHT_REJECTED"
+    PROPOSE_START = "PROPOSE_START"
+    PROPOSE_END = "PROPOSE_END"
+    PROPOSAL_SENT = "PROPOSAL_SENT"
+    APPROVAL_RECEIVED = "APPROVAL_RECEIVED"
+    ACTION_EXECUTED = "ACTION_EXECUTED"
+    ERROR = "ERROR"
+    TERMINATION = "TERMINATION"
+
+
+class ApprovalDecision(str, Enum):
+    APPROVE = "APPROVE"
+    REJECT = "REJECT"
+    DEFER = "DEFER"
+    DRAFT_ONLY = "DRAFT_ONLY"
+
+
+class ValidationStatus(str, Enum):
+    PENDING = "PENDING"
+    PASS = "PASS"
+    FAIL = "FAIL"
+
+
+class TelegramUpdate(BaseRecord):
+    """Telegram 업데이트 (멱등성)"""
+
+    update_id: int
+    chat_id: int
+    payload_json: dict[str, Any]
+    processed_at: datetime = Field(default_factory=datetime.now)
+
+
+class Job(BaseRecord):
+    """스케줄 작업"""
+
+    job_id: str = Field(default_factory=lambda: str(uuid4()))
+    job_key: str  # 멱등 키
+    type: str  # WATCH, THINK, PROPOSE, MARKETING
+    payload_json: dict[str, Any]
+    status: JobStatus = JobStatus.PENDING
+    attempts: int = 0
+    max_attempts: int = 3
+    created_at: datetime = Field(default_factory=datetime.now)
+    started_at: Optional[datetime] = None
+    completed_at: Optional[datetime] = None
+    last_error: Optional[str] = None
+
+
+class RunLog(BaseRecord):
+    """실행 로그"""
+
+    run_id: str = Field(default_factory=lambda: str(uuid4()))
+    correlation_id: str
+    job_id: Optional[str] = None
+    status: RunStatus
+    started_at: datetime
+    ended_at: Optional[datetime] = None
+    total_cost_usd: float = 0.0
+    total_tokens: int = 0
+    meta_json: dict[str, Any] = Field(default_factory=dict)
+
+
+class Checkpoint(BaseModel):
+    """체크포인트"""
+
+    correlation_id: str
+    last_stage: str
+    ctx_json: dict[str, Any]
+    updated_at: datetime = Field(default_factory=datetime.now)
+
+
+class Event(BaseRecord):
+    """이벤트 (append-only)"""
+
+    ts: datetime = Field(default_factory=datetime.now)
+    type: EventType
+    correlation_id: str
+    payload_json: dict[str, Any]
+
+
+class LLMCall(BaseRecord):
+    """LLM 호출 로그"""
+
+    correlation_id: str
+    run_id: Optional[str] = None
+    stage: str
+    model: str
+    tokens_in: int
+    tokens_out: int
+    latency_ms: Optional[int] = None
+    cost_usd: float
+    meta_json: dict[str, Any] = Field(default_factory=dict)
+
+
+class VaultFile(BaseRecord):
+    """볼트 파일 (증분 인덱싱)"""
+
+    file_id: str = Field(default_factory=lambda: str(uuid4()))
+    path: str
+    sha256: str
+    mtime: str
+    size: int
+    title: Optional[str] = None
+    category: Optional[str] = None
+    metadata_json: dict[str, Any] = Field(default_factory=dict)
+    indexed_at: datetime = Field(default_factory=datetime.now)
+
+
+class VaultChunk(BaseRecord):
+    """볼트 청크"""
+
+    chunk_id: str = Field(default_factory=lambda: str(uuid4()))
+    file_id: str
+    start_line: int
+    end_line: int
+    text: str
+    sha256: str
+
+
+class Source(BaseRecord):
+    """외부 수집 소스"""
+
+    source_id: str = Field(default_factory=lambda: str(uuid4()))
+    type: str
+    base_url: Optional[str] = None
+    config_json: dict[str, Any] = Field(default_factory=dict)
+    enabled: bool = True
+    last_success_at: Optional[datetime] = None
+    last_error: Optional[str] = None
+
+
+class SourceItem(BaseRecord):
+    """수집 아이템"""
+
+    item_id: str = Field(default_factory=lambda: str(uuid4()))
+    source_id: str
+    external_key: str  # 외부 시스템 ID (멱등)
+    fetched_at: datetime
+    payload_json: dict[str, Any]
+    content_hash: str
+
+
+class Evidence(BaseRecord):
+    """근거"""
+
+    evidence_id: str = Field(default_factory=lambda: str(uuid4()))
+    correlation_id: str
+    source_type: str  # VAULT, CRAWLED, SOURCE_ITEM
+    locator_json: dict[str, Any]  # 위치 정보
+    snippet: str  # 근거 텍스트 (최대 500자)
+    content_hash: str
+
+
+class InsightClaim(BaseRecord):
+    """인사이트 주장 (claim-evidence 바인딩)"""
+
+    claim_id: str = Field(default_factory=lambda: str(uuid4()))
+    insight_id: str
+    text: str
+    evidence_ids_json: list[str]  # 최소 1개 필수
+
+
+class ProposalAction(BaseRecord):
+    """제안 액션"""
+
+    proposal_id: str
+    action_type: str
+    action_payload_json: dict[str, Any]
+    requires_approval: bool = True
+    executed: bool = False
+    executed_at: Optional[datetime] = None
+    result_json: Optional[dict[str, Any]] = None
+
+
+class Approval(BaseRecord):
+    """승인 이벤트"""
+
+    approval_id: str = Field(default_factory=lambda: str(uuid4()))
+    proposal_id: str
+    chat_id: int
+    decision: ApprovalDecision
+    decided_at: datetime = Field(default_factory=datetime.now)
+    actor: str = "HUMAN"
+    note: Optional[str] = None
+
+
+class ExternalRequest(BaseRecord):
+    """외부 시스템 요청 (agent 연동)"""
+
+    request_id: str = Field(default_factory=lambda: str(uuid4()))
+    proposal_id: Optional[str] = None
+    target_system: str  # SANJAI_AGENT, OPENCLAW
+    job_type: str
+    payload_hash: str
+    signature: str
+    status: str = "PENDING"
+    response_json: Optional[dict[str, Any]] = None
+    created_at: datetime = Field(default_factory=datetime.now)
+    sent_at: Optional[datetime] = None
+    completed_at: Optional[datetime] = None
+
+
+class StrategyPack(BaseRecord):
+    """전략 팩 (agent용 전략 메모)"""
+
+    pack_id: str = Field(default_factory=lambda: str(uuid4()))
+    case_id: str
+    correlation_id: str
+    issues: list[dict[str, Any]]
+    advantage_points: list[dict[str, Any]]
+    risk_points: list[dict[str, Any]]
+    required_additional_evidence: list[dict[str, Any]]
+    draft_instructions: list[dict[str, Any]]
+    validation_status: ValidationStatus = ValidationStatus.PENDING
+    validation_errors: Optional[list[str]] = None
+    created_at: datetime = Field(default_factory=datetime.now)
+    used_at: Optional[datetime] = None
+
+
+class StrategyPackMetrics(BaseRecord):
+    """전략 팩 품질 메트릭"""
+
+    pack_id: str
+    generated_claims: int = 0
+    validated_claims: int = 0
+    rejected_claims: int = 0
+    new_facts_detected: int = 0  # 0이어야 함
+    verifier_issues: int = 0
+    revision_loops: int = 0
+    total_cost_usd: float = 0.0
+    final_rejected: bool = False
+
+
+# ========== Helper Models for Operations ==========
+
+
+class TerminationCondition(BaseModel):
+    """종료 조건"""
+
+    max_cost_usd: float = 5.0
+    max_time_sec: int = 3600
+    max_retries: int = 3
+    max_rebuilds: int = 3
+
+
+class HealthStatus(BaseModel):
+    """헬스 체크 상태"""
+
+    db_connected: bool
+    db_wal_enabled: bool
+    telegram_configured: bool
+    vault_accessible: bool
+    last_success_run: Optional[datetime]
+    pending_jobs: int
+    running_jobs: int
+    active_runs: int
+    insights_24h: int
+    pending_proposals: int
+    cost_24h_usd: float
+
+
+class StatusResponse(BaseModel):
+    """상태 응답"""
+
+    correlation_id: str
+    run_id: str
+    status: str
+    started_at: datetime
+    ended_at: Optional[datetime]
+    last_stage: Optional[str]
+    event_count: int
+    insights_count: int
+    items_collected: int
+    total_cost_usd: float
+    errors: list[str]
+
+
+class CostBreakdown(BaseModel):
+    """비용 분석"""
+
+    correlation_id: str
+    total_cost_usd: float
+    by_stage: dict[str, float]
+    by_model: dict[str, float]
+    total_tokens_in: int
+    total_tokens_out: int
+    call_count: int
+    avg_latency_ms: float

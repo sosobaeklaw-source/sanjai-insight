@@ -51,15 +51,27 @@
 - [x] src/indexers/ + tests
 - Tests: 7 passed
 
-## Step 3: 엔진 (Watch, Think)
-- [ ] src/engines/watch.py + tests
+## Step 2.5: 운영화 코어 ✅ DONE (2026-03-03)
+- [x] schema_v2_operational.sql (운영화 스키마)
+- [x] src/core/ (CheckpointManager, TerminationChecker, EventLogger, JobManager, Worker)
+- [x] src/api/ (/healthz, /health, /status, /cost)
+- [x] src/indexers/vault_incremental.py (증분 인덱싱 + FTS5)
+- [x] src/engines/validation.py (evidence validation fail-closed)
+- [x] src/bot/idempotency.py + approval_handler.py
+- [x] src/bridge/agent_client.py (제로트러스트)
+- [x] tests/test_operational_core.py (회귀 테스트 6개)
+- [x] HANDOFF_OPERATIONAL_v2.md
+- **WP-1~3, 5~7(부분) 완료. 참조: HANDOFF_OPERATIONAL_v2.md**
+
+## Step 3: 엔진 (Watch, Think) — 통합 필요
+- [ ] src/engines/watch.py (기존 크롤러를 Worker 핸들러로 통합)
 - [ ] src/tools/llm_tools.py + src/bridge/agent_bridge.py
-- [ ] src/engines/think.py + tests
+- [ ] src/engines/think.py (LLM + Evidence 생성 + Validation 통합)
 - [ ] src/metrics/cost_tracker.py + tests
 
-## Step 4: 엔진 (Propose) + 봇 + 마케팅
-- [ ] src/engines/propose.py + tests
-- [ ] src/bot/handlers.py + commands.py + tests
+## Step 4: 엔진 (Propose) + 봇 + 마케팅 — 통합 필요
+- [ ] src/engines/propose.py (Telegram 메시지 + 버튼 UI)
+- [ ] src/bot/handlers.py + commands.py (callback_query 처리)
 - [ ] src/pipelines/marketing.py + tests
 - [ ] src/metrics/performance_tracker.py + reporter.py
 
@@ -67,6 +79,7 @@
 - [ ] src/engines/self_diagnose.py + tests
 - [ ] src/bridge/openclaw_bridge.py
 - [ ] src/app.py (전체 조립)
+- [ ] sanjai-agent: /external/jobs 엔드포인트 추가 (Addendum)
 
 ## Step 6: 배포
 - [ ] Dockerfile + railway.toml + scripts/*
