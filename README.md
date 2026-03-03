@@ -32,6 +32,19 @@ sanjai-insight는 다음과 같은 작업을 자동으로 수행합니다:
 3. **Propose Engine** - Telegram 제안 + 버튼 UI
 4. **Self-Diagnose Engine** - 자기진단 + Threshold 자동 조정
 
+### 운영 고도화 (v2.0)
+
+- **Grafana Dashboard** - 비용/품질/성능/상태 5개 패널 (1000줄)
+- **Alert Rules** - 8개 규칙 + Telegram 알림 (비용/품질/성능)
+- **Automatic Backup** - 일일 백업 + S3 + 30일 보관 + 재해 복구
+- **Rate Limiting** - Token bucket (1000 req/hour per IP)
+- **Security** - CORS, CSP, HMAC 검증, 제로트러스트
+- **Caching** - Redis/In-memory LLM 응답 캐싱 (24h TTL)
+- **Performance** - 10+ 인덱스, 쿼리 최적화, Connection pooling
+- **Structured Logging** - JSON 로깅 + Sentry 통합
+- **Autoscaling** - Railway + Dynamic Worker Pool (CPU/Memory 기반)
+- **GDPR Compliance** - 데이터 보관 정책, 익명화, 삭제 도구
+
 ### 모니터링
 
 - **14개 핵심 메트릭** - Prometheus/Grafana 연동
@@ -120,32 +133,62 @@ railway variables set MONTHLY_BUDGET_KRW="50000"
 
 ```
 sanjai-insight/
-├── config/               # 설정 YAML (keywords, thresholds, schedule 등)
+├── config/
+│   └── grafana_dashboard.json  # Grafana 대시보드 (1000줄)
 ├── data/                 # SQLite DB + 수집 데이터
-├── scripts/              # 배포/초기화 스크립트
+├── docs/                 # 운영 문서 (새 추가)
+│   ├── OPERATIONS_MANUAL.md    # 운영 매뉴얼 (500줄)
+│   ├── API_REFERENCE.md        # API 문서 (300줄)
+│   └── TROUBLESHOOTING.md      # 트러블슈팅 (400줄)
+├── scripts/
+│   ├── backup.sh         # 자동 백업 스크립트
+│   ├── restore.sh        # 복원 스크립트
+│   └── deploy.sh         # 배포 스크립트
 ├── src/
 │   ├── api/              # 헬스체크, 메트릭, 상태 API
-│   ├── bot/              # Telegram 봇 (commands, handlers)
+│   ├── bot/              # Telegram 봇 (commands, handlers, idempotency)
 │   ├── bridge/           # Agent 연동 (zero-trust)
-│   ├── core/             # Worker, CheckpointManager, EventLogger
-│   ├── crawlers/         # 크롤러 (precedent, policy, trend 등)
-│   ├── engines/          # Watch, Think, Propose, Diagnose
+│   ├── cache/            # Redis/In-memory 캐싱 (새 추가)
+│   │   ├── redis_cache.py
+│   │   └── __init__.py
+│   ├── core/             # Worker, CheckpointManager, EventLogger, WorkerPool
+│   │   └── worker_pool.py      # Dynamic worker pool (새 추가)
+│   ├── crawlers/         # 크롤러 (precedent, policy, trend, competitor)
+│   ├── engines/          # Watch, Think, Propose, Diagnose, Validation
 │   ├── indexers/         # Vault 증분 인덱싱 + FTS5
+│   ├── middleware/       # Rate limiting, Security (새 추가)
+│   │   ├── rate_limiter.py
+│   │   ├── security.py
+│   │   └── __init__.py
+│   ├── monitoring/       # Alert rules (새 추가)
+│   │   ├── alert_rules.py
+│   │   └── __init__.py
 │   ├── tools/            # LLM 클라이언트, 비용 추적
-│   ├── utils/            # ThresholdOptimizer
+│   ├── utils/
+│   │   ├── backup_manager.py   # 자동 백업 (새 추가)
+│   │   ├── gdpr_tools.py       # GDPR 컴플라이언스 (새 추가)
+│   │   ├── query_optimizer.py  # 쿼리 최적화 (새 추가)
+│   │   ├── structured_logger.py # JSON 로깅 (새 추가)
+│   │   └── ThresholdOptimizer
 │   ├── models.py         # Pydantic 모델 (40+ models)
 │   ├── db.py             # DB 초기화
 │   └── app.py            # Worker + Handlers 통합
 ├── tests/                # pytest 테스트 (25+ tests)
 ├── Dockerfile            # Railway 배포용
-├── railway.toml          # Railway 설정
+├── railway.toml          # Railway 기본 설정
+├── railway_autoscaling.toml  # Autoscaling 설정 (새 추가)
 ├── requirements.txt      # Python 의존성
 ├── schema.sql            # DB 스키마 (기본)
 ├── schema_v2_operational.sql  # 운영화 스키마 (v2.0)
+├── schema_indexes.sql    # 성능 인덱스 (새 추가)
+├── schema_alerts.sql     # Alert 테이블 (새 추가)
+├── schema_audit.sql      # Audit log 테이블 (새 추가)
 ├── .env.example          # 로컬 환경변수 템플릿
 ├── .env.railway.template # Railway 환경변수 템플릿
 ├── CLAUDE.md             # PRD (Product Requirements Document)
+├── COMPLIANCE.md         # GDPR 컴플라이언스 (새 추가, 200줄)
 ├── DEPLOYMENT_GUIDE.md   # 배포 가이드
+├── DISASTER_RECOVERY.md  # 재해 복구 절차 (새 추가)
 ├── HANDOFF_OPERATIONAL_v2.md  # 운영 인수인계
 └── README.md             # 이 파일
 ```
@@ -391,11 +434,21 @@ Copyright 2026 소백노무법인. All rights reserved.
 
 ## 문서
 
+### 핵심 문서
+
 - [CLAUDE.md](CLAUDE.md) - 전체 PRD (7,000줄)
 - [DEPLOYMENT_GUIDE.md](DEPLOYMENT_GUIDE.md) - 배포 가이드
 - [HANDOFF_OPERATIONAL_v2.md](HANDOFF_OPERATIONAL_v2.md) - 운영 인수인계
 - [DEVIATION_LOG.md](DEVIATION_LOG.md) - 설계 변경 로그
 - [LESSONS_LEARNED.md](LESSONS_LEARNED.md) - 개발 회고
+
+### 운영 문서 (새 추가)
+
+- [OPERATIONS_MANUAL.md](docs/OPERATIONS_MANUAL.md) - 일일 운영, 배포, 백업 (500줄)
+- [API_REFERENCE.md](docs/API_REFERENCE.md) - 전체 API 명세 (300줄)
+- [TROUBLESHOOTING.md](docs/TROUBLESHOOTING.md) - 문제 해결 가이드 (400줄)
+- [COMPLIANCE.md](COMPLIANCE.md) - GDPR 컴플라이언스 (200줄)
+- [DISASTER_RECOVERY.md](DISASTER_RECOVERY.md) - 재해 복구 절차
 
 ## 연락처
 
