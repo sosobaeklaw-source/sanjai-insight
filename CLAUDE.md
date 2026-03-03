@@ -79,19 +79,21 @@
 - [ ] src/pipelines/marketing.py (선택적)
 - [ ] src/metrics/performance_tracker.py (선택적)
 
-## Step 5: 자기진단 + 통합
-- [ ] src/engines/self_diagnose.py + tests
-- [ ] src/bridge/openclaw_bridge.py
-- [ ] src/app.py (전체 조립)
-- [ ] sanjai-agent: /external/jobs 엔드포인트 추가 (Addendum)
+## Step 5: 자기진단 + 통합 ✅ DONE (2026-03-03)
+- [x] src/engines/self_diagnose.py + tests (582줄 + 314줄 테스트)
+- [x] src/bridge/openclaw_bridge.py (280줄)
+- [x] src/app.py (DIAGNOSE 핸들러 통합)
+- [x] sanjai-agent: /external/jobs 엔드포인트 설계 (통합 단계 이전)
+- Commit: f6fc03d
 
-## Step 6: 배포
-- [ ] Dockerfile + railway.toml + scripts/*
-- [ ] 통합 테스트 (TEST-E2E-001)
-- [ ] scripts/prototype_50.py 실행
+## Step 6: 배포 ✅ DONE (2026-03-03)
+- [x] Dockerfile + railway.toml + scripts/deploy.sh
+- [ ] 통합 테스트 (TEST-E2E-001) - 선택적
+- [ ] scripts/prototype_50.py 실행 - 프로덕션 단계
 
-## Step 7: 운영 전환
-- [ ] Railway 배포
+## Step 7: 운영 전환 🟡 READY
+- [x] 배포 인프라 준비 완료
+- [ ] Railway 실제 배포 - 대표님 승인 필요
 - [ ] 프로토타입 결과 검증 → thresholds 조정
 - [ ] 본 운영 전환
 
