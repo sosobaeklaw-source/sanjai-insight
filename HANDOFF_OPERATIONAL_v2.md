@@ -28,6 +28,9 @@
 | WP-6 | Propose Engine | ✅ | src/engines/propose.py (333줄) |
 | WP-8 | Self-Diagnose Engine | ✅ | src/engines/self_diagnose.py (582줄) |
 | Integration | App.py Integration | ✅ | src/app.py (123줄) - 4 handlers |
+| Utils | Threshold Optimizer | ✅ | src/utils/threshold_optimizer.py (300줄) |
+| Monitoring | Metrics API | ✅ | src/api/metrics.py (250줄) - 14 메트릭 |
+| Deployment | Scripts & Docs | ✅ | railway_deploy.sh, health_check.sh, .env.railway.template |
 
 ### ❌ 미구현 (프로덕션 단계)
 
@@ -389,3 +392,157 @@ success, request_id, response = await client.send_request(
 **Handoff Complete.**
 **Date:** 2026-03-03
 **Responsibility:** Next developer / 대표님
+
+---
+
+## 2026-03-03 업데이트: 배포 준비 완료
+
+### ✅ 신규 구현
+
+#### 1. Threshold Optimizer (src/utils/threshold_optimizer.py)
+
+**기능:**
+- 프로토타입 결과 분석 (precision/recall/F1)
+- ROC curve 기반 최적 threshold 계산
+- config/thresholds.yaml 자동 업데이트
+- A/B 테스트 시뮬레이션
+
+**사용법:**
+
+```python
+from src.utils import ThresholdOptimizer
+
+optimizer = ThresholdOptimizer(db_path="data/insight.db")
+
+# 프로토타입 결과 분석
+results = await optimizer.analyze_prototype_results()
+
+# 최적 threshold 계산
+best_threshold = optimizer.calculate_optimal_threshold(
+    results["insight_metrics"]["precision_recall_curve"],
+    strategy="f1"  # f1 | precision | recall | balanced
+)
+
+# thresholds.yaml 업데이트
+await optimizer.update_thresholds(
+    {"insight.confidence_threshold": best_threshold},
+    reason="Prototype optimization"
+)
+
+# A/B 테스트
+ab_results = await optimizer.run_ab_test(
+    control_threshold=0.7,
+    test_threshold=0.75,
+    sample_size=50
+)
+```
+
+#### 2. Metrics API (src/api/metrics.py)
+
+**14개 핵심 메트릭:**
+
+1. **비용 메트릭:**
+   - `sanjai_insight_cost_total_usd` - 총 비용
+   - `sanjai_insight_cost_24h_usd` - 24시간 비용
+   - `sanjai_insight_cost_per_insight_usd` - 인사이트당 비용
+
+2. **품질 메트릭:**
+   - `sanjai_insight_acceptance_rate` - 승인율
+   - `sanjai_insight_confidence_avg` - 평균 신뢰도
+   - `sanjai_insight_high_confidence_ratio` - 고신뢰도 비율 (>=0.8)
+
+3. **성능 메트릭:**
+   - `sanjai_insight_insights_total` - 총 인사이트 수
+   - `sanjai_insight_insights_24h` - 24시간 인사이트
+   - `sanjai_insight_response_latency_avg_sec` - 응답 시간
+
+4. **시스템 메트릭:**
+   - `sanjai_insight_jobs_pending` - 대기 작업
+   - `sanjai_insight_jobs_running` - 실행 작업
+   - `sanjai_insight_crawler_success_rate` - 크롤러 성공률
+   - `sanjai_insight_db_size_mb` - DB 크기
+   - `sanjai_insight_uptime_seconds` - 가동 시간
+
+**엔드포인트:**
+
+```bash
+# Prometheus format
+GET /metrics
+
+# JSON format
+GET /metrics/json
+
+# Grafana dashboard template
+GET /metrics/grafana
+```
+
+#### 3. 배포 스크립트
+
+**scripts/railway_deploy.sh:**
+- Railway 배포 자동화
+- 환경변수 검증
+- Git 상태 확인
+- 배포 후 로그 확인
+
+**scripts/health_check.sh:**
+- /healthz 체크
+- /health 상세 상태 확인
+- /metrics 엔드포인트 확인
+- 종합 리포트 출력
+
+**사용법:**
+
+```bash
+# 배포
+./scripts/railway_deploy.sh
+
+# 헬스체크
+./scripts/health_check.sh https://your-app.railway.app
+```
+
+#### 4. 환경변수 템플릿
+
+**.env.railway.template:**
+- 모든 환경변수 상세 설명
+- 필수/선택 구분
+- Railway 배포 가이드
+- 보안 체크리스트
+
+### 배포 준비 완료 체크리스트
+
+- [x] Threshold Optimizer 구현 (300줄)
+- [x] Metrics API 구현 (250줄)
+- [x] 환경변수 템플릿 작성
+- [x] railway_deploy.sh 스크립트
+- [x] health_check.sh 스크립트
+- [x] DEPLOYMENT_GUIDE.md 업데이트
+- [x] HANDOFF.md 업데이트
+- [ ] README.md 업데이트 (다음 단계)
+- [ ] Git commit + push (다음 단계)
+
+### 다음 단계
+
+1. **프로토타입 50건 실행**
+   - Watch → Think → Propose 파이프라인
+   - 결과 데이터 수집
+
+2. **Threshold 최적화**
+   - ThresholdOptimizer로 분석
+   - 최적 confidence_threshold 계산
+   - thresholds.yaml 업데이트
+
+3. **모니터링 설정**
+   - Prometheus 연동
+   - Grafana 대시보드 임포트
+   - 알림 설정
+
+4. **본 운영 전환**
+   - 일간 스케줄 활성화
+   - 자기진단 활성화
+   - 대표님 승인 프로세스 가동
+
+---
+
+**업데이트 완료.**
+**Date:** 2026-03-03
+**책임:** 다음 개발자 / 대표님
