@@ -176,3 +176,34 @@ CREATE TABLE IF NOT EXISTS cost_log (
 CREATE INDEX idx_cost_log_timestamp ON cost_log(timestamp);
 CREATE INDEX idx_cost_log_module ON cost_log(module);
 CREATE INDEX idx_cost_log_insight_id ON cost_log(insight_id);
+
+-- Performance Metrics (실시간 성능 추적)
+CREATE TABLE IF NOT EXISTS performance_metrics (
+    id TEXT PRIMARY KEY,
+    timestamp TEXT NOT NULL,
+    metric_type TEXT NOT NULL,  -- latency, throughput, resource
+    component TEXT NOT NULL,    -- api, engine, crawler, db
+    value REAL NOT NULL,
+    p50 REAL,
+    p95 REAL,
+    p99 REAL,
+    created_at TEXT DEFAULT (datetime('now'))
+);
+
+CREATE INDEX idx_performance_metrics_timestamp ON performance_metrics(timestamp);
+CREATE INDEX idx_performance_metrics_type ON performance_metrics(metric_type);
+CREATE INDEX idx_performance_metrics_component ON performance_metrics(component);
+
+-- Query Log (쿼리 성능 추적)
+CREATE TABLE IF NOT EXISTS query_log (
+    id TEXT PRIMARY KEY,
+    timestamp TEXT NOT NULL,
+    query TEXT NOT NULL,
+    duration_ms REAL NOT NULL,
+    success INTEGER DEFAULT 1,
+    error_message TEXT,
+    created_at TEXT DEFAULT (datetime('now'))
+);
+
+CREATE INDEX idx_query_log_timestamp ON query_log(timestamp);
+CREATE INDEX idx_query_log_duration ON query_log(duration_ms);
