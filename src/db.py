@@ -388,6 +388,94 @@ class Database:
 
             return breakdown
 
+    # ========== MarketingContent CRUD ==========
+
+    async def create_marketing_content(self, content: MarketingContent) -> str:
+        """Create new marketing content"""
+        async with self.connect() as db:
+            await db.execute(
+                """
+                INSERT INTO marketing_content
+                (id, insight_id, content_type, title, target_keyword, seo_meta,
+                draft, legal_review, status, published_url, performance, total_cost)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                """,
+                (
+                    content.id,
+                    content.insight_id,
+                    content.content_type.value,
+                    content.title,
+                    content.target_keyword,
+                    self._serialize_json(content.seo_meta),
+                    content.draft,
+                    self._serialize_json(content.legal_review),
+                    content.status.value,
+                    content.published_url,
+                    self._serialize_json(content.performance),
+                    content.total_cost,
+                ),
+            )
+            await db.commit()
+            return content.id
+
+    async def get_marketing_content(
+        self, content_id: str
+    ) -> Optional[MarketingContent]:
+        """Get marketing content by ID"""
+        async with self.connect() as db:
+            cursor = await db.execute(
+                "SELECT * FROM marketing_content WHERE id = ?", (content_id,)
+            )
+            row = await cursor.fetchone()
+            if not row:
+                return None
+            return self._row_to_marketing_content(row)
+
+    async def list_marketing_content(
+        self, status: Optional[str] = None, limit: int = 100
+    ) -> list[MarketingContent]:
+        """List marketing content with optional status filter"""
+        async with self.connect() as db:
+            if status:
+                cursor = await db.execute(
+                    "SELECT * FROM marketing_content WHERE status = ? ORDER BY created_at DESC LIMIT ?",
+                    (status, limit),
+                )
+            else:
+                cursor = await db.execute(
+                    "SELECT * FROM marketing_content ORDER BY created_at DESC LIMIT ?",
+                    (limit,),
+                )
+            rows = await cursor.fetchall()
+            return [self._row_to_marketing_content(row) for row in rows]
+
+    async def update_marketing_content_status(self, content_id: str, status: str):
+        """Update marketing content status"""
+        async with self.connect() as db:
+            await db.execute(
+                "UPDATE marketing_content SET status = ? WHERE id = ?",
+                (status, content_id),
+            )
+            await db.commit()
+
+    def _row_to_marketing_content(self, row: aiosqlite.Row) -> MarketingContent:
+        """Convert database row to MarketingContent model"""
+        return MarketingContent(
+            id=row["id"],
+            insight_id=row["insight_id"],
+            content_type=row["content_type"],
+            title=row["title"],
+            target_keyword=row["target_keyword"],
+            seo_meta=self._deserialize_json(row["seo_meta"]) or {},
+            draft=row["draft"],
+            legal_review=self._deserialize_json(row["legal_review"]) or {},
+            status=row["status"],
+            published_url=row["published_url"],
+            performance=self._deserialize_json(row["performance"]) or {},
+            total_cost=row["total_cost"] or 0.0,
+            created_at=self._deserialize_datetime(row["created_at"]),
+        )
+
     # ========== WatchLog CRUD ==========
 
     async def create_watch_log(self, log: WatchLog) -> str:
