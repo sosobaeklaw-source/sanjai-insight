@@ -18,5 +18,5 @@ COPY --chown=appuser:appuser . .
 
 USER appuser
 
-# Run application
-CMD ["python", "-m", "src.app"]
+# Run application (uvicorn FastAPI server)
+CMD ["python", "-m", "uvicorn", "src.server:app", "--host", "0.0.0.0", "--port", "8000"]
