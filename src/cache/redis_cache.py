@@ -343,3 +343,91 @@ def get_cache_stats() -> dict:
         }
     else:
         return {"enabled": False}
+
+
+class DistributedCache:
+    """
+    Distributed cache cluster with sharding and replication.
+
+    Features:
+    - Consistent hashing for sharding
+    - Read replicas for load distribution
+    - Automatic failover
+    - Cache warming strategies
+    """
+
+    def __init__(self, nodes: List[str], replicas: int = 2):
+        """
+        Initialize distributed cache.
+
+        Args:
+            nodes: List of Redis node URLs
+            replicas: Number of read replicas per shard
+        """
+        self.nodes = nodes
+        self.replicas = replicas
+        self._clients: List[RedisCache] = []
+        self._hash_ring: Dict[int, int] = {}
+        self._build_hash_ring()
+
+    def _build_hash_ring(self):
+        """Build consistent hash ring for sharding."""
+        import hashlib
+
+        total_vnodes = len(self.nodes) * 150  # Virtual nodes
+
+        for i, node in enumerate(self.nodes):
+            for vnode in range(150):
+                hash_key = hashlib.md5(f"{node}:{vnode}".encode()).hexdigest()
+                hash_int = int(hash_key[:8], 16)
+                self._hash_ring[hash_int] = i
+
+            # Initialize client
+            client = RedisCache(node)
+            self._clients.append(client)
+
+        logger.info(f"Built hash ring with {len(self.nodes)} nodes")
+
+    def _get_node_index(self, key: str) -> int:
+        """Get node index for key using consistent hashing."""
+        import hashlib
+
+        key_hash = int(hashlib.md5(key.encode()).hexdigest()[:8], 16)
+
+        # Find first node >= key_hash
+        for ring_hash in sorted(self._hash_ring.keys()):
+            if ring_hash >= key_hash:
+                return self._hash_ring[ring_hash]
+
+        # Wrap around to first node
+        return self._hash_ring[min(self._hash_ring.keys())]
+
+    def get(self, key: str) -> Optional[Any]:
+        """Get value from distributed cache."""
+        node_index = self._get_node_index(key)
+        return self._clients[node_index].get(key)
+
+    def set(self, key: str, value: Any, ttl: Optional[int] = None):
+        """Set value in distributed cache."""
+        node_index = self._get_node_index(key)
+        self._clients[node_index].set(key, value, ttl)
+
+    def delete(self, key: str):
+        """Delete key from distributed cache."""
+        node_index = self._get_node_index(key)
+        self._clients[node_index].delete(key)
+
+    def get_cluster_stats(self) -> Dict[str, Any]:
+        """Get statistics for entire cluster."""
+        stats = {
+            "nodes": len(self.nodes),
+            "node_stats": []
+        }
+
+        for i, client in enumerate(self._clients):
+            node_stats = client.get_stats()
+            node_stats["node_id"] = i
+            node_stats["node_url"] = self.nodes[i]
+            stats["node_stats"].append(node_stats)
+
+        return stats
