@@ -6,7 +6,7 @@ Processes APPROVE/REJECT/DEFER/DRAFT_ONLY decisions
 import json
 import logging
 from datetime import datetime
-from typing import Optional
+from typing import Optional, Tuple
 from uuid import uuid4
 
 import aiosqlite

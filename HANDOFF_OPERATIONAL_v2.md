@@ -1,8 +1,8 @@
 # HANDOFF — sanjai-insight 운영화 완료 (v2.0)
 
 **Date:** 2026-03-03
-**Status:** ✅ OPERATIONAL CORE COMPLETE
-**Next Phase:** Watch/Think/Propose Engine Integration
+**Status:** ✅ INTEGRATION COMPLETE & TESTS PASSED
+**Next Phase:** Railway Deployment Ready
 
 ---
 
@@ -19,13 +19,20 @@
 | WP-6 | Approval UX (부분) | ✅ | ApprovalHandler, TelegramIdempotency |
 | WP-7 | Agent 연동 (부분) | ✅ | AgentClient (zero-trust) |
 
-### 🟡 부분 완료 / 통합 필요
+### ✅ 추가 완료 (2026-03-03 통합)
+
+| WP | 항목 | 상태 | 산출물 |
+|----|------|------|--------|
+| WP-4 | Watch Engine | ✅ | src/engines/watch.py (304줄) |
+| WP-5 | Think Engine | ✅ | src/engines/think.py (412줄) + src/tools/llm_tools.py |
+| WP-6 | Propose Engine | ✅ | src/engines/propose.py (333줄) |
+| WP-8 | Self-Diagnose Engine | ✅ | src/engines/self_diagnose.py (582줄) |
+| Integration | App.py Integration | ✅ | src/app.py (123줄) - 4 handlers |
+
+### ❌ 미구현 (프로덕션 단계)
 
 | WP | 항목 | 상태 | 필요 작업 |
 |----|------|------|----------|
-| WP-4 | Watch Engine | 🟡 | 기존 크롤러를 Worker 핸들러로 통합 |
-| WP-5 | Think Engine | 🟡 | LLM 호출 + Evidence 생성 + Validation 통합 |
-| WP-6 | Propose Engine | 🟡 | Telegram 메시지 전송 + 버튼 UI |
 | Addendum | Strategy Bot | ❌ | build_strategy_pack + Strategy Gate (agent 측) |
 
 ---

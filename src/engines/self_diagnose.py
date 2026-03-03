@@ -417,7 +417,7 @@ class SelfDiagnoseEngine:
                     SUM(CASE WHEN response = 'ACCEPTED' THEN 1 ELSE 0 END) as accepted,
                     COUNT(*) as total
                 FROM proposals
-                WHERE created_at >= datetime('now', '-7 days')
+                WHERE proposed_at >= datetime('now', '-7 days')
                 AND response != 'PENDING'
                 """
             )
