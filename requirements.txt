@@ -34,3 +34,10 @@ httpx>=0.27.0
 
 # Reporting
 jinja2>=3.1.0
+
+# Web Server
+fastapi>=0.115.0
+uvicorn>=0.32.0
+
+# System Metrics
+psutil>=6.1.0
