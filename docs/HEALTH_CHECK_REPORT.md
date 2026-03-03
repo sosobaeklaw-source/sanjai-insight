@@ -116,20 +116,46 @@ Worker 프로세스 (src/app.py) = 별도 실행 필요
    CMD ["sh", "-c", "python -m uvicorn src.server:app --host 0.0.0.0 --port $PORT & python -m src.app"]
    ```
 
-## 검증 결과 (재배포 후 업데이트 예정)
+## 검증 결과 (2026-03-04 01:15 KST)
 
-### 엔드포인트 테스트
-| Endpoint | Status | Response Time | 비고 |
-|----------|--------|---------------|------|
-| `/` | - | - | 재배포 대기 |
-| `/healthz` | - | - | 재배포 대기 |
-| `/health` | - | - | 재배포 대기 |
-| `/status` | - | - | 재배포 대기 |
-| `/cost` | - | - | 재배포 대기 |
+### Git Push 완료
+- Commit: `9a17297` - "fix: Railway 배포를 위한 FastAPI 웹 서버 추가"
+- Branch: master
+- Push 성공: origin/master
 
-### Health Status 상세
-```json
-TBD (재배포 후 업데이트)
+### Railway 재배포 상태
+- 자동 재배포 트리거 확인: GitHub webhook 연동 필요 확인
+- 현재 상태: 이전 빌드 계속 실행 중 (404 오류)
+
+### 엔드포인트 테스트 (재배포 대기 중)
+| Endpoint | Status | Response | 비고 |
+|----------|--------|----------|------|
+| `/` | 404 | Application not found | 재배포 대기 |
+| `/healthz` | 404 | Application not found | 재배포 대기 |
+| `/health` | 404 | Application not found | 재배포 대기 |
+
+### 수동 조치 필요
+Railway에서 수동 재배포가 필요할 수 있습니다:
+1. Railway Dashboard 접속
+2. sanjai-insight 프로젝트 선택
+3. "Deploy" 버튼 클릭 (수동 재배포)
+4. 빌드 로그 확인:
+   - Python 3.12 이미지 빌드
+   - requirements.txt 설치 (fastapi, uvicorn 포함)
+   - `python -m uvicorn src.server:app` 실행 확인
+5. 배포 완료 후 Health Check 재실행
+
+### Health Check 재실행 명령
+```bash
+# Railway 배포 완료 후 실행
+curl https://sanjai-insight-production.up.railway.app/healthz
+# Expected: "OK" (200)
+
+curl https://sanjai-insight-production.up.railway.app/health | jq
+# Expected: JSON with health status
+
+curl https://sanjai-insight-production.up.railway.app/
+# Expected: {"service": "sanjai-insight", "version": "2.0.0", ...}
 ```
 
 ## 참고 문서
