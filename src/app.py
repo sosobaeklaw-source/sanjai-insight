@@ -13,6 +13,7 @@ from .core.jobs import JobManager
 from .engines.watch import WatchEngine
 from .engines.think import ThinkEngine
 from .engines.propose import ProposeEngine
+from .engines.self_diagnose import SelfDiagnoseEngine
 from .models import TerminationCondition
 
 logger = logging.getLogger(__name__)
@@ -67,6 +68,22 @@ async def propose_handler(
     )
 
 
+async def diagnose_handler(
+    correlation_id: str,
+    payload: Dict[str, Any],
+    ctx: Dict[str, Any],
+    checker,
+    checkpoint_manager,
+    event_logger,
+) -> Dict[str, Any]:
+    """Self-Diagnose 핸들러"""
+    db_path = os.getenv("DB_PATH", "data/insight.db")
+    engine = SelfDiagnoseEngine(db_path)
+    return await engine.run(
+        correlation_id, payload, ctx, checker, checkpoint_manager, event_logger
+    )
+
+
 async def main():
     """Application main"""
     logging.basicConfig(level=logging.INFO)
@@ -78,6 +95,7 @@ async def main():
         "WATCH": watch_handler,
         "THINK": think_handler,
         "PROPOSE": propose_handler,
+        "DIAGNOSE": diagnose_handler,
     }
 
     # Termination 조건

@@ -12,7 +12,7 @@ import aiosqlite
 
 from ..crawlers.precedent import PrecedentCrawler
 from ..crawlers.trend import TrendCrawler
-from ..crawlers.policy import PolicyCrawler
+from ..crawlers.policy import MoelCrawler
 from ..crawlers.competitor import CompetitorCrawler
 from ..models import EventType
 from ..core.events import EventLogger
@@ -33,7 +33,7 @@ class WatchEngine:
         self.crawlers = {
             "SUPREME_COURT": PrecedentCrawler(),
             "NAVER_TREND": TrendCrawler(),
-            "MOEL": PolicyCrawler(),
+            "MOEL": MoelCrawler(),
             "COMPETITOR": CompetitorCrawler(),
         }
 

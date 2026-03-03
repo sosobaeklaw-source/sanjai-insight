@@ -5,7 +5,7 @@ All operational events with correlation_id for traceability
 
 import json
 from datetime import datetime
-from typing import Any
+from typing import Any, Optional
 from uuid import uuid4
 
 import aiosqlite

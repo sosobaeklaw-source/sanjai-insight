@@ -29,9 +29,11 @@ async def test_db(tmp_path):
     db_path = tmp_path / "test.db"
     db = Database(str(db_path))
 
-    # Initialize with schema
+    # Initialize with both schemas
     schema_path = Path(__file__).parent.parent / "schema.sql"
+    schema_v2_path = Path(__file__).parent.parent / "schema_v2_operational.sql"
     await db.init_db(str(schema_path))
+    await db.init_db(str(schema_v2_path))
 
     yield db
 
