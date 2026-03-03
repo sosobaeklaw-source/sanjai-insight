@@ -181,27 +181,36 @@ class ThinkEngine:
         """Evidence 로드 (correlation_id 기준)"""
         evidence_map = {}
 
-        async with aiosqlite.connect(self.db_path) as db:
-            db.row_factory = aiosqlite.Row
-            cursor = await db.execute(
-                """
-                SELECT * FROM evidence
-                WHERE correlation_id = ?
-                ORDER BY created_at DESC
-                LIMIT 100
-                """,
-                (correlation_id,),
-            )
-            rows = await cursor.fetchall()
+        try:
+            async with aiosqlite.connect(self.db_path, timeout=10.0) as db:
+                db.row_factory = aiosqlite.Row
+                cursor = await db.execute(
+                    """
+                    SELECT * FROM evidence
+                    WHERE correlation_id = ?
+                    ORDER BY created_at DESC
+                    LIMIT 100
+                    """,
+                    (correlation_id,),
+                )
+                rows = await cursor.fetchall()
 
-            for row in rows:
-                evidence_map[row["evidence_id"]] = {
-                    "evidence_id": row["evidence_id"],
-                    "source_type": row["source_type"],
-                    "locator_json": json.loads(row["locator_json"]),
-                    "snippet": row["snippet"],
-                    "content_hash": row["content_hash"],
-                }
+                for row in rows:
+                    try:
+                        evidence_map[row["evidence_id"]] = {
+                            "evidence_id": row["evidence_id"],
+                            "source_type": row["source_type"],
+                            "locator_json": json.loads(row["locator_json"]),
+                            "snippet": row["snippet"],
+                            "content_hash": row["content_hash"],
+                        }
+                    except (json.JSONDecodeError, KeyError) as e:
+                        logger.error(f"[Think] Failed to parse evidence row: {e}")
+                        continue
+        except TimeoutError:
+            logger.error("[Think] Database timeout loading evidence")
+        except Exception as e:
+            logger.error(f"[Think] Failed to load evidence: {e}")
 
         return evidence_map
 
@@ -219,10 +228,18 @@ class ThinkEngine:
             (insight_dict, cost_usd)
         """
         # Evidence 요약 생성
-        evidence_summary = self._summarize_evidence(evidence_map)
+        try:
+            evidence_summary = self._summarize_evidence(evidence_map)
+        except Exception as e:
+            logger.error(f"[Think] Failed to summarize evidence: {e}")
+            return None, 0.0
 
         # 프롬프트 생성
-        system_prompt, user_prompt = self._build_prompts(frame, evidence_summary)
+        try:
+            system_prompt, user_prompt = self._build_prompts(frame, evidence_summary)
+        except Exception as e:
+            logger.error(f"[Think] Failed to build prompts: {e}")
+            return None, 0.0
 
         # LLM 호출
         try:
@@ -235,21 +252,30 @@ class ThinkEngine:
             )
 
             # LLM calls 저장
-            await self._save_llm_call(
-                correlation_id=correlation_id,
-                stage="THINK",
-                model=meta["model"],
-                tokens_in=meta["tokens_in"],
-                tokens_out=meta["tokens_out"],
-                latency_ms=meta["latency_ms"],
-                cost_usd=meta["cost_usd"],
-            )
+            try:
+                await self._save_llm_call(
+                    correlation_id=correlation_id,
+                    stage="THINK",
+                    model=meta["model"],
+                    tokens_in=meta["tokens_in"],
+                    tokens_out=meta["tokens_out"],
+                    latency_ms=meta["latency_ms"],
+                    cost_usd=meta["cost_usd"],
+                )
+            except Exception as e:
+                logger.warning(f"[Think] Failed to save LLM call log: {e}")
 
             # 파싱
             insight = self._parse_insight_response(response_text, frame)
 
             return insight, meta["cost_usd"]
 
+        except TimeoutError:
+            logger.error(f"[Think] LLM call timeout")
+            return None, 0.0
+        except KeyError as e:
+            logger.error(f"[Think] LLM response missing field: {e}")
+            return None, 0.0
         except Exception as e:
             logger.error(f"[Think] LLM call failed: {e}")
             return None, 0.0
@@ -349,35 +375,42 @@ class ThinkEngine:
 
     async def _save_insight(self, insight: Dict, correlation_id: str):
         """Insight + Claims 저장"""
-        async with aiosqlite.connect(self.db_path) as db:
-            # insight 저장
-            await db.execute(
-                """
-                INSERT INTO insights
-                (id, type, trigger_data_ids, title, body, confidence, urgency,
-                 suggested_actions, affected_cases, status)
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-                """,
-                (
-                    insight["insight_id"],
-                    insight["type"],
-                    "[]",  # trigger_data_ids (legacy)
-                    insight["title"],
-                    json.dumps(insight["body"], ensure_ascii=False),
-                    insight["confidence"],
-                    insight["urgency"],
-                    json.dumps(insight["suggested_actions"], ensure_ascii=False),
-                    "[]",  # affected_cases
-                    "NEW",
-                ),
+        try:
+            async with aiosqlite.connect(self.db_path, timeout=10.0) as db:
+                # insight 저장
+                await db.execute(
+                    """
+                    INSERT INTO insights
+                    (id, type, trigger_data_ids, title, body, confidence, urgency,
+                     suggested_actions, affected_cases, status)
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                    """,
+                    (
+                        insight["insight_id"],
+                        insight["type"],
+                        "[]",  # trigger_data_ids (legacy)
+                        insight["title"],
+                        json.dumps(insight["body"], ensure_ascii=False),
+                        insight["confidence"],
+                        insight["urgency"],
+                        json.dumps(insight["suggested_actions"], ensure_ascii=False),
+                        "[]",  # affected_cases
+                        "NEW",
+                    ),
+                )
+
+                await db.commit()
+
+            # claims 저장
+            await store_insight_claims(
+                self.db_path, insight["insight_id"], insight["claims"]
             )
-
-            await db.commit()
-
-        # claims 저장
-        await store_insight_claims(
-            self.db_path, insight["insight_id"], insight["claims"]
-        )
+        except TimeoutError:
+            logger.error(f"[Think] Database timeout saving insight {insight['insight_id']}")
+            raise
+        except Exception as e:
+            logger.error(f"[Think] Failed to save insight: {e}")
+            raise
 
     async def _save_llm_call(
         self,

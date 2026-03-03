@@ -5,6 +5,7 @@ Health Check Endpoints
 """
 
 import os
+import psutil
 from datetime import datetime
 from pathlib import Path
 from typing import Optional
@@ -20,13 +21,13 @@ async def get_healthz(db_path: str) -> tuple[int, str]:
     Returns: (status_code, message)
     """
     try:
-        # Check DB connection
-        async with aiosqlite.connect(db_path) as db:
+        # Check DB connection with timeout
+        async with aiosqlite.connect(db_path, timeout=5.0) as db:
             cursor = await db.execute("SELECT 1")
             await cursor.fetchone()
 
         # Check if tables exist
-        async with aiosqlite.connect(db_path) as db:
+        async with aiosqlite.connect(db_path, timeout=5.0) as db:
             cursor = await db.execute(
                 "SELECT name FROM sqlite_master WHERE type='table' AND name='jobs'"
             )
@@ -34,8 +35,22 @@ async def get_healthz(db_path: str) -> tuple[int, str]:
             if not row:
                 return (503, "Tables not initialized")
 
+        # Check memory usage (fail if > 90%)
+        memory = psutil.virtual_memory()
+        if memory.percent > 90:
+            return (503, f"Memory usage critical: {memory.percent}%")
+
+        # Check disk space (fail if < 5%)
+        disk = psutil.disk_usage('/')
+        if disk.percent > 95:
+            return (503, f"Disk space critical: {disk.percent}% used")
+
         return (200, "OK")
 
+    except TimeoutError:
+        return (503, "Database connection timeout")
+    except OSError as e:
+        return (503, f"System resource error: {str(e)}")
     except Exception as e:
         return (503, f"Unhealthy: {str(e)}")
 
@@ -49,7 +64,7 @@ async def get_health(db_path: str, telegram_token: Optional[str] = None) -> Heal
     db_connected = False
     db_wal_enabled = False
     try:
-        async with aiosqlite.connect(db_path) as db:
+        async with aiosqlite.connect(db_path, timeout=5.0) as db:
             cursor = await db.execute("SELECT 1")
             await cursor.fetchone()
             db_connected = True
@@ -59,6 +74,8 @@ async def get_health(db_path: str, telegram_token: Optional[str] = None) -> Heal
             row = await cursor.fetchone()
             if row and row[0] == "wal":
                 db_wal_enabled = True
+    except TimeoutError:
+        db_connected = False
     except Exception:
         pass
 
@@ -79,7 +96,7 @@ async def get_health(db_path: str, telegram_token: Optional[str] = None) -> Heal
     cost_24h_usd = 0.0
 
     try:
-        async with aiosqlite.connect(db_path) as db:
+        async with aiosqlite.connect(db_path, timeout=10.0) as db:
             db.row_factory = aiosqlite.Row
 
             # Last success run
@@ -141,7 +158,13 @@ async def get_health(db_path: str, telegram_token: Optional[str] = None) -> Heal
             row = await cursor.fetchone()
             cost_24h_usd = row["total"] if row and row["total"] else 0.0
 
-    except Exception:
+    except TimeoutError:
+        # DB timeout는 치명적이지 않음 (metric 수집 실패만)
+        pass
+    except Exception as e:
+        # 기타 에러도 health check를 실패시키지 않음
+        import logging
+        logging.error(f"[Health] Failed to collect metrics: {e}")
         pass
 
     return HealthStatus(

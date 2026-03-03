@@ -176,40 +176,57 @@ class WatchEngine:
         Returns:
             수집된 아이템 목록
         """
-        # 크롤러 실행 (기존 크롤러 인터페이스 사용)
-        items = await crawler.crawl(days=since_days)
+        try:
+            # 크롤러 실행 (기존 크롤러 인터페이스 사용)
+            try:
+                items = await crawler.crawl(days=since_days)
+            except AttributeError as e:
+                logger.error(f"[Watch] Crawler {source} missing crawl method: {e}")
+                return []
+            except TypeError as e:
+                logger.error(f"[Watch] Crawler {source} invalid parameters: {e}")
+                return []
 
-        # source_items 테이블에 저장 (증분 멱등)
-        async with aiosqlite.connect(self.db_path) as db:
-            for item in items:
-                item_id = str(uuid4())
-                external_key = self._make_external_key(source, item)
+            # source_items 테이블에 저장 (증분 멱등)
+            async with aiosqlite.connect(self.db_path, timeout=10.0) as db:
+                for item in items:
+                    try:
+                        item_id = str(uuid4())
+                        external_key = self._make_external_key(source, item)
 
-                try:
-                    await db.execute(
-                        """
-                        INSERT INTO source_items
-                        (item_id, source_id, external_key, fetched_at, payload_json, content_hash)
-                        VALUES (?, ?, ?, ?, ?, ?)
-                        """,
-                        (
-                            item_id,
-                            source,
-                            external_key,
-                            datetime.now().isoformat(),
-                            str(item),  # JSON serialize
-                            self._hash_content(item),
-                        ),
-                    )
-                    item["item_id"] = item_id  # 추가
-                except aiosqlite.IntegrityError:
-                    # external_key 중복 (이미 수집됨) - 스킵
-                    logger.debug(f"[Watch] Duplicate item: {external_key}")
-                    continue
+                        await db.execute(
+                            """
+                            INSERT INTO source_items
+                            (item_id, source_id, external_key, fetched_at, payload_json, content_hash)
+                            VALUES (?, ?, ?, ?, ?, ?)
+                            """,
+                            (
+                                item_id,
+                                source,
+                                external_key,
+                                datetime.now().isoformat(),
+                                str(item),  # JSON serialize
+                                self._hash_content(item),
+                            ),
+                        )
+                        item["item_id"] = item_id  # 추가
+                    except aiosqlite.IntegrityError:
+                        # external_key 중복 (이미 수집됨) - 스킵
+                        logger.debug(f"[Watch] Duplicate item: {external_key}")
+                        continue
+                    except Exception as e:
+                        logger.error(f"[Watch] Failed to save item: {e}")
+                        continue
 
-            await db.commit()
+                await db.commit()
 
-        return items
+            return items
+        except TimeoutError:
+            logger.error(f"[Watch] Database timeout for source {source}")
+            return []
+        except Exception as e:
+            logger.error(f"[Watch] Crawler failed for {source}: {e}")
+            return []
 
     async def _create_evidence_from_items(
         self,
@@ -225,40 +242,49 @@ class WatchEngine:
         """
         evidence_count = 0
 
-        async with aiosqlite.connect(self.db_path) as db:
-            for item in items:
-                evidence_id = str(uuid4())
+        try:
+            async with aiosqlite.connect(self.db_path, timeout=10.0) as db:
+                for item in items:
+                    try:
+                        evidence_id = str(uuid4())
 
-                # Locator 생성 (source_type=SOURCE_ITEM)
-                locator = {
-                    "item_id": item.get("item_id"),
-                    "source": source,
-                    "url": item.get("url"),
-                    "date": item.get("date"),
-                }
+                        # Locator 생성 (source_type=SOURCE_ITEM)
+                        locator = {
+                            "item_id": item.get("item_id"),
+                            "source": source,
+                            "url": item.get("url"),
+                            "date": item.get("date"),
+                        }
 
-                # Snippet 추출 (최대 500자)
-                snippet = self._extract_snippet(item)
+                        # Snippet 추출 (최대 500자)
+                        snippet = self._extract_snippet(item)
 
-                await db.execute(
-                    """
-                    INSERT INTO evidence
-                    (evidence_id, correlation_id, source_type, locator_json, snippet, content_hash)
-                    VALUES (?, ?, ?, ?, ?, ?)
-                    """,
-                    (
-                        evidence_id,
-                        correlation_id,
-                        "SOURCE_ITEM",
-                        str(locator),  # JSON serialize
-                        snippet,
-                        self._hash_content(item),
-                    ),
-                )
+                        await db.execute(
+                            """
+                            INSERT INTO evidence
+                            (evidence_id, correlation_id, source_type, locator_json, snippet, content_hash)
+                            VALUES (?, ?, ?, ?, ?, ?)
+                            """,
+                            (
+                                evidence_id,
+                                correlation_id,
+                                "SOURCE_ITEM",
+                                str(locator),  # JSON serialize
+                                snippet,
+                                self._hash_content(item),
+                            ),
+                        )
 
-                evidence_count += 1
+                        evidence_count += 1
+                    except Exception as e:
+                        logger.error(f"[Watch] Failed to create evidence: {e}")
+                        continue
 
-            await db.commit()
+                await db.commit()
+        except TimeoutError:
+            logger.error(f"[Watch] Database timeout creating evidence")
+        except Exception as e:
+            logger.error(f"[Watch] Failed to create evidence batch: {e}")
 
         return evidence_count
 

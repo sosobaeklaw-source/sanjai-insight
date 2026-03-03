@@ -151,26 +151,31 @@ class ProposeEngine:
         """
         insights = []
 
-        async with aiosqlite.connect(self.db_path) as db:
-            db.row_factory = aiosqlite.Row
+        try:
+            async with aiosqlite.connect(self.db_path, timeout=10.0) as db:
+                db.row_factory = aiosqlite.Row
 
-            # correlation_id로 생성된 인사이트 조회
-            # (실제로는 events 테이블에서 INSIGHT_CREATED 이벤트 추적)
-            cursor = await db.execute(
-                """
-                SELECT i.* FROM insights i
-                WHERE i.status = 'NEW'
-                  AND i.confidence >= ?
-                  AND i.created_at >= datetime('now', '-1 day')
-                ORDER BY i.confidence DESC, i.created_at DESC
-                LIMIT 10
-                """,
-                (min_confidence,),
-            )
-            rows = await cursor.fetchall()
+                # correlation_id로 생성된 인사이트 조회
+                # (실제로는 events 테이블에서 INSIGHT_CREATED 이벤트 추적)
+                cursor = await db.execute(
+                    """
+                    SELECT i.* FROM insights i
+                    WHERE i.status = 'NEW'
+                      AND i.confidence >= ?
+                      AND i.created_at >= datetime('now', '-1 day')
+                    ORDER BY i.confidence DESC, i.created_at DESC
+                    LIMIT 10
+                    """,
+                    (min_confidence,),
+                )
+                rows = await cursor.fetchall()
 
-            for row in rows:
-                insights.append(dict(row))
+                for row in rows:
+                    insights.append(dict(row))
+        except TimeoutError:
+            logger.error("[Propose] Database timeout loading insights")
+        except Exception as e:
+            logger.error(f"[Propose] Failed to load insights: {e}")
 
         return insights
 
@@ -182,50 +187,80 @@ class ProposeEngine:
         """
         proposal_id = str(uuid4())
 
-        # 인사이트 claims 로드
-        claims = await self._load_claims(insight["id"])
+        try:
+            # 인사이트 claims 로드
+            try:
+                claims = await self._load_claims(insight["id"])
+            except KeyError as e:
+                logger.error(f"[Propose] Insight missing id field: {e}")
+                raise
+            except Exception as e:
+                logger.warning(f"[Propose] Failed to load claims, using empty: {e}")
+                claims = []
 
-        # 메시지 생성 (4블록)
-        message = self._format_proposal_message(insight, claims)
+            # 메시지 생성 (4블록)
+            try:
+                message = self._format_proposal_message(insight, claims)
+            except Exception as e:
+                logger.error(f"[Propose] Failed to format message: {e}")
+                raise
 
-        # DB 저장
-        async with aiosqlite.connect(self.db_path) as db:
-            await db.execute(
-                """
-                INSERT INTO proposals (id, insight_id, message_text, response)
-                VALUES (?, ?, ?, ?)
-                """,
-                (proposal_id, insight["id"], message, "PENDING"),
-            )
-            await db.commit()
+            # DB 저장
+            async with aiosqlite.connect(self.db_path, timeout=10.0) as db:
+                await db.execute(
+                    """
+                    INSERT INTO proposals (id, insight_id, message_text, response)
+                    VALUES (?, ?, ?, ?)
+                    """,
+                    (proposal_id, insight["id"], message, "PENDING"),
+                )
+                await db.commit()
 
-        proposal = {
-            "id": proposal_id,
-            "insight_id": insight["id"],
-            "message_text": message,
-        }
+            proposal = {
+                "id": proposal_id,
+                "insight_id": insight["id"],
+                "message_text": message,
+            }
 
-        return proposal
+            return proposal
+        except TimeoutError:
+            logger.error(f"[Propose] Database timeout creating proposal")
+            raise
+        except aiosqlite.IntegrityError as e:
+            logger.error(f"[Propose] Database integrity error: {e}")
+            raise
+        except Exception as e:
+            logger.error(f"[Propose] Failed to create proposal: {e}")
+            raise
 
     async def _load_claims(self, insight_id: str) -> List[Dict[str, Any]]:
         """Claims 로드"""
         claims = []
 
-        async with aiosqlite.connect(self.db_path) as db:
-            db.row_factory = aiosqlite.Row
-            cursor = await db.execute(
-                "SELECT * FROM insight_claims WHERE insight_id = ?",
-                (insight_id,),
-            )
-            rows = await cursor.fetchall()
-
-            for row in rows:
-                claims.append(
-                    {
-                        "text": row["text"],
-                        "evidence_ids": json.loads(row["evidence_ids_json"]),
-                    }
+        try:
+            async with aiosqlite.connect(self.db_path, timeout=10.0) as db:
+                db.row_factory = aiosqlite.Row
+                cursor = await db.execute(
+                    "SELECT * FROM insight_claims WHERE insight_id = ?",
+                    (insight_id,),
                 )
+                rows = await cursor.fetchall()
+
+                for row in rows:
+                    try:
+                        claims.append(
+                            {
+                                "text": row["text"],
+                                "evidence_ids": json.loads(row["evidence_ids_json"]),
+                            }
+                        )
+                    except (KeyError, json.JSONDecodeError) as e:
+                        logger.warning(f"[Propose] Failed to parse claim row: {e}")
+                        continue
+        except TimeoutError:
+            logger.error(f"[Propose] Database timeout loading claims")
+        except Exception as e:
+            logger.error(f"[Propose] Failed to load claims: {e}")
 
         return claims
 
