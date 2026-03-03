@@ -91,19 +91,26 @@
 - [ ] 통합 테스트 (TEST-E2E-001) - 선택적
 - [ ] scripts/prototype_50.py 실행 - 프로덕션 단계
 
-## Step 7: 운영 전환 (진행 중) (2026-03-04)
+## Step 7: 운영 전환 (웹 서버 추가 완료) (2026-03-04)
 - [x] 배포 인프라 준비 완료
 - [x] Railway 환경변수 설정 완료
 - [x] Railway 배포 실행 완료 (BUILD QUEUED)
 - [x] 배포 URL: https://sanjai-insight-production.up.railway.app
 - [x] 최종 문서화 (HANDOFF.md, DEPLOYMENT_SUCCESS.md)
-- [x] 빌드 완료 대기 → Health Check 검증 ⚠️ 문제 발견
-- [x] 웹 서버 누락 문제 해결 (src/server.py 추가)
-- [x] FastAPI + Uvicorn 추가 (requirements.txt)
-- [x] Railway 시작 명령 수정 (railway.toml)
-- [x] HEALTH_CHECK_REPORT.md 작성
-- [ ] 재배포 + Health Check 재검증
-- [ ] 실제 API 키 설정 (대표님 승인)
+- [x] 빌드 완료 대기 → Health Check 검증 ⚠️ 문제 발견: 404 오류
+- [x] 근본 원인 분석: Worker 서비스 (비 HTTP), 웹 서버 누락
+- [x] 해결: FastAPI 웹 서버 추가 (src/server.py, 79줄)
+- [x] 의존성 추가 (requirements.txt): fastapi, uvicorn, psutil
+- [x] Railway 시작 명령 수정 (railway.toml): uvicorn 실행
+- [x] 로컬 검증 완료: health check 200 OK
+- [x] Git commit + push (3 commits): 9a17297, fc42b90, 37ae319
+- [x] 문서화 완료:
+  - docs/HEALTH_CHECK_REPORT.md (상세 분석)
+  - docs/DEPLOYMENT_HEALTH_CHECK.md (완료 보고)
+- [ ] **대기: Railway 수동 재배포** (대표님 조치 필요)
+- [ ] Health Check 재검증 (재배포 후)
+- [ ] 환경변수 설정 (TELEGRAM_BOT_TOKEN, API 키)
+- [ ] Worker 프로세스 배포 고려 (옵션 A: 단일 서비스, 옵션 B: 별도 서비스)
 - [ ] 프로토타입 결과 검증 → thresholds 조정
 - [ ] 본 운영 전환
 
