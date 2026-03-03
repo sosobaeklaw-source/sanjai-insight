@@ -53,22 +53,28 @@ class ProposeEngine:
         min_confidence = payload.get("min_confidence", 0.7)
 
         # 시작 이벤트
-        await event_logger.log(
-            EventType.PROPOSE_START,
-            correlation_id,
-            {"min_confidence": min_confidence},
-        )
+        try:
+            await event_logger.log(
+                EventType.PROPOSE_START,
+                correlation_id,
+                {"min_confidence": min_confidence},
+            )
+        except Exception as e:
+            logger.warning(f"[Propose] Event logging failed: {e}")
 
         # 인사이트 로드 (NEW 상태 + confidence >= min)
         insights = await self._load_insights(correlation_id, min_confidence)
         logger.info(f"[Propose] Loaded {len(insights)} insights")
 
         if not insights:
-            await event_logger.log(
-                EventType.PROPOSE_END,
-                correlation_id,
-                {"proposals_created": 0, "reason": "no_insights"},
-            )
+            try:
+                await event_logger.log(
+                    EventType.PROPOSE_END,
+                    correlation_id,
+                    {"proposals_created": 0, "reason": "no_insights"},
+                )
+            except Exception as e:
+                logger.warning(f"[Propose] Event logging failed: {e}")
             return {"proposals_created": 0, "proposals_sent": 0}
 
         proposals_created = 0
@@ -79,11 +85,14 @@ class ProposeEngine:
             should_terminate, reason = checker.check()
             if should_terminate:
                 logger.warning(f"[Propose] Termination: {reason}")
-                await event_logger.log(
-                    EventType.TERMINATION,
-                    correlation_id,
-                    {"reason": reason, "stage": "PROPOSE"},
-                )
+                try:
+                    await event_logger.log(
+                        EventType.TERMINATION,
+                        correlation_id,
+                        {"reason": reason, "stage": "PROPOSE"},
+                    )
+                except Exception as e:
+                    logger.warning(f"[Propose] Event logging failed: {e}")
                 break
 
             try:
@@ -103,40 +112,52 @@ class ProposeEngine:
                         proposals_sent += 1
 
                 # 이벤트 기록
-                await event_logger.log(
-                    EventType.PROPOSAL_SENT,
-                    correlation_id,
-                    {"proposal_id": proposal["id"], "insight_id": insight["id"]},
-                )
+                try:
+                    await event_logger.log(
+                        EventType.PROPOSAL_SENT,
+                        correlation_id,
+                        {"proposal_id": proposal["id"], "insight_id": insight["id"]},
+                    )
+                except Exception as e:
+                    logger.warning(f"[Propose] Event logging failed: {e}")
 
                 # 인사이트 상태 업데이트
                 await self._update_insight_status(insight["id"], "PROPOSED")
 
                 # 체크포인트 저장
-                ctx["propose_progress"] = {
-                    "proposals_created": proposals_created,
-                    "proposals_sent": proposals_sent,
-                }
-                await checkpoint_manager.save(correlation_id, "PROPOSE", ctx)
+                try:
+                    ctx["propose_progress"] = {
+                        "proposals_created": proposals_created,
+                        "proposals_sent": proposals_sent,
+                    }
+                    await checkpoint_manager.save(correlation_id, "PROPOSE", ctx)
+                except Exception as e:
+                    logger.warning(f"[Propose] Checkpoint save failed: {e}")
 
             except Exception as e:
                 logger.error(f"[Propose] Error processing insight {insight['id']}: {e}")
-                await event_logger.log(
-                    EventType.ERROR,
-                    correlation_id,
-                    {"error": str(e), "insight_id": insight["id"], "stage": "PROPOSE"},
-                )
+                try:
+                    await event_logger.log(
+                        EventType.ERROR,
+                        correlation_id,
+                        {"error": str(e), "insight_id": insight["id"], "stage": "PROPOSE"},
+                    )
+                except Exception as log_error:
+                    logger.warning(f"[Propose] Event logging failed: {log_error}")
                 continue
 
         # 완료 이벤트
-        await event_logger.log(
-            EventType.PROPOSE_END,
-            correlation_id,
-            {
-                "proposals_created": proposals_created,
-                "proposals_sent": proposals_sent,
-            },
-        )
+        try:
+            await event_logger.log(
+                EventType.PROPOSE_END,
+                correlation_id,
+                {
+                    "proposals_created": proposals_created,
+                    "proposals_sent": proposals_sent,
+                },
+            )
+        except Exception as e:
+            logger.warning(f"[Propose] Event logging failed: {e}")
 
         return {
             "proposals_created": proposals_created,

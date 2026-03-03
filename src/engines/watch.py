@@ -64,11 +64,14 @@ class WatchEngine:
         since_days = payload.get("since_days", 7)
 
         # 시작 이벤트
-        await event_logger.log(
-            EventType.WATCH_START,
-            correlation_id,
-            {"sources": sources, "since_days": since_days},
-        )
+        try:
+            await event_logger.log(
+                EventType.WATCH_START,
+                correlation_id,
+                {"sources": sources, "since_days": since_days},
+            )
+        except Exception as e:
+            logger.warning(f"[Watch] Event logging failed: {e}")
 
         total_items = 0
         total_evidence = 0
@@ -79,11 +82,14 @@ class WatchEngine:
             should_terminate, reason = checker.check()
             if should_terminate:
                 logger.warning(f"[Watch] Termination: {reason}")
-                await event_logger.log(
-                    EventType.TERMINATION,
-                    correlation_id,
-                    {"reason": reason, "stage": "WATCH"},
-                )
+                try:
+                    await event_logger.log(
+                        EventType.TERMINATION,
+                        correlation_id,
+                        {"reason": reason, "stage": "WATCH"},
+                    )
+                except Exception as e:
+                    logger.warning(f"[Watch] Event logging failed: {e}")
                 break
 
             # 크롤러 실행
@@ -122,40 +128,52 @@ class WatchEngine:
                 )
 
                 # 아이템 수집 이벤트
-                for item in items:
-                    await event_logger.log(
-                        EventType.ITEM_COLLECTED,
-                        correlation_id,
-                        {"source": source, "item_id": item.get("id")},
-                    )
+                try:
+                    for item in items:
+                        await event_logger.log(
+                            EventType.ITEM_COLLECTED,
+                            correlation_id,
+                            {"source": source, "item_id": item.get("id")},
+                        )
+                except Exception as e:
+                    logger.warning(f"[Watch] Event logging failed: {e}")
 
                 # 체크포인트 저장
-                ctx["watch_progress"] = {
-                    "completed_sources": [r["source"] for r in source_results],
-                    "total_items": total_items,
-                    "total_evidence": total_evidence,
-                }
-                await checkpoint_manager.save(correlation_id, "WATCH", ctx)
+                try:
+                    ctx["watch_progress"] = {
+                        "completed_sources": [r["source"] for r in source_results],
+                        "total_items": total_items,
+                        "total_evidence": total_evidence,
+                    }
+                    await checkpoint_manager.save(correlation_id, "WATCH", ctx)
+                except Exception as e:
+                    logger.warning(f"[Watch] Checkpoint save failed: {e}")
 
             except Exception as e:
                 logger.error(f"[Watch] Error crawling {source}: {e}")
-                await event_logger.log(
-                    EventType.ERROR,
-                    correlation_id,
-                    {"error": str(e), "source": source, "stage": "WATCH"},
-                )
+                try:
+                    await event_logger.log(
+                        EventType.ERROR,
+                        correlation_id,
+                        {"error": str(e), "source": source, "stage": "WATCH"},
+                    )
+                except Exception as log_error:
+                    logger.warning(f"[Watch] Event logging failed: {log_error}")
                 continue
 
         # 완료 이벤트
-        await event_logger.log(
-            EventType.WATCH_END,
-            correlation_id,
-            {
-                "total_items": total_items,
-                "total_evidence": total_evidence,
-                "sources": source_results,
-            },
-        )
+        try:
+            await event_logger.log(
+                EventType.WATCH_END,
+                correlation_id,
+                {
+                    "total_items": total_items,
+                    "total_evidence": total_evidence,
+                    "sources": source_results,
+                },
+            )
+        except Exception as e:
+            logger.warning(f"[Watch] Event logging failed: {e}")
 
         return {
             "items_collected": total_items,

@@ -57,11 +57,14 @@ class ThinkEngine:
         )
 
         # 시작 이벤트
-        await event_logger.log(
-            EventType.THINK_START,
-            correlation_id,
-            {"frames": frames},
-        )
+        try:
+            await event_logger.log(
+                EventType.THINK_START,
+                correlation_id,
+                {"frames": frames},
+            )
+        except Exception as e:
+            logger.warning(f"[Think] Event logging failed: {e}")
 
         # Evidence 로드
         evidence_map = await self._load_evidence(correlation_id)
@@ -69,11 +72,14 @@ class ThinkEngine:
 
         if not evidence_map:
             logger.warning("[Think] No evidence available - skipping")
-            await event_logger.log(
-                EventType.THINK_END,
-                correlation_id,
-                {"insights_generated": 0, "reason": "no_evidence"},
-            )
+            try:
+                await event_logger.log(
+                    EventType.THINK_END,
+                    correlation_id,
+                    {"insights_generated": 0, "reason": "no_evidence"},
+                )
+            except Exception as e:
+                logger.warning(f"[Think] Event logging failed: {e}")
             return {
                 "insights_generated": 0,
                 "insights_passed": 0,
@@ -89,11 +95,14 @@ class ThinkEngine:
             should_terminate, reason = checker.check()
             if should_terminate:
                 logger.warning(f"[Think] Termination: {reason}")
-                await event_logger.log(
-                    EventType.TERMINATION,
-                    correlation_id,
-                    {"reason": reason, "stage": "THINK"},
-                )
+                try:
+                    await event_logger.log(
+                        EventType.TERMINATION,
+                        correlation_id,
+                        {"reason": reason, "stage": "THINK"},
+                    )
+                except Exception as e:
+                    logger.warning(f"[Think] Event logging failed: {e}")
                 break
 
             try:
@@ -122,54 +131,69 @@ class ThinkEngine:
                         insights_passed += 1
 
                         # 성공 이벤트
-                        await event_logger.log(
-                            EventType.INSIGHT_CREATED,
-                            correlation_id,
-                            {"insight_id": insight["insight_id"], "frame": frame},
-                        )
+                        try:
+                            await event_logger.log(
+                                EventType.INSIGHT_CREATED,
+                                correlation_id,
+                                {"insight_id": insight["insight_id"], "frame": frame},
+                            )
+                        except Exception as e:
+                            logger.warning(f"[Think] Event logging failed: {e}")
                     else:
                         # 실패 이벤트
-                        await event_logger.log(
-                            EventType.INSIGHT_REJECTED,
-                            correlation_id,
-                            {
-                                "frame": frame,
-                                "reason": "evidence_gate_failed",
-                                "errors": errors,
-                            },
-                        )
+                        try:
+                            await event_logger.log(
+                                EventType.INSIGHT_REJECTED,
+                                correlation_id,
+                                {
+                                    "frame": frame,
+                                    "reason": "evidence_gate_failed",
+                                    "errors": errors,
+                                },
+                            )
+                        except Exception as e:
+                            logger.warning(f"[Think] Event logging failed: {e}")
 
                 # 비용 추적
                 checker.add_cost(cost_usd)
 
                 # 체크포인트 저장
-                ctx["think_progress"] = {
-                    "completed_frames": frame,
-                    "insights_generated": insights_generated,
-                    "insights_passed": insights_passed,
-                    "total_cost_usd": total_cost_usd,
-                }
-                await checkpoint_manager.save(correlation_id, "THINK", ctx)
+                try:
+                    ctx["think_progress"] = {
+                        "completed_frames": frame,
+                        "insights_generated": insights_generated,
+                        "insights_passed": insights_passed,
+                        "total_cost_usd": total_cost_usd,
+                    }
+                    await checkpoint_manager.save(correlation_id, "THINK", ctx)
+                except Exception as e:
+                    logger.warning(f"[Think] Checkpoint save failed: {e}")
 
             except Exception as e:
                 logger.error(f"[Think] Error processing frame {frame}: {e}")
-                await event_logger.log(
-                    EventType.ERROR,
-                    correlation_id,
-                    {"error": str(e), "frame": frame, "stage": "THINK"},
-                )
+                try:
+                    await event_logger.log(
+                        EventType.ERROR,
+                        correlation_id,
+                        {"error": str(e), "frame": frame, "stage": "THINK"},
+                    )
+                except Exception as log_error:
+                    logger.warning(f"[Think] Event logging failed: {log_error}")
                 continue
 
         # 완료 이벤트
-        await event_logger.log(
-            EventType.THINK_END,
-            correlation_id,
-            {
-                "insights_generated": insights_generated,
-                "insights_passed": insights_passed,
-                "total_cost_usd": total_cost_usd,
-            },
-        )
+        try:
+            await event_logger.log(
+                EventType.THINK_END,
+                correlation_id,
+                {
+                    "insights_generated": insights_generated,
+                    "insights_passed": insights_passed,
+                    "total_cost_usd": total_cost_usd,
+                },
+            )
+        except Exception as e:
+            logger.warning(f"[Think] Event logging failed: {e}")
 
         return {
             "insights_generated": insights_generated,

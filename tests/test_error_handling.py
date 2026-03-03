@@ -110,8 +110,10 @@ async def test_watch_handles_db_timeout(
         event_logger=mock_event_logger,
     )
 
-    # Should return 0 due to DB error
-    assert result["items_collected"] == 0
+    # Crawler succeeded before DB deletion, but DB save failed
+    # Should still return collected count (fail gracefully)
+    assert result["items_collected"] == 1
+    assert result["evidence_created"] == 0  # Evidence creation should fail
 
 
 @pytest.mark.asyncio
@@ -181,13 +183,15 @@ async def test_think_handles_llm_failure(
     engine = ThinkEngine(test_db)
 
     # Add test evidence
+    import hashlib
+    content_hash = hashlib.sha256("Test evidence".encode()).hexdigest()
     async with aiosqlite.connect(test_db) as db:
         await db.execute(
             """
-            INSERT INTO evidence (evidence_id, correlation_id, source_type, locator_json, snippet)
-            VALUES (?, ?, ?, ?, ?)
+            INSERT INTO evidence (evidence_id, correlation_id, source_type, locator_json, snippet, content_hash)
+            VALUES (?, ?, ?, ?, ?, ?)
             """,
-            ("ev-1", "test-123", "SOURCE_ITEM", "{}", "Test evidence")
+            ("ev-1", "test-123", "SOURCE_ITEM", "{}", "Test evidence", content_hash)
         )
         await db.commit()
 
@@ -217,13 +221,15 @@ async def test_think_handles_invalid_json(
     engine = ThinkEngine(test_db)
 
     # Add test evidence
+    import hashlib
+    content_hash = hashlib.sha256("Test evidence".encode()).hexdigest()
     async with aiosqlite.connect(test_db) as db:
         await db.execute(
             """
-            INSERT INTO evidence (evidence_id, correlation_id, source_type, locator_json, snippet)
-            VALUES (?, ?, ?, ?, ?)
+            INSERT INTO evidence (evidence_id, correlation_id, source_type, locator_json, snippet, content_hash)
+            VALUES (?, ?, ?, ?, ?, ?)
             """,
-            ("ev-1", "test-123", "SOURCE_ITEM", "{}", "Test evidence")
+            ("ev-1", "test-123", "SOURCE_ITEM", "{}", "Test evidence", content_hash)
         )
         await db.commit()
 
@@ -289,13 +295,14 @@ async def test_propose_handles_telegram_failure(
     engine = ProposeEngine(test_db)
 
     # Add test insight
+    import json
     async with aiosqlite.connect(test_db) as db:
         await db.execute(
             """
-            INSERT INTO insights (id, type, title, body, confidence, urgency, status)
-            VALUES (?, ?, ?, ?, ?, ?, ?)
+            INSERT INTO insights (id, type, title, body, confidence, urgency, status, trigger_data_ids, suggested_actions)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
             """,
-            ("insight-1", "CASE_IMPACT", "Test", "{}", 0.8, "HIGH", "NEW")
+            ("insight-1", "CASE_IMPACT", "Test", "{}", 0.8, "HIGH", "NEW", "[]", json.dumps(["Test action"]))
         )
         await db.commit()
 

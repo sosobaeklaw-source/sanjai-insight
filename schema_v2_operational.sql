@@ -234,7 +234,46 @@ CREATE TABLE IF NOT EXISTS insight_claims (
 
 CREATE INDEX idx_insight_claims_insight_id ON insight_claims(insight_id);
 
+-- Insights (인사이트)
+CREATE TABLE IF NOT EXISTS insights (
+    id TEXT PRIMARY KEY,
+    type TEXT NOT NULL,  -- CASE_IMPACT, MARKET_OPPORTUNITY, STRATEGY_SHIFT
+    trigger_data_ids TEXT NOT NULL,  -- JSON array
+    title TEXT NOT NULL,
+    body TEXT NOT NULL,  -- JSON (프레임별 구조화)
+    confidence REAL NOT NULL,
+    urgency TEXT NOT NULL,  -- HIGH, MEDIUM, LOW
+    suggested_actions TEXT,  -- JSON array
+    affected_cases TEXT,  -- JSON array
+    created_at TEXT DEFAULT (datetime('now')),
+    status TEXT DEFAULT 'NEW',  -- NEW, PROPOSED, ACCEPTED, REJECTED, EXPIRED
+    model_used TEXT,
+    tokens_used INTEGER DEFAULT 0
+);
+
+CREATE INDEX IF NOT EXISTS idx_insights_type ON insights(type);
+CREATE INDEX IF NOT EXISTS idx_insights_status ON insights(status);
+CREATE INDEX IF NOT EXISTS idx_insights_created_at ON insights(created_at);
+
 -- ========== WP-6: Propose (승인 기반 실행) ==========
+
+-- Proposals (제안)
+CREATE TABLE IF NOT EXISTS proposals (
+    id TEXT PRIMARY KEY,
+    insight_id TEXT NOT NULL,
+    message_text TEXT NOT NULL,
+    proposed_at TEXT DEFAULT (datetime('now')),
+    response TEXT DEFAULT 'PENDING',  -- PENDING, ACCEPTED, REJECTED, DEFERRED
+    response_at TEXT,
+    response_detail TEXT,
+    executed_action TEXT,
+    feedback TEXT,
+    response_latency_sec INTEGER,
+    FOREIGN KEY (insight_id) REFERENCES insights(id)
+);
+
+CREATE INDEX IF NOT EXISTS idx_proposals_insight_id ON proposals(insight_id);
+CREATE INDEX IF NOT EXISTS idx_proposals_response ON proposals(response);
 
 -- Proposal Actions (제안 액션)
 CREATE TABLE IF NOT EXISTS proposal_actions (
