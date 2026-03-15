@@ -1,13 +1,13 @@
 {
-  "run_id": "insight-20260316-024122-84629b91",
-  "generated_at": "2026-03-16T02:41:22.053816",
+  "run_id": "insight-20260316-024337-a8cd4763",
+  "generated_at": "2026-03-16T02:43:37.232345",
   "drafts": [
     {
       "persona": "nomu",
       "title": "[소백 노무사] 이번 주 노동·법률 실무 체크포인트",
       "path": "C:\\Users\\user\\손원일\\documents\\sanjai-insight\\published\\2026-03-16\\nomu_draft.md",
       "quality_checks": [
-        "too_short"
+        "pass"
       ]
     },
     {
@@ -15,7 +15,7 @@
       "title": "[소백 변호사] 이번 주 노동·법률 실무 체크포인트",
       "path": "C:\\Users\\user\\손원일\\documents\\sanjai-insight\\published\\2026-03-16\\lawyer_draft.md",
       "quality_checks": [
-        "too_short"
+        "pass"
       ]
     }
   ]

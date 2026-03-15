@@ -1,4 +1,4 @@
-# Insight Engine Batch Report (insight-20260316-024122-84629b91)
+# Insight Engine Batch Report (insight-20260316-024337-a8cd4763)
 
 - mode: `dry-run`
 - env_source: `doppler`
@@ -7,8 +7,8 @@
 - drafts: `2`
 
 ## Drafts
-- [소백 노무사] 이번 주 노동·법률 실무 체크포인트 (166 words)
-- [소백 변호사] 이번 주 노동·법률 실무 체크포인트 (169 words)
+- [소백 노무사] 이번 주 노동·법률 실무 체크포인트 (457 words)
+- [소백 변호사] 이번 주 노동·법률 실무 체크포인트 (460 words)
 
 ## Warnings
 - vault_unavailable
