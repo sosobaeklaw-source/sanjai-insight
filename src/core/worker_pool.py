@@ -5,12 +5,16 @@ Adjusts worker count based on load (CPU, memory, queue depth).
 
 import logging
 import os
-import psutil
 import threading
 import time
 from concurrent.futures import ThreadPoolExecutor, TimeoutError, as_completed
 from dataclasses import dataclass
 from typing import Callable, Optional
+
+try:
+    import psutil
+except ImportError:  # pragma: no cover - optional metrics dependency
+    psutil = None
 
 logger = logging.getLogger(__name__)
 
@@ -112,8 +116,12 @@ class DynamicWorkerPool:
     def _check_and_scale(self):
         """Check metrics and scale if needed"""
         # Get system metrics
-        cpu_percent = psutil.cpu_percent(interval=1)
-        memory_percent = psutil.virtual_memory().percent
+        if psutil is None:
+            cpu_percent = 0.0
+            memory_percent = 0.0
+        else:
+            cpu_percent = psutil.cpu_percent(interval=1)
+            memory_percent = psutil.virtual_memory().percent
 
         # Get queue size (estimate from executor)
         queue_size = len(self._executor._threads) if hasattr(self._executor, "_threads") else 0

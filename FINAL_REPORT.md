@@ -1,4 +1,10 @@
 # FINAL REPORT: sanjai-insight v2.0
+>
+> Canonical runtime note (2026-03-16)
+>
+> - This document is historical close-out material.
+> - Current local execution truth: `scripts/run_pipeline.py` with Doppler `sanjai-ai/prd`
+> - Current local proof artifacts: `published/` and `reports/health/`
 
 > **프로젝트**: sanjai-insight (산재AI 능동적 인사이트 시스템)
 > **완료일**: 2026-03-03

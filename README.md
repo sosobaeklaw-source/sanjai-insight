@@ -1,4 +1,11 @@
 # sanjai-insight
+>
+> Canonical runtime note (2026-03-16)
+>
+> - Canonical batch entrypoint: `scripts/run_pipeline.py`
+> - Canonical env source: `doppler run -p sanjai-ai -c prd -- ...`
+> - Safe local proof: `.\.venv\Scripts\python.exe scripts\run_pipeline.py`
+> - Worker/API/Railway instructions below are historical and not the primary local execution path.
 
 > 산재AI 능동적 인사이트 시스템 (v2.0)
 

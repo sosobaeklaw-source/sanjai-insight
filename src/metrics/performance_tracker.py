@@ -41,7 +41,11 @@ from typing import Any, Callable, Deque, Dict, List, Optional, Tuple
 from uuid import uuid4
 
 import aiosqlite
-import psutil
+
+try:
+    import psutil
+except ImportError:  # pragma: no cover - optional metrics dependency
+    psutil = None
 
 logger = logging.getLogger(__name__)
 
@@ -153,8 +157,8 @@ class PerformanceTracker:
         self.endpoint_requests: Dict[str, int] = defaultdict(int)
 
         # Resource tracking
-        self.process = psutil.Process(os.getpid())
-        self.disk_io_prev = self.process.io_counters()
+        self.process = psutil.Process(os.getpid()) if psutil is not None else None
+        self.disk_io_prev = self.process.io_counters() if self.process is not None else None
         self.last_resource_check = time.time()
 
         # Alert thresholds
@@ -249,6 +253,19 @@ class PerformanceTracker:
     def track_resource_usage(self):
         """Track current resource usage"""
         try:
+            if self.process is None:
+                metric = ResourceMetric(
+                    timestamp=datetime.now(),
+                    cpu_percent=0.0,
+                    memory_percent=0.0,
+                    memory_mb=0.0,
+                    disk_read_mb=0.0,
+                    disk_write_mb=0.0,
+                    db_connections=0,
+                )
+                self.resource_buffer.append(metric)
+                return
+
             # CPU and memory
             cpu_percent = self.process.cpu_percent()
             mem_info = self.process.memory_info()

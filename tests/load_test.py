@@ -6,19 +6,23 @@
 실행: locust -f tests/load_test.py --host=http://localhost:8000
 """
 
-import random
-import time
 import json
 import logging
-from typing import Dict, Any, List
+import random
+import sys
+import time
 from datetime import datetime, timedelta
+from typing import Any, Dict, List
 
 try:
     from locust import HttpUser, task, between, events
     from locust.runners import MasterRunner, WorkerRunner
 except ImportError:
-    print("Locust not installed. Run: pip install locust")
-    exit(1)
+    if "pytest" in sys.modules:
+        import pytest
+
+        pytest.skip("locust not installed", allow_module_level=True)
+    raise
 
 # ============================================================================
 # Configuration

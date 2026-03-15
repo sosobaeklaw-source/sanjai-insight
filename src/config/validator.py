@@ -25,11 +25,9 @@ class ConfigValidator:
     SCHEMAS = {
         "competitors": {
             "required_fields": ["competitors", "crawl_options"],
-            "competitors_fields": ["name", "blog_url", "tags", "enabled"],
+            "competitors_fields": ["name", "blog_url", "enabled"],
             "crawl_options_fields": [
                 "max_posts_per_site",
-                "lookback_days",
-                "extract_fields",
             ],
         },
         "keywords": {
@@ -43,12 +41,12 @@ class ConfigValidator:
         },
         "models": {
             "required_fields": ["models", "budget"],
-            "model_fields": ["provider", "model_id", "pricing", "rate_limit", "use_for"],
+            "model_fields": ["provider", "model_id", "pricing", "use_for"],
+            "pricing_fields": ["input_per_1m_tokens", "output_per_1m_tokens"],
+            "rate_limit_fields": ["requests_per_minute", "tokens_per_minute"],
             "budget_fields": [
                 "monthly_limit_krw",
                 "warning_threshold",
-                "critical_threshold",
-                "shutdown_threshold",
             ],
         },
         "schedule": {
@@ -198,6 +196,27 @@ class ConfigValidator:
                         f"Model {model_name} missing field: {field}"
                     )
 
+            pricing = model_config.get("pricing", {})
+            if not isinstance(pricing, dict):
+                raise ConfigValidationError(f"Model {model_name} pricing must be a dictionary")
+            for field in schema["pricing_fields"]:
+                if field not in pricing:
+                    raise ConfigValidationError(
+                        f"Model {model_name} pricing missing field: {field}"
+                    )
+
+            if "rate_limit" in model_config:
+                rate_limit = model_config.get("rate_limit", {})
+                if not isinstance(rate_limit, dict):
+                    raise ConfigValidationError(
+                        f"Model {model_name} rate_limit must be a dictionary"
+                    )
+                for field in schema["rate_limit_fields"]:
+                    if field not in rate_limit:
+                        raise ConfigValidationError(
+                            f"Model {model_name} rate_limit missing field: {field}"
+                        )
+
         budget = config.get("budget", {})
         for field in schema["budget_fields"]:
             if field not in budget:
@@ -294,6 +313,101 @@ class ConfigValidator:
         marketing = config.get("marketing")
         if not isinstance(marketing, dict):
             raise ConfigValidationError("marketing must be a dictionary")
+
+    def validate_file(self, filename: str) -> Tuple[bool, List[str]]:
+        """
+        Backward-compatible single-file validator used by the test suite.
+
+        Args:
+            filename: config filename like "models.yaml"
+
+        Returns:
+            (is_valid, error_messages)
+        """
+        config_name = Path(filename).stem
+        config_path = self.config_dir / filename
+        if not config_path.exists():
+            return (False, [f"Config file not found: {config_path}"])
+
+        try:
+            with open(config_path, "r", encoding="utf-8") as handle:
+                config = yaml.safe_load(handle)
+        except yaml.YAMLError as exc:
+            return (False, [f"Invalid YAML in {config_name}: {exc}"])
+
+        if config is None:
+            return (False, [f"Empty config file: {config_name}"])
+
+        errors: List[str] = []
+        schema = self.SCHEMAS.get(config_name)
+        if not schema:
+            return (True, [])
+
+        for field in schema.get("required_fields", []):
+            if field not in config:
+                errors.append(f"Missing required field '{field}' in {config_name}")
+
+        if config_name == "models":
+            models = config.get("models", {})
+            if not isinstance(models, dict):
+                errors.append("models must be a dictionary")
+            else:
+                for model_name, model_config in models.items():
+                    for field in schema["model_fields"]:
+                        if field not in model_config:
+                            errors.append(f"Model {model_name} missing field: {field}")
+                    pricing = model_config.get("pricing")
+                    if pricing is not None and isinstance(pricing, dict):
+                        for field in schema["pricing_fields"]:
+                            if field not in pricing:
+                                errors.append(
+                                    f"Model {model_name} pricing missing field: {field}"
+                                )
+                    elif "pricing" in model_config:
+                        errors.append(f"Model {model_name} pricing must be a dictionary")
+            budget = config.get("budget", {})
+            if not isinstance(budget, dict):
+                errors.append("budget must be a dictionary")
+            else:
+                for field in schema["budget_fields"]:
+                    if field not in budget:
+                        errors.append(f"budget missing field: {field}")
+
+        elif config_name == "competitors":
+            competitors = config.get("competitors", [])
+            if not isinstance(competitors, list):
+                errors.append("competitors must be a list")
+            else:
+                for index, competitor in enumerate(competitors):
+                    for field in schema["competitors_fields"]:
+                        if field not in competitor:
+                            errors.append(f"Competitor #{index} missing field: {field}")
+            crawl_options = config.get("crawl_options", {})
+            if not isinstance(crawl_options, dict):
+                errors.append("crawl_options must be a dictionary")
+            else:
+                for field in schema["crawl_options_fields"]:
+                    if field not in crawl_options:
+                        errors.append(f"crawl_options missing field: {field}")
+
+        else:
+            try:
+                self.validate_config(config_name)
+            except ConfigValidationError as exc:
+                errors.append(str(exc))
+
+        return (len(errors) == 0, errors)
+
+    def load_validated_config(self, filename: str) -> Dict[str, Any]:
+        """
+        Load one config and raise if validation fails.
+        """
+        is_valid, errors = self.validate_file(filename)
+        if not is_valid:
+            raise ConfigValidationError("; ".join(errors))
+        config_path = self.config_dir / filename
+        with open(config_path, "r", encoding="utf-8") as handle:
+            return yaml.safe_load(handle)
 
 
 def validate_configs(config_dir: str = "config") -> Tuple[bool, List[str]]:

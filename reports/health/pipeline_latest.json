@@ -1,0 +1,288 @@
+{
+  "run_id": "insight-20260316-024122-84629b91",
+  "mode": "dry-run",
+  "env_source": "doppler",
+  "source_records": [
+    {
+      "source": "data_go_kr",
+      "status": "configured",
+      "title": "공공데이터포털",
+      "excerpt": "공공데이터포털 credential is present in doppler.",
+      "url": null,
+      "published_at": "2026-03-16T02:41:22.052309",
+      "evidence": [
+        "data_go_kr"
+      ],
+      "metadata": {}
+    },
+    {
+      "source": "dart",
+      "status": "configured",
+      "title": "DART 공시",
+      "excerpt": "DART 공시 credential is present in doppler.",
+      "url": null,
+      "published_at": "2026-03-16T02:41:22.052309",
+      "evidence": [
+        "dart"
+      ],
+      "metadata": {}
+    },
+    {
+      "source": "kosis",
+      "status": "configured",
+      "title": "통계청 KOSIS",
+      "excerpt": "통계청 KOSIS credential is present in doppler.",
+      "url": null,
+      "published_at": "2026-03-16T02:41:22.052309",
+      "evidence": [
+        "kosis"
+      ],
+      "metadata": {}
+    },
+    {
+      "source": "ecos",
+      "status": "configured",
+      "title": "한국은행 ECOS",
+      "excerpt": "한국은행 ECOS credential is present in doppler.",
+      "url": null,
+      "published_at": "2026-03-16T02:41:22.052309",
+      "evidence": [
+        "ecos"
+      ],
+      "metadata": {}
+    },
+    {
+      "source": "law_api_key",
+      "status": "configured",
+      "title": "법제처",
+      "excerpt": "법제처 credential is present in doppler.",
+      "url": null,
+      "published_at": "2026-03-16T02:41:22.052309",
+      "evidence": [
+        "law_api_key"
+      ],
+      "metadata": {}
+    },
+    {
+      "source": "brave",
+      "status": "configured",
+      "title": "Brave Search",
+      "excerpt": "Brave Search credential is present in doppler.",
+      "url": null,
+      "published_at": "2026-03-16T02:41:22.052309",
+      "evidence": [
+        "brave"
+      ],
+      "metadata": {}
+    },
+    {
+      "source": "naver_client_id",
+      "status": "configured",
+      "title": "Naver Search",
+      "excerpt": "Naver Search credential is present in doppler.",
+      "url": null,
+      "published_at": "2026-03-16T02:41:22.052309",
+      "evidence": [
+        "naver_client_id"
+      ],
+      "metadata": {}
+    },
+    {
+      "source": "google_cse_api_key",
+      "status": "configured",
+      "title": "Google CSE",
+      "excerpt": "Google CSE credential is present in doppler.",
+      "url": null,
+      "published_at": "2026-03-16T02:41:22.052309",
+      "evidence": [
+        "google_cse_api_key"
+      ],
+      "metadata": {}
+    },
+    {
+      "source": "vault_path",
+      "status": "missing",
+      "title": "Obsidian Vault",
+      "excerpt": "Vault path is not accessible from the current workspace.",
+      "url": null,
+      "published_at": "2026-03-16T02:41:22.053816",
+      "evidence": [
+        "\\Users\\son-won-il\\Vault"
+      ],
+      "metadata": {}
+    },
+    {
+      "source": "wordpress",
+      "status": "configured",
+      "title": "WordPress Draft Target",
+      "excerpt": "WordPress draft publishing can be enabled.",
+      "url": null,
+      "published_at": "2026-03-16T02:41:22.053816",
+      "evidence": [
+        "WORDPRESS_URL",
+        "WORDPRESS_USER",
+        "WORDPRESS_APP_PASSWORD"
+      ],
+      "metadata": {}
+    },
+    {
+      "source": "telegram",
+      "status": "configured",
+      "title": "Telegram Notification Target",
+      "excerpt": "Telegram notification target can be enabled.",
+      "url": null,
+      "published_at": "2026-03-16T02:41:22.053816",
+      "evidence": [
+        "TELEGRAM_BOT_TOKEN",
+        "BOSS_CHAT_ID|TELEGRAM_CHAT_ID"
+      ],
+      "metadata": {}
+    }
+  ],
+  "insights": [
+    {
+      "topic_id": "baseline_update",
+      "persona_focus": "노동",
+      "headline": "이번 주 노동·법률 실무 체크포인트",
+      "why_now": "사용 가능한 자료가 제한적이어서 기본 주제 패킷으로 대체했습니다.",
+      "key_points": [
+        "Vault 또는 공공데이터 연결 상태를 먼저 점검하세요."
+      ],
+      "evidence": [],
+      "score": 0.1
+    }
+  ],
+  "drafts": [
+    {
+      "persona": "nomu",
+      "slug": "nomu_draft",
+      "title": "[소백 노무사] 이번 주 노동·법률 실무 체크포인트",
+      "body": "이번 주 노동·법률 실무 체크포인트은 지금 바로 현장에서 설명이 필요한 주제입니다.\n소백 노무사의 시선으로 보면 핵심은 근로자와 사업주가 실제로 무엇을 점검해야 하는지입니다.\n이번 초안은 최근 수집 자료를 바탕으로, 독자가 바로 이해하고 점검할 수 있게 정리했습니다.\n\n먼저 사실관계를 짚겠습니다.\n- Vault 또는 공공데이터 연결 상태를 먼저 점검하세요.\n\n이 자료들이 시사하는 공통점은 규정 변화와 실무 대응 사이의 간극이 커지고 있다는 점입니다.\n즉, 법령 문구를 아는 것만으로는 부족하고 실제 절차와 증빙 흐름까지 함께 점검해야 합니다.\n\n실무적으로는 다음 순서가 안전합니다.\n1. 내 사안이 어느 법률 영역에 걸치는지 먼저 분류합니다.\n2. 최근 지침·판례·행정자료 중 무엇이 직접 영향을 주는지 확인합니다.\n3. 증빙자료를 바로 확보하고, 설명 가능한 타임라인으로 정리합니다.\n\n독자가 가장 많이 놓치는 부분은 '문제가 생긴 뒤에 자료를 찾는다'는 점입니다.\n이번 주제는 사후 대응보다 사전 점검의 가치가 훨씬 큽니다.\n그래서 현업 기준으로는 체크리스트를 미리 두고 반복 점검하는 편이 비용과 시간을 동시에 줄입니다.\n\n이번 초안은 실제 법률 자문이나 노무 자문을 대체하지 않습니다.\n다만 어떤 쟁점이 커지고 있는지, 지금 무엇을 먼저 챙겨야 하는지 빠르게 이해하는 데 목적이 있습니다.\n현장에서 바로 점검이 필요하면 노무 상담으로 연결하세요.",
+      "evidence": [],
+      "word_count": 166,
+      "quality_checks": [
+        "too_short"
+      ]
+    },
+    {
+      "persona": "lawyer",
+      "slug": "lawyer_draft",
+      "title": "[소백 변호사] 이번 주 노동·법률 실무 체크포인트",
+      "body": "이번 주 노동·법률 실무 체크포인트은 지금 바로 현장에서 설명이 필요한 주제입니다.\n소백 변호사의 시선으로 보면 핵심은 법률상 책임과 분쟁 대응 구조가 어떻게 달라지는지입니다.\n이번 초안은 최근 수집 자료를 바탕으로, 독자가 바로 이해하고 점검할 수 있게 정리했습니다.\n\n먼저 사실관계를 짚겠습니다.\n- Vault 또는 공공데이터 연결 상태를 먼저 점검하세요.\n\n이 자료들이 시사하는 공통점은 규정 변화와 실무 대응 사이의 간극이 커지고 있다는 점입니다.\n즉, 법령 문구를 아는 것만으로는 부족하고 실제 절차와 증빙 흐름까지 함께 점검해야 합니다.\n\n실무적으로는 다음 순서가 안전합니다.\n1. 내 사안이 어느 법률 영역에 걸치는지 먼저 분류합니다.\n2. 최근 지침·판례·행정자료 중 무엇이 직접 영향을 주는지 확인합니다.\n3. 증빙자료를 바로 확보하고, 설명 가능한 타임라인으로 정리합니다.\n\n독자가 가장 많이 놓치는 부분은 '문제가 생긴 뒤에 자료를 찾는다'는 점입니다.\n이번 주제는 사후 대응보다 사전 점검의 가치가 훨씬 큽니다.\n그래서 현업 기준으로는 체크리스트를 미리 두고 반복 점검하는 편이 비용과 시간을 동시에 줄입니다.\n\n이번 초안은 실제 법률 자문이나 노무 자문을 대체하지 않습니다.\n다만 어떤 쟁점이 커지고 있는지, 지금 무엇을 먼저 챙겨야 하는지 빠르게 이해하는 데 목적이 있습니다.\n분쟁이 이미 시작됐다면 증거를 정리한 뒤 법률 상담으로 이어가세요.",
+      "evidence": [],
+      "word_count": 169,
+      "quality_checks": [
+        "too_short"
+      ]
+    }
+  ],
+  "artifacts": [
+    {
+      "target": "local_markdown",
+      "mode": "write",
+      "location": "C:\\Users\\user\\손원일\\documents\\sanjai-insight\\published\\2026-03-16\\nomu_draft.md",
+      "status": "published",
+      "metadata": {}
+    },
+    {
+      "target": "local_markdown",
+      "mode": "write",
+      "location": "C:\\Users\\user\\손원일\\documents\\sanjai-insight\\published\\2026-03-16\\lawyer_draft.md",
+      "status": "published",
+      "metadata": {}
+    },
+    {
+      "target": "local_manifest",
+      "mode": "write",
+      "location": "C:\\Users\\user\\손원일\\documents\\sanjai-insight\\published\\2026-03-16\\manifest.json",
+      "status": "published",
+      "metadata": {
+        "draft_count": 2
+      }
+    },
+    {
+      "target": "wordpress",
+      "mode": "draft",
+      "location": "https://sobaeklaw.kr",
+      "status": "skipped_dry_run",
+      "metadata": {
+        "title": "[소백 노무사] 이번 주 노동·법률 실무 체크포인트"
+      }
+    },
+    {
+      "target": "wordpress",
+      "mode": "draft",
+      "location": "https://sobaeklaw.kr",
+      "status": "skipped_dry_run",
+      "metadata": {
+        "title": "[소백 변호사] 이번 주 노동·법률 실무 체크포인트"
+      }
+    },
+    {
+      "target": "telegram",
+      "mode": "message",
+      "location": "preview",
+      "status": "skipped_dry_run",
+      "metadata": {
+        "preview": "[insight-engine] run_id=insight-20260316-024122-84629b91\n초안 2건이 생성되었습니다.\n- [소백 노무사] 이번 주 노동·법률 실무 체크포인트\n- [소백 변호사] 이번 주 노동·법률 실무 체크포인트\n검토 후 공개 여부만 결정하면 됩니다."
+      }
+    }
+  ],
+  "warnings": [
+    "vault_unavailable"
+  ],
+  "config": {
+    "repo_root": "C:\\Users\\user\\손원일\\documents\\sanjai-insight",
+    "data_root": "C:\\Users\\user\\손원일\\documents\\sanjai-insight\\data",
+    "published_root": "C:\\Users\\user\\손원일\\documents\\sanjai-insight\\published",
+    "reports_root": "C:\\Users\\user\\손원일\\documents\\sanjai-insight\\reports",
+    "env_source": "doppler",
+    "doppler_project": "sanjai-ai",
+    "doppler_config": "prd",
+    "vault_path": "\\Users\\son-won-il\\Vault",
+    "secret_presence": {
+      "anthropic": true,
+      "dart": true,
+      "data_go_kr": true,
+      "kosis": true,
+      "ecos": true,
+      "law_api_key": true,
+      "law_api_oc": true,
+      "vault": true,
+      "pinecone": true,
+      "brave": true,
+      "naver_client_id": true,
+      "naver_client_secret": true,
+      "google_api_key": true,
+      "google_cse_api_key": true,
+      "google_cse_id": true,
+      "wordpress_url": true,
+      "wordpress_site_url": true,
+      "wordpress_user": true,
+      "wordpress_app_password": true,
+      "telegram_bot_token": true,
+      "telegram_chat_id": true,
+      "boss_chat_id": true,
+      "opus_model": true,
+      "sonnet_model": true,
+      "haiku_model": true
+    },
+    "anthropic_api_key": true,
+    "word_press_url": true,
+    "word_press_site_url": true,
+    "word_press_user": true,
+    "word_press_app_password": true,
+    "telegram_bot_token": true,
+    "telegram_chat_id": true,
+    "boss_chat_id": true,
+    "opus_model": "claude-opus-4-5",
+    "sonnet_model": "claude-sonnet-4-5",
+    "haiku_model": "claude-haiku-4-5-20251001"
+  },
+  "options": {
+    "days": 7,
+    "dry_run": true,
+    "publish_wordpress": true,
+    "notify_telegram": true
+  }
+}

@@ -1,4 +1,10 @@
 # HANDOFF — sanjai-insight 인수인계 문서
+>
+> Canonical runtime note (2026-03-16)
+>
+> - Primary local operating path: `scripts/run_pipeline.py`
+> - Local env truth: Doppler `sanjai-ai/prd`
+> - Railway/server notes below are historical and should not replace the canonical batch proof path.
 > 생성 시각: 2026-03-04 KST
 > 커밋: 4a01510 (Enhancement 완료)
 

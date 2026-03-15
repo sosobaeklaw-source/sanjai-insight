@@ -103,28 +103,28 @@ async def test_health_with_data(test_db):
         # Add a pending job
         await db.execute(
             """
-            INSERT INTO jobs (job_id, handler_name, payload_json, status)
-            VALUES (?, ?, ?, ?)
+            INSERT INTO jobs (job_id, job_key, type, payload_json, status)
+            VALUES (?, ?, ?, ?, ?)
             """,
-            ("test-job-1", "WATCH", "{}", "PENDING")
+            ("test-job-1", "WATCH:1", "WATCH", "{}", "PENDING")
         )
 
         # Add a running job
         await db.execute(
             """
-            INSERT INTO jobs (job_id, handler_name, payload_json, status)
-            VALUES (?, ?, ?, ?)
+            INSERT INTO jobs (job_id, job_key, type, payload_json, status)
+            VALUES (?, ?, ?, ?, ?)
             """,
-            ("test-job-2", "THINK", "{}", "RUNNING")
+            ("test-job-2", "THINK:1", "THINK", "{}", "RUNNING")
         )
 
         # Add an insight
         await db.execute(
             """
-            INSERT INTO insights (id, type, title, body, confidence, urgency, status)
-            VALUES (?, ?, ?, ?, ?, ?, ?)
+            INSERT INTO insights (id, type, trigger_data_ids, title, body, confidence, urgency, status)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?)
             """,
-            ("insight-1", "CASE_IMPACT", "Test Insight", "{}", 0.85, "HIGH", "NEW")
+            ("insight-1", "CASE_IMPACT", "[]", "Test Insight", "{}", 0.85, "HIGH", "NEW")
         )
 
         await db.commit()
