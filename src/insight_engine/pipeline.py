@@ -6,9 +6,10 @@ from datetime import datetime
 from pathlib import Path
 from uuid import uuid4
 
+from .approval import run_approval_flow
 from .collectors import CanonicalCollector
 from .config import RuntimeConfig
-from .content import build_draft
+from .content import build_draft, quality_check
 from .insight import extract_insights
 from .models import PipelineResult, PublishArtifact
 from .notify import notify_telegram
@@ -39,25 +40,72 @@ class PipelineRunner:
             build_draft("lawyer", insights[1] if len(insights) > 1 else insights[0]),
         ]
 
+        # Quality check all drafts
+        for draft in drafts:
+            checks = quality_check(draft)
+            if draft.quality_checks == []:
+                draft.quality_checks = checks
+
         artifacts = publish_local(drafts, self.config.published_root, run_id)
         warnings = []
 
-        if not any(record.source == "vault_path" and record.status == "collected" for record in records):
+        collected_sources = {r.source for r in records if r.status == "collected"}
+        if "vault" not in collected_sources:
             warnings.append("vault_unavailable")
         if not any(record.source == "wordpress" and record.status == "configured" for record in records):
             warnings.append("wordpress_draft_fallback_only")
         if not any(record.source == "telegram" and record.status == "configured" for record in records):
             warnings.append("telegram_preview_only")
 
+        # Track WP URLs for notification
+        wp_urls: dict[str, str] = {}
         if self.options.publish_wordpress:
-            artifacts.extend(
-                publish_wordpress(self.config, drafts, dry_run=self.options.dry_run)
+            wp_artifacts = publish_wordpress(
+                self.config, drafts, dry_run=self.options.dry_run,
+                output_root=self.config.published_root, run_id=run_id,
             )
+            for art in wp_artifacts:
+                if art.status == "published" and art.location:
+                    draft_id = art.metadata.get("id")
+                    if draft_id:
+                        for draft in drafts:
+                            if draft.slug not in wp_urls:
+                                wp_urls[draft.slug] = art.location
+                                break
+            artifacts.extend(wp_artifacts)
 
         if self.options.notify_telegram:
-            artifacts.append(
-                notify_telegram(self.config, drafts, run_id, dry_run=self.options.dry_run)
-            )
+            if self.options.dry_run:
+                artifacts.append(
+                    notify_telegram(
+                        self.config, drafts, run_id,
+                        dry_run=True, wp_urls=wp_urls or None,
+                    )
+                )
+            else:
+                approval_artifacts = run_approval_flow(
+                    self.config, drafts, run_id, dry_run=False,
+                )
+                artifacts.extend(approval_artifacts)
+                # Replace drafts with any revised versions from approval
+                approved_slugs = {
+                    a.location
+                    for a in approval_artifacts
+                    if a.status == "approved"
+                }
+                if approved_slugs:
+                    warnings.append(
+                        f"approval_approved:{','.join(sorted(approved_slugs))}"
+                    )
+                cancelled_slugs = {
+                    a.location
+                    for a in approval_artifacts
+                    if a.status in ("cancelled", "timeout")
+                }
+                if cancelled_slugs:
+                    warnings.append(
+                        f"approval_not_approved:{','.join(sorted(cancelled_slugs))}"
+                    )
 
         result = PipelineResult(
             run_id=run_id,
