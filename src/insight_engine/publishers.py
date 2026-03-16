@@ -96,10 +96,15 @@ def publish_wordpress(
             )
         return artifacts
 
+    # Ensure URL has protocol
+    wp_url = config.word_press_url
+    if not wp_url.startswith(('http://', 'https://')):
+        wp_url = f'https://{wp_url}'
+    
     with httpx.Client(timeout=30) as client:
         for draft in drafts:
             response = client.post(
-                config.word_press_url,
+                wp_url,
                 auth=(config.word_press_user, config.word_press_app_password),
                 json={
                     "title": draft.title,

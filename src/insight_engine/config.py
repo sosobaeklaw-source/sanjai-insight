@@ -37,6 +37,14 @@ SECRET_KEYS = {
 }
 
 
+def _strip_quotes(value: str) -> str:
+    """Remove surrounding quotes from environment variable values."""
+    value = value.strip()
+    if (value.startswith('"') and value.endswith('"')) or (value.startswith("'") and value.endswith("'")):
+        return value[1:-1]
+    return value
+
+
 def _parse_env_lines(lines: Iterable[str]) -> dict[str, str]:
     values: dict[str, str] = {}
     for raw_line in lines:
@@ -44,7 +52,7 @@ def _parse_env_lines(lines: Iterable[str]) -> dict[str, str]:
         if not line or line.startswith("#") or "=" not in line:
             continue
         key, value = line.split("=", 1)
-        values[key.strip()] = value.strip()
+        values[key.strip()] = _strip_quotes(value.strip())
     return values
 
 
