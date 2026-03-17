@@ -200,3 +200,29 @@
 
 > 전체 PRD는 약 7,000줄. 필요 시 원본 참조.
 > 이 파일은 구현 진행 상황을 추적하는 Source of Truth입니다.
+
+---
+
+# OPERATIONAL NOTES (Session 22, 2026-03-17)
+
+## External API Status
+| API | 상태 | 대체 방안 |
+|-----|------|----------|
+| Naver 검색 API | ❌ 401 (인증 만료/폐지 수순) | RSS 피드 대체 (네이버 뉴스 RSS) |
+| Naver DataLab API | ❌ 401 (동일 credentials) | graceful skip 적용됨. Google Trends scraping 또는 빅카인즈 고려 |
+| Google CSE | ❌ 신규 활성화 불가 | 법제처 API + Vault 내부 자료로 충분 |
+| 법제처 API | ✅ 정상 | - |
+| 공공데이터 API | ✅ 정상 | - |
+| PubMed API | ✅ 정상 | - |
+
+## 핵심 동작하는 수집 소스
+1. Vault 내부자료 (29,000+ 파일) — READ-ONLY
+2. 법제처 API (search_law, check_law_update)
+3. PubMed (search_pubmed)
+4. 공단/KOSHA/OSHRI 크롤러 (sanjai-agent 크론)
+
+## Naver RSS 대체 (향후 구현)
+```
+https://news.google.com/rss/search?q=산재+보상&hl=ko&gl=KR&ceid=KR:ko
+https://rss.blog.naver.com/{블로거ID}.xml
+```

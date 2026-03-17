@@ -2,51 +2,46 @@
   {
     "target": "local_markdown",
     "mode": "write",
-    "location": "C:\\Users\\user\\손원일\\documents\\sanjai-insight\\published\\2026-03-16\\nomu_draft.md",
+    "location": "/Users/son-won-il/sanjai-insight/published/2026-03-17/nomu_draft.md",
     "status": "published",
     "metadata": {}
   },
   {
     "target": "local_markdown",
     "mode": "write",
-    "location": "C:\\Users\\user\\손원일\\documents\\sanjai-insight\\published\\2026-03-16\\lawyer_draft.md",
+    "location": "/Users/son-won-il/sanjai-insight/published/2026-03-17/lawyer_draft.md",
     "status": "published",
     "metadata": {}
   },
   {
     "target": "local_manifest",
     "mode": "write",
-    "location": "C:\\Users\\user\\손원일\\documents\\sanjai-insight\\published\\2026-03-16\\manifest.json",
+    "location": "/Users/son-won-il/sanjai-insight/published/2026-03-17/manifest.json",
     "status": "published",
     "metadata": {
       "draft_count": 2
     }
   },
   {
-    "target": "wordpress",
-    "mode": "draft",
-    "location": "https://sobaeklaw.kr",
-    "status": "skipped_dry_run",
+    "target": "telegram_approval",
+    "mode": "approval",
+    "location": "nomu_draft",
+    "status": "timeout",
     "metadata": {
-      "title": "[소백 노무사] 이번 주 노동·법률 실무 체크포인트"
+      "title": "[소백 노무사] 산업재해와 직업병 대응",
+      "revision_count": 1,
+      "feedback": ""
     }
   },
   {
-    "target": "wordpress",
-    "mode": "draft",
-    "location": "https://sobaeklaw.kr",
-    "status": "skipped_dry_run",
+    "target": "telegram_approval",
+    "mode": "approval",
+    "location": "lawyer_draft",
+    "status": "timeout",
     "metadata": {
-      "title": "[소백 변호사] 이번 주 노동·법률 실무 체크포인트"
-    }
-  },
-  {
-    "target": "telegram",
-    "mode": "message",
-    "location": "preview",
-    "status": "skipped_dry_run",
-    "metadata": {
-      "preview": "[insight-engine] run_id=insight-20260316-024337-a8cd4763\n초안 2건이 생성되었습니다.\n- [소백 노무사] 이번 주 노동·법률 실무 체크포인트\n- [소백 변호사] 이번 주 노동·법률 실무 체크포인트\n검토 후 공개 여부만 결정하면 됩니다."
+      "title": "[소백 변호사] 임금체불과 근로시간 쟁점",
+      "revision_count": 0,
+      "feedback": ""
     }
   }
 ]

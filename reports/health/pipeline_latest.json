@@ -1,15 +1,950 @@
 {
-  "run_id": "insight-20260316-024337-a8cd4763",
-  "mode": "dry-run",
-  "env_source": "doppler",
+  "run_id": "insight-20260317-230000-cfbb7c32",
+  "mode": "live",
+  "env_source": ".env.doppler",
   "source_records": [
+    {
+      "source": "dart",
+      "status": "collected",
+      "title": "감사보고서제출              ",
+      "excerpt": "쎄크: 감사보고서제출              ",
+      "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260317901368",
+      "published_at": "20260317",
+      "evidence": [
+        "opendart.fss.or.kr"
+      ],
+      "metadata": {
+        "corp_code": "00406222",
+        "corp_name": "쎄크",
+        "stock_code": "081180",
+        "corp_cls": "K",
+        "report_nm": "감사보고서제출              ",
+        "rcept_no": "20260317901368",
+        "flr_nm": "쎄크",
+        "rcept_dt": "20260317",
+        "rm": "코"
+      }
+    },
+    {
+      "source": "dart",
+      "status": "collected",
+      "title": "투자판단관련주요경영사항              ",
+      "excerpt": "엘앤에프: 투자판단관련주요경영사항              ",
+      "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260317801367",
+      "published_at": "20260317",
+      "evidence": [
+        "opendart.fss.or.kr"
+      ],
+      "metadata": {
+        "corp_code": "00398701",
+        "corp_name": "엘앤에프",
+        "stock_code": "066970",
+        "corp_cls": "Y",
+        "report_nm": "투자판단관련주요경영사항              ",
+        "rcept_no": "20260317801367",
+        "flr_nm": "엘앤에프",
+        "rcept_dt": "20260317",
+        "rm": "유"
+      }
+    },
+    {
+      "source": "dart",
+      "status": "collected",
+      "title": "감사보고서제출              ",
+      "excerpt": "에프엔씨엔터: 감사보고서제출              ",
+      "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260317901366",
+      "published_at": "20260317",
+      "evidence": [
+        "opendart.fss.or.kr"
+      ],
+      "metadata": {
+        "corp_code": "00925295",
+        "corp_name": "에프엔씨엔터",
+        "stock_code": "173940",
+        "corp_cls": "K",
+        "report_nm": "감사보고서제출              ",
+        "rcept_no": "20260317901366",
+        "flr_nm": "에프엔씨엔터",
+        "rcept_dt": "20260317",
+        "rm": "코"
+      }
+    },
+    {
+      "source": "dart",
+      "status": "collected",
+      "title": "최대주주변경              ",
+      "excerpt": "진원생명과학: 최대주주변경              ",
+      "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260317801361",
+      "published_at": "20260317",
+      "evidence": [
+        "opendart.fss.or.kr"
+      ],
+      "metadata": {
+        "corp_code": "00118521",
+        "corp_name": "진원생명과학",
+        "stock_code": "011000",
+        "corp_cls": "Y",
+        "report_nm": "최대주주변경              ",
+        "rcept_no": "20260317801361",
+        "flr_nm": "진원생명과학",
+        "rcept_dt": "20260317",
+        "rm": "유"
+      }
+    },
+    {
+      "source": "dart",
+      "status": "collected",
+      "title": "[첨부정정]주주총회소집결의              ",
+      "excerpt": "노머스: [첨부정정]주주총회소집결의              ",
+      "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260317901340",
+      "published_at": "20260317",
+      "evidence": [
+        "opendart.fss.or.kr"
+      ],
+      "metadata": {
+        "corp_code": "01703849",
+        "corp_name": "노머스",
+        "stock_code": "473980",
+        "corp_cls": "K",
+        "report_nm": "[첨부정정]주주총회소집결의              ",
+        "rcept_no": "20260317901340",
+        "flr_nm": "노머스",
+        "rcept_dt": "20260317",
+        "rm": "코"
+      }
+    },
+    {
+      "source": "dart",
+      "status": "collected",
+      "title": "감사보고서제출              ",
+      "excerpt": "아티스트스튜디오: 감사보고서제출              ",
+      "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260317901344",
+      "published_at": "20260317",
+      "evidence": [
+        "opendart.fss.or.kr"
+      ],
+      "metadata": {
+        "corp_code": "00990819",
+        "corp_name": "아티스트스튜디오",
+        "stock_code": "200350",
+        "corp_cls": "K",
+        "report_nm": "감사보고서제출              ",
+        "rcept_no": "20260317901344",
+        "flr_nm": "아티스트스튜디오",
+        "rcept_dt": "20260317",
+        "rm": "코"
+      }
+    },
+    {
+      "source": "dart",
+      "status": "collected",
+      "title": "[기재정정]사업보고서 (2024.12)",
+      "excerpt": "삼륭물산: [기재정정]사업보고서 (2024.12)",
+      "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260317000903",
+      "published_at": "20260317",
+      "evidence": [
+        "opendart.fss.or.kr"
+      ],
+      "metadata": {
+        "corp_code": "00125488",
+        "corp_name": "삼륭물산",
+        "stock_code": "014970",
+        "corp_cls": "K",
+        "report_nm": "[기재정정]사업보고서 (2024.12)",
+        "rcept_no": "20260317000903",
+        "flr_nm": "삼륭물산",
+        "rcept_dt": "20260317",
+        "rm": "연"
+      }
+    },
+    {
+      "source": "dart",
+      "status": "collected",
+      "title": "[첨부정정]사업보고서 (2025.12)",
+      "excerpt": "썬테크: [첨부정정]사업보고서 (2025.12)",
+      "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260317000902",
+      "published_at": "20260317",
+      "evidence": [
+        "opendart.fss.or.kr"
+      ],
+      "metadata": {
+        "corp_code": "00963000",
+        "corp_name": "썬테크",
+        "stock_code": "217320",
+        "corp_cls": "N",
+        "report_nm": "[첨부정정]사업보고서 (2025.12)",
+        "rcept_no": "20260317000902",
+        "flr_nm": "썬테크",
+        "rcept_dt": "20260317",
+        "rm": ""
+      }
+    },
+    {
+      "source": "dart",
+      "status": "collected",
+      "title": "불성실공시법인지정              (공시불이행)",
+      "excerpt": "KD: 불성실공시법인지정              (공시불이행)",
+      "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260317901349",
+      "published_at": "20260317",
+      "evidence": [
+        "opendart.fss.or.kr"
+      ],
+      "metadata": {
+        "corp_code": "00111218",
+        "corp_name": "KD",
+        "stock_code": "044180",
+        "corp_cls": "K",
+        "report_nm": "불성실공시법인지정              (공시불이행)",
+        "rcept_no": "20260317901349",
+        "flr_nm": "코스닥시장본부",
+        "rcept_dt": "20260317",
+        "rm": "코"
+      }
+    },
+    {
+      "source": "dart",
+      "status": "collected",
+      "title": "소속부변경              ",
+      "excerpt": "넥스트칩: 소속부변경              ",
+      "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260317901350",
+      "published_at": "20260317",
+      "evidence": [
+        "opendart.fss.or.kr"
+      ],
+      "metadata": {
+        "corp_code": "01515864",
+        "corp_name": "넥스트칩",
+        "stock_code": "396270",
+        "corp_cls": "K",
+        "report_nm": "소속부변경              ",
+        "rcept_no": "20260317901350",
+        "flr_nm": "코스닥시장본부",
+        "rcept_dt": "20260317",
+        "rm": "코"
+      }
+    },
+    {
+      "source": "law",
+      "status": "collected",
+      "title": "10ㆍ27법난 피해자의 명예회복 등에 관한 법률",
+      "excerpt": "10ㆍ27법난 피해자의 명예회복 등에 관한 법률 (ID: 253527)",
+      "url": "https://www.law.go.kr/법령/10ㆍ27법난 피해자의 명예회복 등에 관한 법률",
+      "published_at": "20230808",
+      "evidence": [
+        "www.law.go.kr"
+      ],
+      "metadata": {
+        "현행연혁코드": "현행",
+        "법령일련번호": "253527",
+        "자법타법여부": "",
+        "법령상세링크": "/DRF/lawService.do?OC=aaaa4284&target=law&MST=253527&type=HTML&mobileYn=&efYd=20230808",
+        "법령명한글": "10ㆍ27법난 피해자의 명예회복 등에 관한 법률",
+        "법령구분명": "법률",
+        "소관부처명": "문화체육관광부",
+        "공포번호": "19592",
+        "제개정구분명": "타법개정",
+        "소관부처코드": "1371000",
+        "id": "1",
+        "법령ID": "010719",
+        "공동부령정보": "",
+        "시행일자": "20230808",
+        "공포일자": "20230808",
+        "법령약칭명": "10ㆍ27법난법"
+      }
+    },
+    {
+      "source": "law",
+      "status": "collected",
+      "title": "10ㆍ27법난 피해자의 명예회복 등에 관한 법률 시행령",
+      "excerpt": "10ㆍ27법난 피해자의 명예회복 등에 관한 법률 시행령 (ID: 277805)",
+      "url": "https://www.law.go.kr/법령/10ㆍ27법난 피해자의 명예회복 등에 관한 법률 시행령",
+      "published_at": "20251001",
+      "evidence": [
+        "www.law.go.kr"
+      ],
+      "metadata": {
+        "현행연혁코드": "현행",
+        "법령일련번호": "277805",
+        "자법타법여부": "",
+        "법령상세링크": "/DRF/lawService.do?OC=aaaa4284&target=law&MST=277805&type=HTML&mobileYn=&efYd=20251001",
+        "법령명한글": "10ㆍ27법난 피해자의 명예회복 등에 관한 법률 시행령",
+        "법령구분명": "대통령령",
+        "소관부처명": "문화체육관광부",
+        "공포번호": "35811",
+        "제개정구분명": "타법개정",
+        "소관부처코드": "1371000",
+        "id": "2",
+        "법령ID": "010831",
+        "공동부령정보": "",
+        "시행일자": "20251001",
+        "공포일자": "20251001",
+        "법령약칭명": "10ㆍ27법난법 시행령"
+      }
+    },
+    {
+      "source": "law",
+      "status": "collected",
+      "title": "10ㆍ29이태원참사 피해자 권리보장과 진상규명 및 재발방지를 위한 특별법",
+      "excerpt": "10ㆍ29이태원참사 피해자 권리보장과 진상규명 및 재발방지를 위한 특별법 (ID: 277295)",
+      "url": "https://www.law.go.kr/법령/10ㆍ29이태원참사 피해자 권리보장과 진상규명 및 재발방지를 위한 특별법",
+      "published_at": "20260102",
+      "evidence": [
+        "www.law.go.kr"
+      ],
+      "metadata": {
+        "현행연혁코드": "현행",
+        "법령일련번호": "277295",
+        "자법타법여부": "",
+        "법령상세링크": "/DRF/lawService.do?OC=aaaa4284&target=law&MST=277295&type=HTML&mobileYn=&efYd=20260102",
+        "법령명한글": "10ㆍ29이태원참사 피해자 권리보장과 진상규명 및 재발방지를 위한 특별법",
+        "법령구분명": "법률",
+        "소관부처명": "10·29이태원참사진상규명과재발방지를위한특별조사위원회,행정안전부",
+        "공포번호": "21065",
+        "제개정구분명": "타법개정",
+        "소관부처코드": "1741000,1834600",
+        "id": "3",
+        "법령ID": "014656",
+        "공동부령정보": "",
+        "시행일자": "20260102",
+        "공포일자": "20251001",
+        "법령약칭명": "이태원참사진상규명법"
+      }
+    },
+    {
+      "source": "law",
+      "status": "collected",
+      "title": "10ㆍ29이태원참사 피해자 권리보장과 진상규명 및 재발방지를 위한 특별법 시행령",
+      "excerpt": "10ㆍ29이태원참사 피해자 권리보장과 진상규명 및 재발방지를 위한 특별법 시행령 (ID: 281503)",
+      "url": "https://www.law.go.kr/법령/10ㆍ29이태원참사 피해자 권리보장과 진상규명 및 재발방지를 위한 특별법 시행령",
+      "published_at": "20260102",
+      "evidence": [
+        "www.law.go.kr"
+      ],
+      "metadata": {
+        "현행연혁코드": "현행",
+        "법령일련번호": "281503",
+        "자법타법여부": "",
+        "법령상세링크": "/DRF/lawService.do?OC=aaaa4284&target=law&MST=281503&type=HTML&mobileYn=&efYd=20260102",
+        "법령명한글": "10ㆍ29이태원참사 피해자 권리보장과 진상규명 및 재발방지를 위한 특별법 시행령",
+        "법령구분명": "대통령령",
+        "소관부처명": "10·29이태원참사진상규명과재발방지를위한특별조사위원회,행정안전부",
+        "공포번호": "35948",
+        "제개정구분명": "타법개정",
+        "소관부처코드": "1741000,1834600",
+        "id": "4",
+        "법령ID": "014808",
+        "공동부령정보": "",
+        "시행일자": "20260102",
+        "공포일자": "20251230",
+        "법령약칭명": "이태원참사진상규명법 시행령"
+      }
+    },
+    {
+      "source": "law",
+      "status": "collected",
+      "title": "112신고의 운영 및 처리에 관한 법률",
+      "excerpt": "112신고의 운영 및 처리에 관한 법률 (ID: 257787)",
+      "url": "https://www.law.go.kr/법령/112신고의 운영 및 처리에 관한 법률",
+      "published_at": "20240703",
+      "evidence": [
+        "www.law.go.kr"
+      ],
+      "metadata": {
+        "현행연혁코드": "현행",
+        "법령일련번호": "257787",
+        "자법타법여부": "",
+        "법령상세링크": "/DRF/lawService.do?OC=aaaa4284&target=law&MST=257787&type=HTML&mobileYn=&efYd=20240703",
+        "법령명한글": "112신고의 운영 및 처리에 관한 법률",
+        "법령구분명": "법률",
+        "소관부처명": "경찰청",
+        "공포번호": "19870",
+        "제개정구분명": "제정",
+        "소관부처코드": "1320000",
+        "id": "5",
+        "법령ID": "014565",
+        "공동부령정보": "",
+        "시행일자": "20240703",
+        "공포일자": "20240102",
+        "법령약칭명": "112신고처리법"
+      }
+    },
+    {
+      "source": "law",
+      "status": "collected",
+      "title": "112신고의 운영 및 처리에 관한 법률 시행령",
+      "excerpt": "112신고의 운영 및 처리에 관한 법률 시행령 (ID: 263521)",
+      "url": "https://www.law.go.kr/법령/112신고의 운영 및 처리에 관한 법률 시행령",
+      "published_at": "20240703",
+      "evidence": [
+        "www.law.go.kr"
+      ],
+      "metadata": {
+        "현행연혁코드": "현행",
+        "법령일련번호": "263521",
+        "자법타법여부": "",
+        "법령상세링크": "/DRF/lawService.do?OC=aaaa4284&target=law&MST=263521&type=HTML&mobileYn=&efYd=20240703",
+        "법령명한글": "112신고의 운영 및 처리에 관한 법률 시행령",
+        "법령구분명": "대통령령",
+        "소관부처명": "경찰청",
+        "공포번호": "34629",
+        "제개정구분명": "제정",
+        "소관부처코드": "1320000",
+        "id": "6",
+        "법령ID": "014679",
+        "공동부령정보": "",
+        "시행일자": "20240703",
+        "공포일자": "20240702",
+        "법령약칭명": "112신고처리법 시행령"
+      }
+    },
+    {
+      "source": "law",
+      "status": "collected",
+      "title": "119구조ㆍ구급에 관한 법률",
+      "excerpt": "119구조ㆍ구급에 관한 법률 (ID: 266637)",
+      "url": "https://www.law.go.kr/법령/119구조ㆍ구급에 관한 법률",
+      "published_at": "20250604",
+      "evidence": [
+        "www.law.go.kr"
+      ],
+      "metadata": {
+        "현행연혁코드": "현행",
+        "법령일련번호": "266637",
+        "자법타법여부": "",
+        "법령상세링크": "/DRF/lawService.do?OC=aaaa4284&target=law&MST=266637&type=HTML&mobileYn=&efYd=20250604",
+        "법령명한글": "119구조ㆍ구급에 관한 법률",
+        "법령구분명": "법률",
+        "소관부처명": "소방청",
+        "공포번호": "20543",
+        "제개정구분명": "일부개정",
+        "소관부처코드": "1661000",
+        "id": "7",
+        "법령ID": "011349",
+        "공동부령정보": "",
+        "시행일자": "20250604",
+        "공포일자": "20241203",
+        "법령약칭명": "119법"
+      }
+    },
+    {
+      "source": "law",
+      "status": "collected",
+      "title": "119구조ㆍ구급에 관한 법률 시행령",
+      "excerpt": "119구조ㆍ구급에 관한 법률 시행령 (ID: 273763)",
+      "url": "https://www.law.go.kr/법령/119구조ㆍ구급에 관한 법률 시행령",
+      "published_at": "20251002",
+      "evidence": [
+        "www.law.go.kr"
+      ],
+      "metadata": {
+        "현행연혁코드": "현행",
+        "법령일련번호": "273763",
+        "자법타법여부": "",
+        "법령상세링크": "/DRF/lawService.do?OC=aaaa4284&target=law&MST=273763&type=HTML&mobileYn=&efYd=20251002",
+        "법령명한글": "119구조ㆍ구급에 관한 법률 시행령",
+        "법령구분명": "대통령령",
+        "소관부처명": "소방청",
+        "공포번호": "35769",
+        "제개정구분명": "타법개정",
+        "소관부처코드": "1661000",
+        "id": "8",
+        "법령ID": "011452",
+        "공동부령정보": "",
+        "시행일자": "20251002",
+        "공포일자": "20250923",
+        "법령약칭명": "119법 시행령"
+      }
+    },
+    {
+      "source": "law",
+      "status": "collected",
+      "title": "119구조ㆍ구급에 관한 법률 시행규칙",
+      "excerpt": "119구조ㆍ구급에 관한 법률 시행규칙 (ID: 271545)",
+      "url": "https://www.law.go.kr/법령/119구조ㆍ구급에 관한 법률 시행규칙",
+      "published_at": "20250604",
+      "evidence": [
+        "www.law.go.kr"
+      ],
+      "metadata": {
+        "현행연혁코드": "현행",
+        "법령일련번호": "271545",
+        "자법타법여부": "",
+        "법령상세링크": "/DRF/lawService.do?OC=aaaa4284&target=law&MST=271545&type=HTML&mobileYn=&efYd=20250604",
+        "법령명한글": "119구조ㆍ구급에 관한 법률 시행규칙",
+        "법령구분명": "행정안전부령",
+        "소관부처명": "소방청",
+        "공포번호": "00565",
+        "제개정구분명": "일부개정",
+        "소관부처코드": "1661000",
+        "id": "9",
+        "법령ID": "011457",
+        "공동부령정보": "",
+        "시행일자": "20250604",
+        "공포일자": "20250604",
+        "법령약칭명": "119법 시행규칙"
+      }
+    },
+    {
+      "source": "law",
+      "status": "collected",
+      "title": "119긴급신고의 관리 및 운영에 관한 법률",
+      "excerpt": "119긴급신고의 관리 및 운영에 관한 법률 (ID: 257743)",
+      "url": "https://www.law.go.kr/법령/119긴급신고의 관리 및 운영에 관한 법률",
+      "published_at": "20240703",
+      "evidence": [
+        "www.law.go.kr"
+      ],
+      "metadata": {
+        "현행연혁코드": "현행",
+        "법령일련번호": "257743",
+        "자법타법여부": "",
+        "법령상세링크": "/DRF/lawService.do?OC=aaaa4284&target=law&MST=257743&type=HTML&mobileYn=&efYd=20240703",
+        "법령명한글": "119긴급신고의 관리 및 운영에 관한 법률",
+        "법령구분명": "법률",
+        "소관부처명": "소방청",
+        "공포번호": "19872",
+        "제개정구분명": "제정",
+        "소관부처코드": "1661000",
+        "id": "10",
+        "법령ID": "014566",
+        "공동부령정보": "",
+        "시행일자": "20240703",
+        "공포일자": "20240102",
+        "법령약칭명": "119긴급신고법"
+      }
+    },
+    {
+      "source": "brave",
+      "status": "collected",
+      "title": "⚖️ 산업재해 인정 기준 완벽 가이드 - 승인받는 핵심 포인트",
+      "excerpt": "📅 최종 업데이트: <strong>2026년 1월 12일</strong> | 산업재해보상보험법 및 고용노동부 최신 지침 반영⚖️ 1분 요약 | 이 글을 꼭 읽어야 하는 이유업무상 사고 승인율은 약 97%, 하지만 업무상 질병은 50~60%대로 크게 낮아요산재 인정의 핵심은 ...",
+      "url": "https://nenespace.tistory.com/entry/%E2%9A%96%EF%B8%8F-%EC%82%B0%EC%97%85%EC%9E%AC%ED%95%B4-%EC%9D%B8%EC%A0%95-%EA%B8%B0%EC%A4%80-%EC%99%84%EB%B2%BD-%EA%B0%80%EC%9D%B4%EB%93%9C-%EC%8A%B9%EC%9D%B8%EB%B0%9B%EB%8A%94-%ED%95%B5%EC%8B%AC-%ED%8F%AC%EC%9D%B8%ED%8A%B8",
+      "published_at": "January 12, 2026",
+      "evidence": [
+        "https://nenespace.tistory.com/entry/%E2%9A%96%EF%B8%8F-%EC%82%B0%EC%97%85%EC%9E%AC%ED%95%B4-%EC%9D%B8%EC%A0%95-%EA%B8%B0%EC%A4%80-%EC%99%84%EB%B2%BD-%EA%B0%80%EC%9D%B4%EB%93%9C-%EC%8A%B9%EC%9D%B8%EB%B0%9B%EB%8A%94-%ED%95%B5%EC%8B%AC-%ED%8F%AC%EC%9D%B8%ED%8A%B8"
+      ],
+      "metadata": {
+        "title": "⚖️ 산업재해 인정 기준 완벽 가이드 - 승인받는 핵심 포인트",
+        "url": "https://nenespace.tistory.com/entry/%E2%9A%96%EF%B8%8F-%EC%82%B0%EC%97%85%EC%9E%AC%ED%95%B4-%EC%9D%B8%EC%A0%95-%EA%B8%B0%EC%A4%80-%EC%99%84%EB%B2%BD-%EA%B0%80%EC%9D%B4%EB%93%9C-%EC%8A%B9%EC%9D%B8%EB%B0%9B%EB%8A%94-%ED%95%B5%EC%8B%AC-%ED%8F%AC%EC%9D%B8%ED%8A%B8",
+        "is_source_local": false,
+        "is_source_both": false,
+        "description": "📅 최종 업데이트: <strong>2026년 1월 12일</strong> | 산업재해보상보험법 및 고용노동부 최신 지침 반영⚖️ 1분 요약 | 이 글을 꼭 읽어야 하는 이유업무상 사고 승인율은 약 97%, 하지만 업무상 질병은 50~60%대로 크게 낮아요산재 인정의 핵심은 ...",
+        "page_age": "2026-01-12T21:27:01",
+        "profile": {
+          "name": "Tistory",
+          "url": "https://nenespace.tistory.com/entry/%E2%9A%96%EF%B8%8F-%EC%82%B0%EC%97%85%EC%9E%AC%ED%95%B4-%EC%9D%B8%EC%A0%95-%EA%B8%B0%EC%A4%80-%EC%99%84%EB%B2%BD-%EA%B0%80%EC%9D%B4%EB%93%9C-%EC%8A%B9%EC%9D%B8%EB%B0%9B%EB%8A%94-%ED%95%B5%EC%8B%AC-%ED%8F%AC%EC%9D%B8%ED%8A%B8",
+          "long_name": "nenespace.tistory.com",
+          "img": "https://imgs.search.brave.com/5Uuq_R5_KkKI0Mn3tbjWW3i7CvBYzCaYyE0_arKDHdo/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTBlMWExM2Fm/YzBkMjZkNGI1ZDM3/NjMwMjc1YjU3YjJk/OGQ1YTgzNWIzZjU4/OGI3ZGE4NmQ0NmI5/ZjRjMjc5OC9uZW5l/c3BhY2UudGlzdG9y/eS5jb20v"
+        },
+        "language": "ko",
+        "family_friendly": false,
+        "type": "search_result",
+        "subtype": "generic",
+        "is_live": false,
+        "meta_url": {
+          "scheme": "https",
+          "netloc": "nenespace.tistory.com",
+          "hostname": "nenespace.tistory.com",
+          "favicon": "https://imgs.search.brave.com/5Uuq_R5_KkKI0Mn3tbjWW3i7CvBYzCaYyE0_arKDHdo/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTBlMWExM2Fm/YzBkMjZkNGI1ZDM3/NjMwMjc1YjU3YjJk/OGQ1YTgzNWIzZjU4/OGI3ZGE4NmQ0NmI5/ZjRjMjc5OC9uZW5l/c3BhY2UudGlzdG9y/eS5jb20v",
+          "path": "› entry  › ⚖️-산업재해-인정-기준-완벽-가이드-승인받는-핵심-포인트"
+        },
+        "age": "January 12, 2026",
+        "extra_snippets": [
+          "📅 최종 업데이트: 2026년 1월 12일 | 산업재해보상보험법 및 고용노동부 최신 지침 반영⚖️ 1분 요약 | 이 글을 꼭 읽어야 하는 이유업무상 사고 승인율은 약 97%, 하지만 업무상 질병은 50~60%대로 크게 낮아요산재 인정의 핵심은 업무수행성, 업무기인성, 인과관계 3가지 요건이에요출퇴근 재해도 2017년부터 산재로 인정되지만 조건이 있어요과로사(뇌심혈관질환)는 주 60시간 초과 근무 시 인정 가능성이 높아요불승인되더라도 90일 이내 심사청구로 뒤집을 수 있어요 산재를 신청했는데 \"업무와 관련성이 인정되지 않습니다\"라는 불승인 통보를 받으신 적 있으신가요?",
+          "참고 자료: 산업재해보상보험법 제37조, 뇌혈관질병 또는 심장질환의 업무상 질병 인정기준(고용노동부 고시), 출퇴근재해 업무처리지침, 근로복지공단 재해조사 기준",
+          "산업재해보상보험법에서 \"업무상 재해\"란 업무상의 사유에 따른 근로자의 부상, 질병, 장해 또는 사망을 말해요.",
+          "2단계: 재심사청구 산업재해보상보험재심사위원회 심사결정 통보받은 날로부터 90일 이내"
+        ]
+      }
+    },
+    {
+      "source": "brave",
+      "status": "collected",
+      "title": "연계정보",
+      "excerpt": "② 제1항에도 불구하고 다음 각 호의 모두에 해당하지 않는 사업주가 법률 제11882호 산업안전보건법 일부개정법률 제10조제2항의 개정규정의 시행일인 2014년 7월 1일 이후 해당 사업장에서 처음 발생한 산업재해에 대하여 지방고용노동관서의 장으로부터 별지 제30호서식의 산업재해조사표를 작성하여 제출하도록 명령을 받은 경우 그 명령을 받은 날부터 15일 이내에 이를 이행한 때에는 제1항에 따른 보고를 한 것으로 본다.",
+      "url": "http://www.law.go.kr/lumLsLinkPop.do?lspttninfSeq=154169&chrClsCd=010202&ancYnChk=0",
+      "published_at": "2026-03-17T23:00:24.873966",
+      "evidence": [
+        "http://www.law.go.kr/lumLsLinkPop.do?lspttninfSeq=154169&chrClsCd=010202&ancYnChk=0"
+      ],
+      "metadata": {
+        "title": "연계정보",
+        "url": "http://www.law.go.kr/lumLsLinkPop.do?lspttninfSeq=154169&chrClsCd=010202&ancYnChk=0",
+        "is_source_local": false,
+        "is_source_both": false,
+        "description": "② 제1항에도 불구하고 다음 각 호의 모두에 해당하지 않는 사업주가 법률 제11882호 산업안전보건법 일부개정법률 제10조제2항의 개정규정의 시행일인 2014년 7월 1일 이후 해당 사업장에서 처음 발생한 산업재해에 대하여 지방고용노동관서의 장으로부터 별지 제30호서식의 산업재해조사표를 작성하여 제출하도록 명령을 받은 경우 그 명령을 받은 날부터 15일 이내에 이를 이행한 때에는 제1항에 따른 보고를 한 것으로 본다.",
+        "profile": {
+          "name": "법원행정처",
+          "url": "http://www.law.go.kr/lumLsLinkPop.do?lspttninfSeq=154169&chrClsCd=010202&ancYnChk=0",
+          "long_name": "law.go.kr",
+          "img": "https://imgs.search.brave.com/EbZEEmkDKdVoQ_Ux_D5hQBHlXxSqMwpTchbHBnyYykg/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMWFkZDYyNjdl/OGVlZTFlMjlhMTk4/MzEzMmUxYWM5OWVj/NDU0YmU1Y2RlOGE4/N2RlNTBiYjhlZjUw/YzcyMDE1Zi93d3cu/bGF3LmdvLmtyLw"
+        },
+        "language": "ko",
+        "family_friendly": true,
+        "type": "search_result",
+        "subtype": "generic",
+        "is_live": false,
+        "meta_url": {
+          "scheme": "http",
+          "netloc": "law.go.kr",
+          "hostname": "www.law.go.kr",
+          "favicon": "https://imgs.search.brave.com/EbZEEmkDKdVoQ_Ux_D5hQBHlXxSqMwpTchbHBnyYykg/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMWFkZDYyNjdl/OGVlZTFlMjlhMTk4/MzEzMmUxYWM5OWVj/NDU0YmU1Y2RlOGE4/N2RlNTBiYjhlZjUw/YzcyMDE1Zi93d3cu/bGF3LmdvLmtyLw",
+          "path": "› lumLsLinkPop.do"
+        },
+        "extra_snippets": [
+          "제73조(산업재해 발생 보고 등) ① 사업주는 산업재해로 사망자가 발생하거나 3일 이상의 휴업이 필요한 부상을 입거나 질병에 걸린 사람이 발생한 경우에는 법 제57조제3항에 따라 해당 산업재해가 발생한 날부터 1개월 이내에 별지 제30호서식의 산업재해조사표를 작성하여 관할 지방고용노동관서의 장에게 제출(전자문서로 제출하는 것을 포함한다)해야 한다.",
+          "② 제1항에도 불구하고 다음 각 호의 모두에 해당하지 않는 사업주가 법률 제11882호 산업안전보건법 일부개정법률 제10조제2항의 개정규정의 시행일인 2014년 7월 1일 이후 해당 사업장에서 처음 발생한 산업재해에 대하여 지방고용노동관서의 장으로부터 별지 제30호서식의 산업재해조사표를 작성하여 제출하도록 명령을 받은 경우 그 명령을 받은 날부터 15일 이내에 이를 이행한 때에는 제1항에 따른 보고를 한 것으로 본다.",
+          "③ 사업주는 제1항에 따른 산업재해조사표에 근로자대표의 확인을 받아야 하며, 그 기재 내용에 대하여 근로자대표의 이견이 있는 경우에는 그 내용을 첨부해야 한다.",
+          "⑤ 「산업재해보상보험법」 제41조에 따라 요양급여의 신청을 받은 근로복지공단은 지방고용노동관서의 장 또는 공단으로부터 요양신청서 사본, 요양업무 관련 전산입력자료, 그 밖에 산업재해예방업무 수행을 위하여 필요한 자료의 송부를 요청받은 경우에는 이에 협조해야 한다."
+        ]
+      }
+    },
+    {
+      "source": "brave",
+      "status": "collected",
+      "title": "산업재해 - 나무위키",
+      "excerpt": "&lt;<strong>개정 2010.6.4.</strong>&gt; 1. &quot;산업재해&quot;란 노무를 제공하는 사람이 업무에 관계되는 건설물·설비·원재료·가스·증기·분진 등에 의하거나 작업 또는 그 밖의 업무로 인하여 사망 또는 부상하거나 ...",
+      "url": "https://namu.wiki/w/%EC%82%B0%EC%97%85%EC%9E%AC%ED%95%B4",
+      "published_at": "2026-03-17T23:00:24.873966",
+      "evidence": [
+        "https://namu.wiki/w/%EC%82%B0%EC%97%85%EC%9E%AC%ED%95%B4"
+      ],
+      "metadata": {
+        "title": "산업재해 - 나무위키",
+        "url": "https://namu.wiki/w/%EC%82%B0%EC%97%85%EC%9E%AC%ED%95%B4",
+        "is_source_local": false,
+        "is_source_both": false,
+        "description": "&lt;<strong>개정 2010.6.4.</strong>&gt; 1. &quot;산업재해&quot;란 노무를 제공하는 사람이 업무에 관계되는 건설물·설비·원재료·가스·증기·분진 등에 의하거나 작업 또는 그 밖의 업무로 인하여 사망 또는 부상하거나 ...",
+        "profile": {
+          "name": "Namu Wiki",
+          "url": "https://namu.wiki/w/%EC%82%B0%EC%97%85%EC%9E%AC%ED%95%B4",
+          "long_name": "namu.wiki",
+          "img": "https://imgs.search.brave.com/ASqhh3dK7hFX53bmp7XVZpSxqVtrrhYb5NAiPa7b2QU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZjY4MDQzMTIz/ZjZmOGYxZjdhYjkw/ODEwZTVjNjBlYWYy/M2JkZTkxNDIxNDZk/M2Y0NTg4MjhmMDg2/NjBjYTE4YS9uYW11/Lndpa2kv"
+        },
+        "language": "ko",
+        "family_friendly": true,
+        "type": "search_result",
+        "subtype": "generic",
+        "is_live": false,
+        "meta_url": {
+          "scheme": "https",
+          "netloc": "namu.wiki",
+          "hostname": "namu.wiki",
+          "favicon": "https://imgs.search.brave.com/ASqhh3dK7hFX53bmp7XVZpSxqVtrrhYb5NAiPa7b2QU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZjY4MDQzMTIz/ZjZmOGYxZjdhYjkw/ODEwZTVjNjBlYWYy/M2JkZTkxNDIxNDZk/M2Y0NTg4MjhmMDg2/NjBjYTE4YS9uYW11/Lndpa2kv",
+          "path": "› w  › 산업재해"
+        },
+        "thumbnail": {
+          "src": "https://imgs.search.brave.com/oKCmrLFcQS9huMVfxCk4632C3179Ipvn9lnCWA_bt6A/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pLm5h/bXUud2lraS9pL3N1/T25MMU1XbkVmYlMy/bW0wSWNzZDJselhP/Q0VKQmJSVXVFU3ct/OXkxNmtHUEpiUVNy/aDhlMVBGM3h2cEEt/Y1hILWRhODQxMDRp/NG1rWEEzTWJfYU1F/WWtiV1dta3paSklx/MzBwellIX3JnZlls/RjA5a2o4QVFaV19m/OEJNN09aQU9wR01r/Z1d0cVVIS3FqX0VT/MEc4Zy5zdmc",
+          "original": "https://i.namu.wiki/i/suOnL1MWnEfbS2mm0Icsd2lzXOCEJBbRUuESw-9y16kGPJbQSrh8e1PF3xvpA-cXH-da84104i4mkXA3Mb_aMEYkbWWmkzZJIq30pzYH_rgfYlF09kj8AQZW_f8BM7OZAOpGMkgWtqUHKqj_ES0G8g.svg",
+          "logo": true
+        },
+        "extra_snippets": [
+          "<개정 2010.6.4.> 1. \"산업재해\"란 노무를 제공하는 사람이 업무에 관계되는 건설물·설비·원재료·가스·증기·분진 등에 의하거나 작업 또는 그 밖의 업무로 인하여 사망 또는 부상하거나 질병에 걸리는 것을 말한다.",
+          "협의에는 부상(과 부상으로 인해 장애 · 사망)만을 지칭하는 용어로 사용되고, 질병(또는 질병으로 인한 장애 · 사망)은 가리키지 않는 경우도 많다. 산업재해보상보험법에서는 '업무상의 재해(이하 업무상 재해)'라고 한다.",
+          "업무상 재해가 발생하면 해당 사업주는 근로자에게 요양 비용 및 휴업 중의 임금 등에 관한 보상 책임을 지게 된다(근로기준법 제78조 ~ 92조). 그러나 산업재해보상보험(산재보험)이 적용되는 사업은 산재 보험에 의한 급부가 이루어져 사업주는 근로기준법상의 보상 책임을 면한다(근로기준법 제87조).",
+          "사업주의 안전조치의무는 산업안전보건법 제38조에 개략적으로, 시행규칙 중 하나인 산업안건보건기준에 관한 규칙에 상세히 기술되어 있다. 또한 사업주 뿐만 아니라 산업재해를 발생시킨 것으로 간주되는 사람은 경찰 또는 근로감독관에 의한 수사를 거쳐 산업안전보건법 제166조의2[2]에 따라 처벌받을 수 있다."
+        ]
+      }
+    },
+    {
+      "source": "brave",
+      "status": "collected",
+      "title": "2026년 HR 실무자가 알아야 할 노동법 최신 이슈 4가지 (+노란봉투법, 포괄임금제)",
+      "excerpt": "산업재해 사망사고와 임금체불이 반복되면서, 2026년에 정부는 <strong>재해 발생 전 선제적인 감독 시행과 안전 위반·임금체불 시 처벌 강화 중심의 정책</strong>을 집행하고 있습니다.",
+      "url": "https://shopl.tistory.com/entry/2026%EB%85%84-HR-%EC%8B%A4%EB%AC%B4%EC%9E%90%EA%B0%80-%EC%95%8C%EC%95%84%EC%95%BC-%ED%95%A0-%EB%85%B8%EB%8F%99%EB%B2%95-%EC%B5%9C%EC%8B%A0-%EC%9D%B4%EC%8A%88-4%EA%B0%80%EC%A7%80-%EB%85%B8%EB%9E%80%EB%B4%89%ED%88%AC%EB%B2%95-%ED%8F%AC%EA%B4%84%EC%9E%84%EA%B8%88%EC%A0%9C",
+      "published_at": "February 13, 2026",
+      "evidence": [
+        "https://shopl.tistory.com/entry/2026%EB%85%84-HR-%EC%8B%A4%EB%AC%B4%EC%9E%90%EA%B0%80-%EC%95%8C%EC%95%84%EC%95%BC-%ED%95%A0-%EB%85%B8%EB%8F%99%EB%B2%95-%EC%B5%9C%EC%8B%A0-%EC%9D%B4%EC%8A%88-4%EA%B0%80%EC%A7%80-%EB%85%B8%EB%9E%80%EB%B4%89%ED%88%AC%EB%B2%95-%ED%8F%AC%EA%B4%84%EC%9E%84%EA%B8%88%EC%A0%9C"
+      ],
+      "metadata": {
+        "title": "2026년 HR 실무자가 알아야 할 노동법 최신 이슈 4가지 (+노란봉투법, 포괄임금제)",
+        "url": "https://shopl.tistory.com/entry/2026%EB%85%84-HR-%EC%8B%A4%EB%AC%B4%EC%9E%90%EA%B0%80-%EC%95%8C%EC%95%84%EC%95%BC-%ED%95%A0-%EB%85%B8%EB%8F%99%EB%B2%95-%EC%B5%9C%EC%8B%A0-%EC%9D%B4%EC%8A%88-4%EA%B0%80%EC%A7%80-%EB%85%B8%EB%9E%80%EB%B4%89%ED%88%AC%EB%B2%95-%ED%8F%AC%EA%B4%84%EC%9E%84%EA%B8%88%EC%A0%9C",
+        "is_source_local": false,
+        "is_source_both": false,
+        "description": "산업재해 사망사고와 임금체불이 반복되면서, 2026년에 정부는 <strong>재해 발생 전 선제적인 감독 시행과 안전 위반·임금체불 시 처벌 강화 중심의 정책</strong>을 집행하고 있습니다.",
+        "page_age": "2026-02-13T00:20:54",
+        "profile": {
+          "name": "Tistory",
+          "url": "https://shopl.tistory.com/entry/2026%EB%85%84-HR-%EC%8B%A4%EB%AC%B4%EC%9E%90%EA%B0%80-%EC%95%8C%EC%95%84%EC%95%BC-%ED%95%A0-%EB%85%B8%EB%8F%99%EB%B2%95-%EC%B5%9C%EC%8B%A0-%EC%9D%B4%EC%8A%88-4%EA%B0%80%EC%A7%80-%EB%85%B8%EB%9E%80%EB%B4%89%ED%88%AC%EB%B2%95-%ED%8F%AC%EA%B4%84%EC%9E%84%EA%B8%88%EC%A0%9C",
+          "long_name": "shopl.tistory.com",
+          "img": "https://imgs.search.brave.com/RC_KyWpi5XWkvpIpu6pa6qzWY2_CLwJAzunB6_EtYIE/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYTMyYWE4MGE1/ZWI5NGYwNGY5Yzk3/MWJkNWY2Y2M1NjAz/MTc2ZjQ1ZWNhOTVm/NmFlYzMwMzBjNjkx/MWQ0NjJjYi9zaG9w/bC50aXN0b3J5LmNv/bS8"
+        },
+        "language": "ko",
+        "family_friendly": false,
+        "type": "search_result",
+        "subtype": "generic",
+        "is_live": false,
+        "meta_url": {
+          "scheme": "https",
+          "netloc": "shopl.tistory.com",
+          "hostname": "shopl.tistory.com",
+          "favicon": "https://imgs.search.brave.com/RC_KyWpi5XWkvpIpu6pa6qzWY2_CLwJAzunB6_EtYIE/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYTMyYWE4MGE1/ZWI5NGYwNGY5Yzk3/MWJkNWY2Y2M1NjAz/MTc2ZjQ1ZWNhOTVm/NmFlYzMwMzBjNjkx/MWQ0NjJjYi9zaG9w/bC50aXN0b3J5LmNv/bS8",
+          "path": "› entry  › 2026년-HR-실무자가-알아야-할-노동법-최신-이슈-4가지-노란봉투법-포괄임금제"
+        },
+        "age": "February 13, 2026",
+        "extra_snippets": [
+          "산업재해 사망사고와 임금체불이 반복되면서, 2026년에 정부는 재해 발생 전 선제적인 감독 시행과 안전 위반·임금체불 시 처벌 강화 중심의 정책을 집행하고 있습니다.",
+          "이번 글에서는 HR 실무자가 반드시 짚고 넘어가야 할 노동법·노동정책 최신 이슈 4가지와 각 제도의 핵심 변화 및 실무에서 준비해야 할 포인트를 살펴보도록 하겠습니다.",
+          "이번 글에서는 HR 실무자가 반드시 짚고 넘어가야 할 노동법·노동정책 최신 이슈 4가지의 핵심 변화와 함께 실무에서 준비해야 할 대응 방안까지 살펴보았습니다.",
+          "2026년 HR 실무자가 알아야 할 노동법 최신 이슈 4가지 (+노란봉투법, 포괄임금제)"
+        ]
+      }
+    },
+    {
+      "source": "brave",
+      "status": "collected",
+      "title": "중대재해 처벌 등에 관한 법률 - 나무위키",
+      "excerpt": "노동법 · 산업재해 · 2021년/사건사고 · 2022년 시행 · 문재인 정부/사건사고 · 대한민국 국회/사건사고 · 제21대 국회 · 1. 개요2. 특징 · 2.1. 인과관계3. 내용 · 3.1. 제1장 총칙3.2. 제2장 중대산업재해3.3.",
+      "url": "https://namu.wiki/w/%EC%A4%91%EB%8C%80%EC%9E%AC%ED%95%B4%20%EC%B2%98%EB%B2%8C%20%EB%93%B1%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0",
+      "published_at": "2026-03-17T23:00:24.873966",
+      "evidence": [
+        "https://namu.wiki/w/%EC%A4%91%EB%8C%80%EC%9E%AC%ED%95%B4%20%EC%B2%98%EB%B2%8C%20%EB%93%B1%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0"
+      ],
+      "metadata": {
+        "title": "중대재해 처벌 등에 관한 법률 - 나무위키",
+        "url": "https://namu.wiki/w/%EC%A4%91%EB%8C%80%EC%9E%AC%ED%95%B4%20%EC%B2%98%EB%B2%8C%20%EB%93%B1%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0",
+        "is_source_local": false,
+        "is_source_both": false,
+        "description": "노동법 · 산업재해 · 2021년/사건사고 · 2022년 시행 · 문재인 정부/사건사고 · 대한민국 국회/사건사고 · 제21대 국회 · 1. 개요2. 특징 · 2.1. 인과관계3. 내용 · 3.1. 제1장 총칙3.2. 제2장 중대산업재해3.3.",
+        "profile": {
+          "name": "Namu Wiki",
+          "url": "https://namu.wiki/w/%EC%A4%91%EB%8C%80%EC%9E%AC%ED%95%B4%20%EC%B2%98%EB%B2%8C%20%EB%93%B1%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0",
+          "long_name": "namu.wiki",
+          "img": "https://imgs.search.brave.com/ASqhh3dK7hFX53bmp7XVZpSxqVtrrhYb5NAiPa7b2QU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZjY4MDQzMTIz/ZjZmOGYxZjdhYjkw/ODEwZTVjNjBlYWYy/M2JkZTkxNDIxNDZk/M2Y0NTg4MjhmMDg2/NjBjYTE4YS9uYW11/Lndpa2kv"
+        },
+        "language": "ko",
+        "family_friendly": true,
+        "type": "search_result",
+        "subtype": "generic",
+        "is_live": false,
+        "meta_url": {
+          "scheme": "https",
+          "netloc": "namu.wiki",
+          "hostname": "namu.wiki",
+          "favicon": "https://imgs.search.brave.com/ASqhh3dK7hFX53bmp7XVZpSxqVtrrhYb5NAiPa7b2QU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZjY4MDQzMTIz/ZjZmOGYxZjdhYjkw/ODEwZTVjNjBlYWYy/M2JkZTkxNDIxNDZk/M2Y0NTg4MjhmMDg2/NjBjYTE4YS9uYW11/Lndpa2kv",
+          "path": "› w  › 중대재해 처벌 등에 관한 법률"
+        },
+        "thumbnail": {
+          "src": "https://imgs.search.brave.com/13Y9RKrCrIefTAahcinw8JctOnz6zzmeXErZpsmJIqc/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pLm5h/bXUud2lraS9pL2Q5/LUttU3RTYVU5dVlC/Z3c3NGp0Q3hfZ24t/cHJkQUNKeWpJM0Fl/UktiQi0tRjF0X0Fu/R2FHZGllOUZXUHFD/cmJRcVJ2X2NRYk9s/NjFVWlh4NGVhd3px/WThKdlFoOC1rTGZQ/OFBuM2F4c3FTYjht/REFpRGRPN2RpSjNo/cXJmU0YxZjRZOVlL/em5sT3g2RlpJX1E5/akhUQS5zdmc",
+          "original": "https://i.namu.wiki/i/d9-KmStSaU9uYBgw74jtCx_gn-prdACJyjI3AeRKbB--F1t_AnGaGdie9FWPqCrbQqRv_cQbOl61UZXx4eawzqY8JvQh8-kLfP8Pn3axsqSb8mDAiDdO7diJ3hqrfSF1f4Y9YKznlOx6FZI_Q9jHTA.svg",
+          "logo": true
+        },
+        "extra_snippets": [
+          "제1조(목적) 이 법은 사업 또는 사업장, 공중이용시설 및 공중교통수단을 운영하거나 인체에 해로운 원료나 제조물을 취급하면서 안전ㆍ보건 조치의무를 위반하여 인명피해를 발생하게 한 사업주, 경영책임자, 공무원 및 법인의 처벌 등을 규정함으로써 중대재해를 예방하고 시민과 종사자의 생명과 신체를 보호함을 목적으로 한다. 사업주나 경영책임자가 안전확보의무 등 조치를 소홀히 하여 중대한 산업재해나 시민재해가 일어나 인명 피해가 발생할 경우, 사업주나 경영책임자를 처벌하도록 규정한 대한민국의 법률.",
+          "노동법 · 산업재해 · 2021년/사건사고 · 2022년 시행 · 문재인 정부/사건사고 · 대한민국 국회/사건사고 · 제21대 국회 · 1. 개요2. 특징 · 2.1. 인과관계3. 내용 · 3.1. 제1장 총칙3.2. 제2장 중대산업재해3.3.",
+          "1. “중대재해”란 “중대산업재해”와 “중대시민재해”를 말한다. 2. “중대산업재해”란 「산업안전보건법」 제2조제1호에 따른 산업재해 중 다음 각 목의 어느 하나에 해당하는 결과를 야기한 재해를 말한다.",
+          "이후 창원지방법원 마산지원 2023. 4. 26. 선고 2022고합95 판결에서 피고인 B에 대해 중대재해처벌등에관한법률위반(산업재해치사)죄로 징역 1년을 선고하고 법정구속했다. 이는 중대재해처벌법 1호 실형 선고이자 1호 법정구속이다."
+        ]
+      }
+    },
+    {
+      "source": "brave",
+      "status": "collected",
+      "title": "산업재해보상보험법",
+      "excerpt": "정확한 한글 주소명인지 확인해 주시기 바랍니다. 자세한 한글주소명 사용법[한글 법령주소]을 확인해 주시기 바랍니다. 동일한 문제가 지속될 경우 아래 번호로 문의해주시기 바랍니다",
+      "url": "https://www.law.go.kr/%EB%B2%95%EB%A0%B9/%EC%82%B0%EC%97%85%EC%9E%AC%ED%95%B4%EB%B3%B4%EC%83%81%EB%B3%B4%ED%97%98%EB%B2%95",
+      "published_at": "2026-03-17T23:00:24.873966",
+      "evidence": [
+        "https://www.law.go.kr/%EB%B2%95%EB%A0%B9/%EC%82%B0%EC%97%85%EC%9E%AC%ED%95%B4%EB%B3%B4%EC%83%81%EB%B3%B4%ED%97%98%EB%B2%95"
+      ],
+      "metadata": {
+        "title": "산업재해보상보험법",
+        "url": "https://www.law.go.kr/%EB%B2%95%EB%A0%B9/%EC%82%B0%EC%97%85%EC%9E%AC%ED%95%B4%EB%B3%B4%EC%83%81%EB%B3%B4%ED%97%98%EB%B2%95",
+        "is_source_local": false,
+        "is_source_both": false,
+        "description": "정확한 한글 주소명인지 확인해 주시기 바랍니다. 자세한 한글주소명 사용법[한글 법령주소]을 확인해 주시기 바랍니다. 동일한 문제가 지속될 경우 아래 번호로 문의해주시기 바랍니다",
+        "profile": {
+          "name": "법원행정처",
+          "url": "https://www.law.go.kr/%EB%B2%95%EB%A0%B9/%EC%82%B0%EC%97%85%EC%9E%AC%ED%95%B4%EB%B3%B4%EC%83%81%EB%B3%B4%ED%97%98%EB%B2%95",
+          "long_name": "law.go.kr",
+          "img": "https://imgs.search.brave.com/EbZEEmkDKdVoQ_Ux_D5hQBHlXxSqMwpTchbHBnyYykg/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMWFkZDYyNjdl/OGVlZTFlMjlhMTk4/MzEzMmUxYWM5OWVj/NDU0YmU1Y2RlOGE4/N2RlNTBiYjhlZjUw/YzcyMDE1Zi93d3cu/bGF3LmdvLmtyLw"
+        },
+        "language": "ko",
+        "family_friendly": true,
+        "type": "search_result",
+        "subtype": "generic",
+        "is_live": false,
+        "meta_url": {
+          "scheme": "https",
+          "netloc": "law.go.kr",
+          "hostname": "www.law.go.kr",
+          "favicon": "https://imgs.search.brave.com/EbZEEmkDKdVoQ_Ux_D5hQBHlXxSqMwpTchbHBnyYykg/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMWFkZDYyNjdl/OGVlZTFlMjlhMTk4/MzEzMmUxYWM5OWVj/NDU0YmU1Y2RlOGE4/N2RlNTBiYjhlZjUw/YzcyMDE1Zi93d3cu/bGF3LmdvLmtyLw",
+          "path": "› 법령  › 산업재해보상보험법"
+        }
+      }
+    },
+    {
+      "source": "brave",
+      "status": "collected",
+      "title": "산업재해보상보험법 시행령 일부개정령안 입법예고 < 입법예고 < 법제업무정보 : 법제처",
+      "excerpt": "법제처, 산업재해보상보험법 시행령 일부개정령안 입법예고",
+      "url": "https://www.moleg.go.kr/lawinfo/makingInfo.mo?lawSeq=72262&lawCd=0&lawType=TYPE5&mid=a10104010000",
+      "published_at": "2026-03-17T23:00:24.873966",
+      "evidence": [
+        "https://www.moleg.go.kr/lawinfo/makingInfo.mo?lawSeq=72262&lawCd=0&lawType=TYPE5&mid=a10104010000"
+      ],
+      "metadata": {
+        "title": "산업재해보상보험법 시행령 일부개정령안 입법예고 < 입법예고 < 법제업무정보 : 법제처",
+        "url": "https://www.moleg.go.kr/lawinfo/makingInfo.mo?lawSeq=72262&lawCd=0&lawType=TYPE5&mid=a10104010000",
+        "is_source_local": false,
+        "is_source_both": false,
+        "description": "법제처, 산업재해보상보험법 시행령 일부개정령안 입법예고",
+        "profile": {
+          "name": "Moleg",
+          "url": "https://www.moleg.go.kr/lawinfo/makingInfo.mo?lawSeq=72262&lawCd=0&lawType=TYPE5&mid=a10104010000",
+          "long_name": "moleg.go.kr",
+          "img": "https://imgs.search.brave.com/b4bHtfl6XEFTqqiqVJ40eOiXea6CDSgXdDw7DD50OmY/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYzFjYWQ1MTlm/MGQyZTEzZGQ2MTQ5/NGM1NmEwMDU5Mzdl/YmI0ZGI1NjQxNDk1/MWEzZjc2MmUzNmU0/MDJlNDhmMi93d3cu/bW9sZWcuZ28ua3Iv"
+        },
+        "language": "ko",
+        "family_friendly": true,
+        "type": "search_result",
+        "subtype": "generic",
+        "is_live": false,
+        "meta_url": {
+          "scheme": "https",
+          "netloc": "moleg.go.kr",
+          "hostname": "www.moleg.go.kr",
+          "favicon": "https://imgs.search.brave.com/b4bHtfl6XEFTqqiqVJ40eOiXea6CDSgXdDw7DD50OmY/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYzFjYWQ1MTlm/MGQyZTEzZGQ2MTQ5/NGM1NmEwMDU5Mzdl/YmI0ZGI1NjQxNDk1/MWEzZjc2MmUzNmU0/MDJlNDhmMi93d3cu/bW9sZWcuZ28ua3Iv",
+          "path": "› lawinfo  › makingInfo.mo"
+        },
+        "thumbnail": {
+          "src": "https://imgs.search.brave.com/g8OdsChBwpzFbp647zjJBtr37vzBRTnc4fj8Ycx67sg/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/bW9sZWcuZ28ua3Iv/X2tvci9pbWcvY29t/bW9uL29nX2xvZ28u/cG5n",
+          "original": "https://www.moleg.go.kr/_kor/img/common/og_logo.png",
+          "logo": true
+        },
+        "extra_snippets": [
+          "법제처, 산업재해보상보험법 시행령 일부개정령안 입법예고"
+        ]
+      }
+    },
+    {
+      "source": "brave",
+      "status": "collected",
+      "title": "산업재해 처리요령",
+      "excerpt": "ㅇ 대국민 &#x27;AI 노동법 상담&#x27; ... 노동법 정보 탐색 시간 87.5% 획기적 단축. 이용자 37.7%는 야간·주말에 접속 - 올해는 근로계약서·임금명세서를 검토하고 사건 접수까지 지원하는 서비스로 진화 ㅇ 산업재해와 임금체불의 ...",
+      "url": "https://www.moel.go.kr/local/chungju/common/downloadFile.do?file_seq=21171020736&bbs_seq=1185945605369&bbs_id=LOCAL5",
+      "published_at": "2026-03-17T23:00:24.873966",
+      "evidence": [
+        "https://www.moel.go.kr/local/chungju/common/downloadFile.do?file_seq=21171020736&bbs_seq=1185945605369&bbs_id=LOCAL5"
+      ],
+      "metadata": {
+        "title": "산업재해 처리요령",
+        "url": "https://www.moel.go.kr/local/chungju/common/downloadFile.do?file_seq=21171020736&bbs_seq=1185945605369&bbs_id=LOCAL5",
+        "is_source_local": false,
+        "is_source_both": false,
+        "description": "ㅇ 대국민 &#x27;AI 노동법 상담&#x27; ... 노동법 정보 탐색 시간 87.5% 획기적 단축. 이용자 37.7%는 야간·주말에 접속 - 올해는 근로계약서·임금명세서를 검토하고 사건 접수까지 지원하는 서비스로 진화 ㅇ 산업재해와 임금체불의 ...",
+        "profile": {
+          "name": "MOEL",
+          "url": "https://www.moel.go.kr/local/chungju/common/downloadFile.do?file_seq=21171020736&bbs_seq=1185945605369&bbs_id=LOCAL5",
+          "long_name": "moel.go.kr",
+          "img": "https://imgs.search.brave.com/e65RkfGaDldqTaGvTbVg5hwpTTtqaMxkLuJ7crAYY5M/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMzRjZWMwMTU1/OTVjMDhhNTE5Mzk4/OTlmMjIwNzNhZGU3/NTE4OTIyMzdiZGE2/Y2RkODU5OTE4Zjkx/MDM5MDAxZC93d3cu/bW9lbC5nby5rci8"
+        },
+        "language": "ko",
+        "family_friendly": true,
+        "type": "search_result",
+        "subtype": "generic",
+        "is_live": false,
+        "meta_url": {
+          "scheme": "https",
+          "netloc": "moel.go.kr",
+          "hostname": "www.moel.go.kr",
+          "favicon": "https://imgs.search.brave.com/e65RkfGaDldqTaGvTbVg5hwpTTtqaMxkLuJ7crAYY5M/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMzRjZWMwMTU1/OTVjMDhhNTE5Mzk4/OTlmMjIwNzNhZGU3/NTE4OTIyMzdiZGE2/Y2RkODU5OTE4Zjkx/MDM5MDAxZC93d3cu/bW9lbC5nby5rci8",
+          "path": "› local  › chungju  › common  › downloadFile.do"
+        }
+      }
+    },
+    {
+      "source": "brave",
+      "status": "collected",
+      "title": "산업재해 산정 기준: 업무상 재해 인정 범위와 핵심 요건 총정리 - 권리찾기",
+      "excerpt": "요약 설명: 산업재해(산재)는 업무상 사유로 발생한 재해를 의미하며, 그 인정 기준은 복잡합니다. 이 포스트에서는 산재의 정확한 개념부터 업무상 재해 인정 범위, 핵심 요건, 그리고 최신 판례 동향까지 법률전문가가 알기 ...",
+      "url": "https://kboard.kr/%EC%82%B0%EC%97%85%EC%9E%AC%ED%95%B4-%EC%82%B0%EC%A0%95-%EA%B8%B0%EC%A4%80-%EC%97%85%EB%AC%B4%EC%83%81-%EC%9E%AC%ED%95%B4-%EC%9D%B8%EC%A0%95-%EB%B2%94%EC%9C%84%EC%99%80-%ED%95%B5%EC%8B%AC-%EC%9A%94/",
+      "published_at": "November 2, 2025",
+      "evidence": [
+        "https://kboard.kr/%EC%82%B0%EC%97%85%EC%9E%AC%ED%95%B4-%EC%82%B0%EC%A0%95-%EA%B8%B0%EC%A4%80-%EC%97%85%EB%AC%B4%EC%83%81-%EC%9E%AC%ED%95%B4-%EC%9D%B8%EC%A0%95-%EB%B2%94%EC%9C%84%EC%99%80-%ED%95%B5%EC%8B%AC-%EC%9A%94/"
+      ],
+      "metadata": {
+        "title": "산업재해 산정 기준: 업무상 재해 인정 범위와 핵심 요건 총정리 - 권리찾기",
+        "url": "https://kboard.kr/%EC%82%B0%EC%97%85%EC%9E%AC%ED%95%B4-%EC%82%B0%EC%A0%95-%EA%B8%B0%EC%A4%80-%EC%97%85%EB%AC%B4%EC%83%81-%EC%9E%AC%ED%95%B4-%EC%9D%B8%EC%A0%95-%EB%B2%94%EC%9C%84%EC%99%80-%ED%95%B5%EC%8B%AC-%EC%9A%94/",
+        "is_source_local": false,
+        "is_source_both": false,
+        "description": "요약 설명: 산업재해(산재)는 업무상 사유로 발생한 재해를 의미하며, 그 인정 기준은 복잡합니다. 이 포스트에서는 산재의 정확한 개념부터 업무상 재해 인정 범위, 핵심 요건, 그리고 최신 판례 동향까지 법률전문가가 알기 ...",
+        "page_age": "2025-11-02T00:37:01",
+        "profile": {
+          "name": "Kboard",
+          "url": "https://kboard.kr/%EC%82%B0%EC%97%85%EC%9E%AC%ED%95%B4-%EC%82%B0%EC%A0%95-%EA%B8%B0%EC%A4%80-%EC%97%85%EB%AC%B4%EC%83%81-%EC%9E%AC%ED%95%B4-%EC%9D%B8%EC%A0%95-%EB%B2%94%EC%9C%84%EC%99%80-%ED%95%B5%EC%8B%AC-%EC%9A%94/",
+          "long_name": "kboard.kr",
+          "img": "https://imgs.search.brave.com/VbJJqS8G2-miWoJJCWsJ2tkAftZFcIAjLrlb2ulKsbw/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMDQ2MTdjNzAx/MDlmNTBjY2YxOWM5/YWZmOGM5MmIyZDkz/ZWFhMDNkMjZmYTcz/YmQwOTZjMTMyYTky/ODNjNTk5Ni9rYm9h/cmQua3Iv"
+        },
+        "language": "ko",
+        "family_friendly": true,
+        "type": "search_result",
+        "subtype": "generic",
+        "is_live": false,
+        "meta_url": {
+          "scheme": "https",
+          "netloc": "kboard.kr",
+          "hostname": "kboard.kr",
+          "favicon": "https://imgs.search.brave.com/VbJJqS8G2-miWoJJCWsJ2tkAftZFcIAjLrlb2ulKsbw/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMDQ2MTdjNzAx/MDlmNTBjY2YxOWM5/YWZmOGM5MmIyZDkz/ZWFhMDNkMjZmYTcz/YmQwOTZjMTMyYTky/ODNjNTk5Ni9rYm9h/cmQua3Iv",
+          "path": "  › 산재  › 산업재해 산정 기준: 업무상 재해 인정 범위와 핵심 요건 총정리"
+        },
+        "age": "November 2, 2025",
+        "organization": {
+          "type": "organization",
+          "name": "권리찾기",
+          "contact_points": []
+        },
+        "extra_snippets": [
+          "요약 설명: 산업재해(산재)는 업무상 사유로 발생한 재해를 의미하며, 그 인정 기준은 복잡합니다. 이 포스트에서는 산재의 정확한 개념부터 업무상 재해 인정 범위, 핵심 요건, 그리고 최신 판례 동향까지 법률전문가가 알기 쉽게 정리해 드립니다.",
+          "산업재해는 법률적 개념인 반면, 산재보험은 산업재해 발생 시 근로자와 그 가족을 보호하기 위한 사회 보험 제도입니다. 즉, 산재보험은 산업재해에 대한 보상을 제공하는 수단인 것이죠.",
+          "산업재해로 인정받기 위해서는 ‘업무상 재해’라는 요건을 충족해야 합니다. 이는 단순히 회사에서 발생한 사고를 넘어, 업무와 재해 사이에 상당한 인과관계가 있다는 것을 의미합니다.",
+          "산업재해 인정은 복잡한 법률적, 의학적 판단이 필요합니다. 홀로 판단하고 포기하기보다는, 법률전문가 또는 노동 전문가의 도움을 받아 정확한 권리를 찾는 것이 중요합니다."
+        ]
+      }
+    },
+    {
+      "source": "brave",
+      "status": "collected",
+      "title": "법령 > 본문 > 산업재해보상보험법 | 국가법령정보센터",
+      "excerpt": "카카오톡 · 페이스북 · 트위터 · 라인 · 주소복사 · 복사 | 돋보기 · 생활법령정보 · 위로 · 아래로 · 검색조문선택",
+      "url": "https://www.law.go.kr/lsInfoP.do?lsiSeq=130845",
+      "published_at": "2026-03-17T23:00:24.873966",
+      "evidence": [
+        "https://www.law.go.kr/lsInfoP.do?lsiSeq=130845"
+      ],
+      "metadata": {
+        "title": "법령 > 본문 > 산업재해보상보험법 | 국가법령정보센터",
+        "url": "https://www.law.go.kr/lsInfoP.do?lsiSeq=130845",
+        "is_source_local": false,
+        "is_source_both": false,
+        "description": "카카오톡 · 페이스북 · 트위터 · 라인 · 주소복사 · 복사 | 돋보기 · 생활법령정보 · 위로 · 아래로 · 검색조문선택",
+        "profile": {
+          "name": "법원행정처",
+          "url": "https://www.law.go.kr/lsInfoP.do?lsiSeq=130845",
+          "long_name": "law.go.kr",
+          "img": "https://imgs.search.brave.com/EbZEEmkDKdVoQ_Ux_D5hQBHlXxSqMwpTchbHBnyYykg/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMWFkZDYyNjdl/OGVlZTFlMjlhMTk4/MzEzMmUxYWM5OWVj/NDU0YmU1Y2RlOGE4/N2RlNTBiYjhlZjUw/YzcyMDE1Zi93d3cu/bGF3LmdvLmtyLw"
+        },
+        "language": "ko",
+        "family_friendly": true,
+        "type": "search_result",
+        "subtype": "generic",
+        "is_live": false,
+        "meta_url": {
+          "scheme": "https",
+          "netloc": "law.go.kr",
+          "hostname": "www.law.go.kr",
+          "favicon": "https://imgs.search.brave.com/EbZEEmkDKdVoQ_Ux_D5hQBHlXxSqMwpTchbHBnyYykg/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMWFkZDYyNjdl/OGVlZTFlMjlhMTk4/MzEzMmUxYWM5OWVj/NDU0YmU1Y2RlOGE4/N2RlNTBiYjhlZjUw/YzcyMDE1Zi93d3cu/bGF3LmdvLmtyLw",
+          "path": "› lsInfoP.do"
+        }
+      }
+    },
     {
       "source": "data_go_kr",
       "status": "configured",
       "title": "공공데이터포털",
-      "excerpt": "공공데이터포털 credential is present in doppler.",
+      "excerpt": "공공데이터포털 credential is present in .env.doppler.",
       "url": null,
-      "published_at": "2026-03-16T02:43:37.231831",
+      "published_at": "2026-03-17T23:00:32.308285",
       "evidence": [
         "data_go_kr"
       ],
@@ -19,9 +954,9 @@
       "source": "dart",
       "status": "configured",
       "title": "DART 공시",
-      "excerpt": "DART 공시 credential is present in doppler.",
+      "excerpt": "DART 공시 credential is present in .env.doppler.",
       "url": null,
-      "published_at": "2026-03-16T02:43:37.231831",
+      "published_at": "2026-03-17T23:00:32.308285",
       "evidence": [
         "dart"
       ],
@@ -31,9 +966,9 @@
       "source": "kosis",
       "status": "configured",
       "title": "통계청 KOSIS",
-      "excerpt": "통계청 KOSIS credential is present in doppler.",
+      "excerpt": "통계청 KOSIS credential is present in .env.doppler.",
       "url": null,
-      "published_at": "2026-03-16T02:43:37.231831",
+      "published_at": "2026-03-17T23:00:32.308285",
       "evidence": [
         "kosis"
       ],
@@ -43,9 +978,9 @@
       "source": "ecos",
       "status": "configured",
       "title": "한국은행 ECOS",
-      "excerpt": "한국은행 ECOS credential is present in doppler.",
+      "excerpt": "한국은행 ECOS credential is present in .env.doppler.",
       "url": null,
-      "published_at": "2026-03-16T02:43:37.231831",
+      "published_at": "2026-03-17T23:00:32.308285",
       "evidence": [
         "ecos"
       ],
@@ -55,11 +990,35 @@
       "source": "law_api_key",
       "status": "configured",
       "title": "법제처",
-      "excerpt": "법제처 credential is present in doppler.",
+      "excerpt": "법제처 credential is present in .env.doppler.",
       "url": null,
-      "published_at": "2026-03-16T02:43:37.231831",
+      "published_at": "2026-03-17T23:00:32.308285",
       "evidence": [
         "law_api_key"
+      ],
+      "metadata": {}
+    },
+    {
+      "source": "kosha",
+      "status": "missing",
+      "title": "안전보건공단 KOSHA",
+      "excerpt": "안전보건공단 KOSHA credential is missing from .env.doppler.",
+      "url": null,
+      "published_at": "2026-03-17T23:00:32.308285",
+      "evidence": [
+        "kosha"
+      ],
+      "metadata": {}
+    },
+    {
+      "source": "moel",
+      "status": "missing",
+      "title": "고용노동부",
+      "excerpt": "고용노동부 credential is missing from .env.doppler.",
+      "url": null,
+      "published_at": "2026-03-17T23:00:32.308285",
+      "evidence": [
+        "moel"
       ],
       "metadata": {}
     },
@@ -67,9 +1026,9 @@
       "source": "brave",
       "status": "configured",
       "title": "Brave Search",
-      "excerpt": "Brave Search credential is present in doppler.",
+      "excerpt": "Brave Search credential is present in .env.doppler.",
       "url": null,
-      "published_at": "2026-03-16T02:43:37.231831",
+      "published_at": "2026-03-17T23:00:32.308337",
       "evidence": [
         "brave"
       ],
@@ -79,9 +1038,9 @@
       "source": "naver_client_id",
       "status": "configured",
       "title": "Naver Search",
-      "excerpt": "Naver Search credential is present in doppler.",
+      "excerpt": "Naver Search credential is present in .env.doppler.",
       "url": null,
-      "published_at": "2026-03-16T02:43:37.231831",
+      "published_at": "2026-03-17T23:00:32.308337",
       "evidence": [
         "naver_client_id"
       ],
@@ -91,23 +1050,23 @@
       "source": "google_cse_api_key",
       "status": "configured",
       "title": "Google CSE",
-      "excerpt": "Google CSE credential is present in doppler.",
+      "excerpt": "Google CSE credential is present in .env.doppler.",
       "url": null,
-      "published_at": "2026-03-16T02:43:37.231831",
+      "published_at": "2026-03-17T23:00:32.308337",
       "evidence": [
         "google_cse_api_key"
       ],
       "metadata": {}
     },
     {
-      "source": "vault_path",
-      "status": "missing",
+      "source": "vault",
+      "status": "collected",
       "title": "Obsidian Vault",
-      "excerpt": "Vault path is not accessible from the current workspace.",
+      "excerpt": "Vault path is accessible: /Users/son-won-il/Vault",
       "url": null,
-      "published_at": "2026-03-16T02:43:37.231831",
+      "published_at": "2026-03-17T23:00:32.308500",
       "evidence": [
-        "\\Users\\son-won-il\\Vault"
+        "/Users/son-won-il/Vault"
       ],
       "metadata": {}
     },
@@ -117,7 +1076,7 @@
       "title": "WordPress Draft Target",
       "excerpt": "WordPress draft publishing can be enabled.",
       "url": null,
-      "published_at": "2026-03-16T02:43:37.231831",
+      "published_at": "2026-03-17T23:00:32.308515",
       "evidence": [
         "WORDPRESS_URL",
         "WORDPRESS_USER",
@@ -131,48 +1090,305 @@
       "title": "Telegram Notification Target",
       "excerpt": "Telegram notification target can be enabled.",
       "url": null,
-      "published_at": "2026-03-16T02:43:37.231831",
+      "published_at": "2026-03-17T23:00:32.308523",
       "evidence": [
         "TELEGRAM_BOT_TOKEN",
         "BOSS_CHAT_ID|TELEGRAM_CHAT_ID"
       ],
       "metadata": {}
+    },
+    {
+      "source": "vault",
+      "status": "collected",
+      "title": "공단친화작성법",
+      "excerpt": "--- 지침명: 공단친화 작성법 적용대상: [요양급여신청, 심사청구, 재심사청구, 행정소송] 최종수정: 2026-03-17 --- # 공단친화 작성법 ## 기본 원칙: 공단 담당자 = 고객 공단 담당자는 적이 아니다. 하루에 수십 건을 처리하는 과중한 업무를 가진 공무원이다. 우리의 서면이 그들의 업무를 편하게 만들면 승인율이 올라간다. ### 마인드셋 - 담당자가 **상급자에게 보고하기 쉬운 서면**을 만든다 - 담당자가 **판정위에 올리기 편한 자료**를 만든다 - 보완요청이 오면 **실패**라고 인식한다 → 보완요청 0건이 목표 --- ## 전산입력 순서 맞춤 작성 공단 전산시스템(토탈시스템)에는 입력 순서가 있다. 서면을 이 순서에 맞추면 담당자가 서면을 보면서 바로 전산에 입력할 수 있다. ### 요양급여신청서 기준 입력 순서 | 순서 | 전산 항목 | 서면에서 대응 | |------|-----------|---------------| | 1 | 피재자 인적사항 | 성명, 생년월일, 사업장명, 직종 | | 2 | 재해일시/장소 | 발병일 - 최초 진단일 또는 증상 발현일 | | 3 | 상병명 | KCD 코드 + 정식 상병명 | | 4 | 재해 경위 | 업무내용 → 유해인자 노출 → 발병 경위 - 시간순 | | 5 | 목격자/확인자 | 사업주 확인, 동료 진술 | | 6 | 의학적 소견 | 주치의 소견서, 진료기록 요약 | | 7 | 인과관계 의견 | 주치의 업무관련성 소견 | ### 서면 구성 팁 - 위 순서대로 번호를 매기면 담당자가 서면 순서대로 전산에 입력 가능 - 상병명은 **KCD 코드를 반",
+      "url": null,
+      "published_at": "2026-03-17T17:16:03.672015",
+      "evidence": [
+        "00_BASE_KNOWLEDGE/실무지침/공단친화작성법.md"
+      ],
+      "metadata": {
+        "relative_path": "00_BASE_KNOWLEDGE/실무지침/공단친화작성법.md",
+        "category": "both"
+      }
+    },
+    {
+      "source": "vault",
+      "status": "collected",
+      "title": "README",
+      "excerpt": "# 교재 — 대표님 지정 교재 요약 > 대표님이 지정한 교재/참고자료의 핵심 내용 요약본. > 원본은 보관하되, CLI 로딩용으로 요약본만 이 디렉토리에 배치. ## 기입 규칙 - 파일명: `{교재명}_요약.md` - 분량: 2,000자 이내 - 필수 포함: 출처, 핵심 논점, 실무 적용 포인트",
+      "url": null,
+      "published_at": "2026-03-17T16:17:06.087214",
+      "evidence": [
+        "00_BASE_KNOWLEDGE/교재/README.md"
+      ],
+      "metadata": {
+        "relative_path": "00_BASE_KNOWLEDGE/교재/README.md",
+        "category": "both"
+      }
+    },
+    {
+      "source": "vault",
+      "status": "collected",
+      "title": "README",
+      "excerpt": "# 실무지침 — 공단 실무 기준 > 근로복지공단 업무상질병판정위원회 심의기준, 고시, 지침 정리. ## 작성 예정 항목 - [ ] 뇌심혈관 인정기준 (만성과로/급성과로/업무환경) - [ ] 근골격계 인정기준 (반복작업/중량물/부자연스러운 자세) - [ ] 소음성난청 인정기준 (85dB/3년 이상) - [ ] 직업성암 인정기준 - [ ] COPD/진폐 인정기준 - [ ] 정신질병 인정기준 (업무스트레스/트라우마)",
+      "url": null,
+      "published_at": "2026-03-17T16:16:44.611664",
+      "evidence": [
+        "00_BASE_KNOWLEDGE/실무지침/README.md"
+      ],
+      "metadata": {
+        "relative_path": "00_BASE_KNOWLEDGE/실무지침/README.md",
+        "category": "both"
+      }
+    },
+    {
+      "source": "vault",
+      "status": "collected",
+      "title": "교재_적용_03건설업의 적용기준",
+      "excerpt": "# 교재_적용_03건설업의 적용기준 사이버직무교육 적용 3. 건설업의 적용기준 ※ 법령 등 최종 반영 일자 : 2022. 7 31. ※ 본교재는내부직원용교육참고자료이므로공식적인 업무처리기준이나지침으로활용할수없습니다. - 1 - 고용･산재보험과 건설업의 관계 3-1 1 고용･산재보험의 적용 대상 ❍고용1)ㆍ산재보험2)은근로자를사용하는모든사업또는사업장에적용 - 다만, 대통령령(고용ㆍ산재법시행령)으로일부사업또는사업장은적용제외 ❍건설업과관련하여고용ㆍ산재법시행령은 건설산업기본법에따른건설업자, 주택법에 따른주택건설사업자, 전기공사업법에따른공사업자, 정보통신공사업법에따른정보통신공 사업자, 소방시설공사업법에따른소방시설업자또는문화재수리등에관한법률에따른문화재수 리업자가아닌자가시공하는공사로서보험료징수법시행령제2조제1항제2호에따른총공사금액 2천만원미만인공사이거나연면적이100제곱미터이하인건축물의건축또는연면적이200제곱미터 이하인건축물의대수선에관한공사는고용ㆍ산재보험의적용을제외하였으나 ❍’18. 7. 1. 법의적용제외사업을규정하고있던산재법시행령제2조가개정․시행되면서그적용 대상이모든건설공사로확대됨 - 따라서고용보험의적용제외대상은변함없고, 산재보험의적용대상은’18. 7. 1. 기준으로변경됨 - 산재보험은’18. 7. 1. 이후착공하는경우공사금액․연면적관계없이모두의무가입대상임 ❍한편, 사업의범위에대하여는고용3)ㆍ산재법4) 모두 통계법에따라통계청장이고시하는‘한 국표준산업분류표’5)에따름 ❍따라서건설공사를포함한건설업의고용ㆍ산재보험의적용대상여부는원칙적으로‘한국표준산업 분류표’를기준으로판단 1) ｢고용보험법｣ 제8조(적용 범위) 이 법은 근로자를 ",
+      "url": null,
+      "published_at": "2026-03-15T21:51:24.776336",
+      "evidence": [
+        "00_INBOX/drop/Vault_Upload/교재_적용_03건설업의 적용기준.md"
+      ],
+      "metadata": {
+        "relative_path": "00_INBOX/drop/Vault_Upload/교재_적용_03건설업의 적용기준.md",
+        "category": "both"
+      }
+    },
+    {
+      "source": "vault",
+      "status": "collected",
+      "title": "myair 중국어 면접 교재 (2023ver.)",
+      "excerpt": "# myair 중국어 면접 교재 (2023ver.) myair_ 면접 컨설팅 I 중국어 승무원 중국어 면접 乘务员 中文 面试 여러분이 가는 그 꿈의 길에 제가 있습니다. 🍀 @__myair 마이에어 myair_ 면접 컨설팅 I 중국어 ■ 승무원에서 중국어 선생님으로 🛪 : 채현정 선생님 소개 · 중국 NanKai University 졸업 · 이화여대 국제중국어교육학과 TeCSOL 석사 · 前) 중국국제항공 8 년 비지니스/퍼스트 클래스승무원 · 前) 파고다 강남 어학원 기초중국어 대표 강사 · 前) 관세청 국경 관리 연수원 기초 중국어 강의 · 前) 안양대학교 직무 교육 면접 강의 [저서] 항공 중국어 서비스 책 \"리얼 항공 중국어 ■ Myair 현정쌤 Q&A (1) 2 년간의… 승무원 합격 스토리 대학 졸업하고 2 년동안 승무원 준비를 했어요. 저는 한 번에 승무원 면접에 합격하는 행운의 케이스가 아니였어요. 그 당시 외국어 성적만 높으면 합격할 수 있어 라는 오만한 생각으로 면접에 임했고, 여러번 스터디를 했지만 이유를 모르는 실탈, 임탈이 계속됐어요. 그 때부터 내가 왜 떨어지는지 무엇이 문제가 있었는지 제 자신을 촬영해서 보기 시작했어요. 외운 답변이 아닌 질문들이 나오면 횡설 수설, 전달력이 떨어 졌고 승무원으로 가져야 대처 능력이 부족 한 걸 발견했어요. 그래서 그 뒤로는 실무에서 떨어지면 면접 날 어떤 질문을 받았고, 어떻게 대답했는지 오답 노트처럼 면접 노트를 만들고 사고 능력을 키우면서 말하는 연습을 연습하고 또 연습했어요. 결국 저는 100% 노력파로 2 년 동안 몇 번의 쓰디쓴 불합격의 고",
+      "url": null,
+      "published_at": "2026-03-15T21:33:23.826743",
+      "evidence": [
+        "00_INBOX/drop/Vault_Upload/myair 중국어 면접 교재 (2023ver.).md"
+      ],
+      "metadata": {
+        "relative_path": "00_INBOX/drop/Vault_Upload/myair 중국어 면접 교재 (2023ver.).md",
+        "category": "both"
+      }
+    },
+    {
+      "source": "vault",
+      "status": "collected",
+      "title": "_P1_law_admrul_",
+      "excerpt": "--- source: law_admrul title: date: case_no: url: priority: P1 keyword: 사업종류 collected_at: 2026-03-14T01:40:57.945302 purpose: [legal_analysis, evidence_pattern] --- # ## 기본정보 - 사건번호: - 선고일: - 출처: law_admrul - 우선순위: P1 - URL: ## 요약 ## 법리 추출 (수동 보완 필요) - 쟁점: - 법원판단: - 승패요인: - 적용법령: ## 증거자료 패턴 (수동 보완 필요) - 갑호증 목록: - 을호증 목록: - 증거유형: - 채택/배척: - 비정형 원시자료:",
+      "url": null,
+      "published_at": "2026-03-14T01:40:57.945783",
+      "evidence": [
+        "sources/biz_reclassification/_P1_law_admrul_.md"
+      ],
+      "metadata": {
+        "relative_path": "sources/biz_reclassification/_P1_law_admrul_.md",
+        "category": "both"
+      }
+    },
+    {
+      "source": "vault",
+      "status": "collected",
+      "title": "1979.12.26_P3_law_prec_중앙노동위원회판정처분취소",
+      "excerpt": "--- source: law_prec title: 중앙노동위원회판정처분취소 date: 1979.12.26 case_no: 79누306 url: https://www.law.go.kr/판례/79%EB%88%84306 priority: P3 keyword: 노동위원회 collected_at: 2026-03-14T01:40:19.475658 purpose: [legal_analysis, evidence_pattern] --- # 중앙노동위원회판정처분취소 ## 기본정보 - 사건번호: 79누306 - 선고일: 1979.12.26 - 출처: law_prec - 우선순위: P3 - URL: https://www.law.go.kr/판례/79%EB%88%84306 ## 요약 ## 법리 추출 (수동 보완 필요) - 쟁점: - 법원판단: - 승패요인: - 적용법령: ## 증거자료 패턴 (수동 보완 필요) - 갑호증 목록: - 을호증 목록: - 증거유형: - 채택/배척: - 비정형 원시자료:",
+      "url": null,
+      "published_at": "2026-03-14T01:40:19.475705",
+      "evidence": [
+        "sources/biz_reclassification/1979.12.26_P3_law_prec_중앙노동위원회판정처분취소.md"
+      ],
+      "metadata": {
+        "relative_path": "sources/biz_reclassification/1979.12.26_P3_law_prec_중앙노동위원회판정처분취소.md",
+        "category": "both"
+      }
+    },
+    {
+      "source": "vault",
+      "status": "collected",
+      "title": "2004.07.08_P3_law_prec_노동위원회법위반",
+      "excerpt": "--- source: law_prec title: 노동위원회법위반 date: 2004.07.08 case_no: 2003도6413 url: https://www.law.go.kr/판례/2003%EB%8F%846413 priority: P3 keyword: 노동위원회 collected_at: 2026-03-14T01:40:19.475598 purpose: [legal_analysis, evidence_pattern] --- # 노동위원회법위반 ## 기본정보 - 사건번호: 2003도6413 - 선고일: 2004.07.08 - 출처: law_prec - 우선순위: P3 - URL: https://www.law.go.kr/판례/2003%EB%8F%846413 ## 요약 ## 법리 추출 (수동 보완 필요) - 쟁점: - 법원판단: - 승패요인: - 적용법령: ## 증거자료 패턴 (수동 보완 필요) - 갑호증 목록: - 을호증 목록: - 증거유형: - 채택/배척: - 비정형 원시자료:",
+      "url": null,
+      "published_at": "2026-03-14T01:40:19.475641",
+      "evidence": [
+        "sources/biz_reclassification/2004.07.08_P3_law_prec_노동위원회법위반.md"
+      ],
+      "metadata": {
+        "relative_path": "sources/biz_reclassification/2004.07.08_P3_law_prec_노동위원회법위반.md",
+        "category": "both"
+      }
+    },
+    {
+      "source": "vault",
+      "status": "collected",
+      "title": "2008.04.10_P3_law_prec_업무상횡령·사문서위조·위조사문서행사·노동위원회법위반",
+      "excerpt": "--- source: law_prec title: 업무상횡령·사문서위조·위조사문서행사·노동위원회법위반 date: 2008.04.10 case_no: 2008도553 url: https://www.law.go.kr/판례/2008%EB%8F%84553 priority: P3 keyword: 노동위원회 collected_at: 2026-03-14T01:40:19.475540 purpose: [legal_analysis, evidence_pattern] --- # 업무상횡령·사문서위조·위조사문서행사·노동위원회법위반 ## 기본정보 - 사건번호: 2008도553 - 선고일: 2008.04.10 - 출처: law_prec - 우선순위: P3 - URL: https://www.law.go.kr/판례/2008%EB%8F%84553 ## 요약 ## 법리 추출 (수동 보완 필요) - 쟁점: - 법원판단: - 승패요인: - 적용법령: ## 증거자료 패턴 (수동 보완 필요) - 갑호증 목록: - 을호증 목록: - 증거유형: - 채택/배척: - 비정형 원시자료:",
+      "url": null,
+      "published_at": "2026-03-14T01:40:19.475585",
+      "evidence": [
+        "sources/biz_reclassification/2008.04.10_P3_law_prec_업무상횡령·사문서위조·위조사문서행사·노동위원회법위반.md"
+      ],
+      "metadata": {
+        "relative_path": "sources/biz_reclassification/2008.04.10_P3_law_prec_업무상횡령·사문서위조·위조사문서행사·노동위원회법위반.md",
+        "category": "both"
+      }
+    },
+    {
+      "source": "vault",
+      "status": "collected",
+      "title": "2020.06.25_P3_law_prec_중앙노동위원회재심판정취소청구",
+      "excerpt": "--- source: law_prec title: 중앙노동위원회재심판정취소청구 date: 2020.06.25 case_no: 2019구합77408 url: https://www.law.go.kr/판례/2019%EA%B5%AC%ED%95%A977408 priority: P3 keyword: 노동위원회 collected_at: 2026-03-14T01:40:19.475483 purpose: [legal_analysis, evidence_pattern] --- # 중앙노동위원회재심판정취소청구 ## 기본정보 - 사건번호: 2019구합77408 - 선고일: 2020.06.25 - 출처: law_prec - 우선순위: P3 - URL: https://www.law.go.kr/판례/2019%EA%B5%AC%ED%95%A977408 ## 요약 ## 법리 추출 (수동 보완 필요) - 쟁점: - 법원판단: - 승패요인: - 적용법령: ## 증거자료 패턴 (수동 보완 필요) - 갑호증 목록: - 을호증 목록: - 증거유형: - 채택/배척: - 비정형 원시자료:",
+      "url": null,
+      "published_at": "2026-03-14T01:40:19.475527",
+      "evidence": [
+        "sources/biz_reclassification/2020.06.25_P3_law_prec_중앙노동위원회재심판정취소청구.md"
+      ],
+      "metadata": {
+        "relative_path": "sources/biz_reclassification/2020.06.25_P3_law_prec_중앙노동위원회재심판정취소청구.md",
+        "category": "both"
+      }
+    },
+    {
+      "source": "vault",
+      "status": "collected",
+      "title": "2020.11.11_P3_law_prec_중앙노동위원회재심판정취소청구",
+      "excerpt": "--- source: law_prec title: 중앙노동위원회재심판정취소청구 date: 2020.11.11 case_no: 2020누49197 url: https://www.law.go.kr/판례/2020%EB%88%8449197 priority: P3 keyword: 노동위원회 collected_at: 2026-03-14T01:40:19.475416 purpose: [legal_analysis, evidence_pattern] --- # 중앙노동위원회재심판정취소청구 ## 기본정보 - 사건번호: 2020누49197 - 선고일: 2020.11.11 - 출처: law_prec - 우선순위: P3 - URL: https://www.law.go.kr/판례/2020%EB%88%8449197 ## 요약 ## 법리 추출 (수동 보완 필요) - 쟁점: - 법원판단: - 승패요인: - 적용법령: ## 증거자료 패턴 (수동 보완 필요) - 갑호증 목록: - 을호증 목록: - 증거유형: - 채택/배척: - 비정형 원시자료:",
+      "url": null,
+      "published_at": "2026-03-14T01:40:19.475463",
+      "evidence": [
+        "sources/biz_reclassification/2020.11.11_P3_law_prec_중앙노동위원회재심판정취소청구.md"
+      ],
+      "metadata": {
+        "relative_path": "sources/biz_reclassification/2020.11.11_P3_law_prec_중앙노동위원회재심판정취소청구.md",
+        "category": "both"
+      }
+    },
+    {
+      "source": "vault",
+      "status": "collected",
+      "title": "2022.07.21_P3_law_prec_중앙노동위원회교섭단위분리결정재심결정취소",
+      "excerpt": "--- source: law_prec title: 중앙노동위원회교섭단위분리결정재심결정취소 date: 2022.07.21 case_no: 2021누12914 url: https://www.law.go.kr/판례/2021%EB%88%8412914 priority: P3 keyword: 노동위원회 collected_at: 2026-03-14T01:40:19.475350 purpose: [legal_analysis, evidence_pattern] --- # 중앙노동위원회교섭단위분리결정재심결정취소 ## 기본정보 - 사건번호: 2021누12914 - 선고일: 2022.07.21 - 출처: law_prec - 우선순위: P3 - URL: https://www.law.go.kr/판례/2021%EB%88%8412914 ## 요약 ## 법리 추출 (수동 보완 필요) - 쟁점: - 법원판단: - 승패요인: - 적용법령: ## 증거자료 패턴 (수동 보완 필요) - 갑호증 목록: - 을호증 목록: - 증거유형: - 채택/배척: - 비정형 원시자료:",
+      "url": null,
+      "published_at": "2026-03-14T01:40:19.475395",
+      "evidence": [
+        "sources/biz_reclassification/2022.07.21_P3_law_prec_중앙노동위원회교섭단위분리결정재심결정취소.md"
+      ],
+      "metadata": {
+        "relative_path": "sources/biz_reclassification/2022.07.21_P3_law_prec_중앙노동위원회교섭단위분리결정재심결정취소.md",
+        "category": "both"
+      }
     }
   ],
   "insights": [
     {
-      "topic_id": "baseline_update",
+      "topic_id": "industrial_accident",
       "persona_focus": "노동",
-      "headline": "이번 주 노동·법률 실무 체크포인트",
-      "why_now": "사용 가능한 자료가 제한적이어서 기본 주제 패킷으로 대체했습니다.",
+      "headline": "산업재해와 직업병 대응",
+      "why_now": "금주 복수 데이터 소스에서 관련 동향이 확인된 주제입니다.",
       "key_points": [
-        "Vault 또는 공공데이터 연결 상태를 먼저 점검하세요."
+        "⚖️ 산업재해 인정 기준 완벽 가이드 - 승인받는 핵심 포인트: 업데이트, strong, 2026년",
+        "산업재해 산정 기준: 업무상 재해 인정 범위와 핵심 요건 총정리 - 권리찾기: 산업재해, 업무상, 사유로",
+        "교재_적용_03건설업의 적용기준: 03건설업의, 적용기준, 사이버직무교육"
       ],
-      "evidence": [],
-      "score": 0.1
+      "evidence": [
+        "https://nenespace.tistory.com/entry/%E2%9A%96%EF%B8%8F-%EC%82%B0%EC%97%85%EC%9E%AC%ED%95%B4-%EC%9D%B8%EC%A0%95-%EA%B8%B0%EC%A4%80-%EC%99%84%EB%B2%BD-%EA%B0%80%EC%9D%B4%EB%93%9C-%EC%8A%B9%EC%9D%B8%EB%B0%9B%EB%8A%94-%ED%95%B5%EC%8B%AC-%ED%8F%AC%EC%9D%B8%ED%8A%B8",
+        "https://kboard.kr/%EC%82%B0%EC%97%85%EC%9E%AC%ED%95%B4-%EC%82%B0%EC%A0%95-%EA%B8%B0%EC%A4%80-%EC%97%85%EB%AC%B4%EC%83%81-%EC%9E%AC%ED%95%B4-%EC%9D%B8%EC%A0%95-%EB%B2%94%EC%9C%84%EC%99%80-%ED%95%B5%EC%8B%AC-%EC%9A%94/",
+        "00_INBOX/drop/Vault_Upload/교재_적용_03건설업의 적용기준.md"
+      ],
+      "score": 12.5
+    },
+    {
+      "topic_id": "wage",
+      "persona_focus": "노동",
+      "headline": "임금체불과 근로시간 쟁점",
+      "why_now": "금주 복수 데이터 소스에서 관련 동향이 확인된 주제입니다.",
+      "key_points": [
+        "2026년 HR 실무자가 알아야 할 노동법 최신 이슈 4가지 (+노란봉투법, 포괄임금제): 산업재해, 사망사고와, 임금체불이",
+        "산업재해 처리요령: 대국민, x27, 노동법"
+      ],
+      "evidence": [
+        "https://shopl.tistory.com/entry/2026%EB%85%84-HR-%EC%8B%A4%EB%AC%B4%EC%9E%90%EA%B0%80-%EC%95%8C%EC%95%84%EC%95%BC-%ED%95%A0-%EB%85%B8%EB%8F%99%EB%B2%95-%EC%B5%9C%EC%8B%A0-%EC%9D%B4%EC%8A%88-4%EA%B0%80%EC%A7%80-%EB%85%B8%EB%9E%80%EB%B4%89%ED%88%AC%EB%B2%95-%ED%8F%AC%EA%B4%84%EC%9E%84%EA%B8%88%EC%A0%9C",
+        "https://www.moel.go.kr/local/chungju/common/downloadFile.do?file_seq=21171020736&bbs_seq=1185945605369&bbs_id=LOCAL5"
+      ],
+      "score": 10.0
+    },
+    {
+      "topic_id": "serious_accident",
+      "persona_focus": "법률",
+      "headline": "중대재해 리스크와 대응",
+      "why_now": "이번 주기 수집에서 관련 자료가 신규 포착되었습니다.",
+      "key_points": [
+        "중대재해 처벌 등에 관한 법률 - 나무위키: 노동법, 산업재해, 2021년"
+      ],
+      "evidence": [
+        "https://namu.wiki/w/%EC%A4%91%EB%8C%80%EC%9E%AC%ED%95%B4%20%EC%B2%98%EB%B2%8C%20%EB%93%B1%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0"
+      ],
+      "score": 7.5
+    },
+    {
+      "topic_id": "regulatory_shift",
+      "persona_focus": "법률",
+      "headline": "최근 지침과 판례 변화",
+      "why_now": "최근 다수의 자료에서 반복 포착되어 즉시 검토가 필요한 주제입니다.",
+      "key_points": [
+        "감사보고서제출              ",
+        "투자판단관련주요경영사항              ",
+        "최대주주변경              ",
+        "[첨부정정]주주총회소집결의              "
+      ],
+      "evidence": [
+        "opendart.fss.or.kr",
+        "www.law.go.kr",
+        "http://www.law.go.kr/lumLsLinkPop.do?lspttninfSeq=154169&chrClsCd=010202&ancYnChk=0",
+        "https://namu.wiki/w/%EC%82%B0%EC%97%85%EC%9E%AC%ED%95%B4",
+        "https://www.law.go.kr/%EB%B2%95%EB%A0%B9/%EC%82%B0%EC%97%85%EC%9E%AC%ED%95%B4%EB%B3%B4%EC%83%81%EB%B3%B4%ED%97%98%EB%B2%95",
+        "https://www.moleg.go.kr/lawinfo/makingInfo.mo?lawSeq=72262&lawCd=0&lawType=TYPE5&mid=a10104010000"
+      ],
+      "score": 41.5
+    },
+    {
+      "topic_id": "contract",
+      "persona_focus": "법률",
+      "headline": "계약분쟁과 손해배상",
+      "why_now": "이번 주기 수집에서 관련 자료가 신규 포착되었습니다.",
+      "key_points": [
+        "산업재해 처리요령: 대국민, x27, 노동법"
+      ],
+      "evidence": [
+        "https://www.moel.go.kr/local/chungju/common/downloadFile.do?file_seq=21171020736&bbs_seq=1185945605369&bbs_id=LOCAL5"
+      ],
+      "score": 4.5
     }
   ],
   "drafts": [
     {
       "persona": "nomu",
       "slug": "nomu_draft",
-      "title": "[소백 노무사] 이번 주 노동·법률 실무 체크포인트",
-      "body": "이번 주 노동·법률 실무 체크포인트은 지금 바로 현장에서 설명이 필요한 주제입니다.\n소백 노무사의 시선으로 보면 핵심은 근로자와 사업주가 실제로 무엇을 점검해야 하는지입니다.\n이번 초안은 최근 수집 자료를 바탕으로, 독자가 바로 이해하고 점검할 수 있게 정리했습니다.\n\n먼저 사실관계를 짚겠습니다.\n- Vault 또는 공공데이터 연결 상태를 먼저 점검하세요.\n\n이 자료들이 시사하는 공통점은 규정 변화와 실무 대응 사이의 간극이 커지고 있다는 점입니다.\n즉, 법령 문구를 아는 것만으로는 부족하고 실제 절차와 증빙 흐름까지 함께 점검해야 합니다.\n현장에서 문제가 커지는 방식은 늘 비슷합니다. 초기에는 '예전처럼 해도 되겠지' 하고 넘기지만, 분쟁이 시작되면 최근 기준을 확인하지 않은 흔적이 바로 드러납니다.\n그래서 이번 주제는 단순한 정보 소개가 아니라, 현재 시점의 업무 기준을 다시 맞추는 기준점으로 읽어야 합니다.\n\n실무적으로는 다음 순서가 안전합니다.\n1. 내 사안이 어느 법률 영역에 걸치는지 먼저 분류합니다.\n2. 최근 지침·판례·행정자료 중 무엇이 직접 영향을 주는지 확인합니다.\n3. 증빙자료를 바로 확보하고, 설명 가능한 타임라인으로 정리합니다.\n4. 내부 담당자와 외부 전문가의 역할을 나눠서 대응합니다.\n5. 공개 설명이 필요한 사안인지, 조용히 정리해야 하는 사안인지 초기에 선을 긋습니다.\n\n독자가 가장 많이 놓치는 부분은 '문제가 생긴 뒤에 자료를 찾는다'는 점입니다.\n이번 주제는 사후 대응보다 사전 점검의 가치가 훨씬 큽니다.\n그래서 현업 기준으로는 체크리스트를 미리 두고 반복 점검하는 편이 비용과 시간을 동시에 줄입니다.\n특히 노무·법률 이슈는 한 번 방향을 잘못 잡으면 해명 비용이 계속 쌓입니다.\n초기 대응 문장, 내부 보고 표현, 상대방에게 보내는 첫 안내문이 모두 나중의 증거가 되기 때문입니다.\n\n이번 이슈를 읽을 때는 두 가지 질문을 같이 가져가면 좋습니다.\n첫째, 지금 보이는 변화가 우리 조직의 계약서·지침·실무 프로세스에 바로 영향을 주는가입니다.\n둘째, 실제 분쟁이 발생했을 때 그 영향을 설명할 자료를 이미 갖고 있는가입니다.\n이 두 질문에 자신 있게 답하지 못하면, 이미 점검 우선순위가 높은 상태라고 보는 편이 맞습니다.\n\n소백 노무사 관점에서 특히 강조하고 싶은 부분도 있습니다.\n실무자는 보통 하나의 법률 조항만 보고 결론을 내리지만, 실제 사건은 자료의 흐름과 대응의 일관성까지 함께 봅니다.\n따라서 이번처럼 자료가 여러 갈래에서 모일 때는 개별 자료를 따로 보지 말고 하나의 설명 구조로 묶어야 합니다.\n그 구조가 있어야 상담 단계에서도 핵심 쟁점이 흔들리지 않고, 이후 검토나 발행 단계에서도 메시지가 안정됩니다.\n\n이번 초안은 실제 법률 자문이나 노무 자문을 대체하지 않습니다.\n다만 어떤 쟁점이 커지고 있는지, 지금 무엇을 먼저 챙겨야 하는지 빠르게 이해하는 데 목적이 있습니다.\n독자가 이 글을 읽고 바로 실행할 수 있어야 한다는 점도 중요합니다.\n그래서 용어를 줄이고, 행동 순서와 확인 포인트를 먼저 제시하는 방식으로 정리했습니다.\n현장에서는 긴 설명보다 '오늘 안에 무엇을 확인해야 하는가'가 더 중요하기 때문입니다.\n\n실행 관점에서 권하는 최소 체크리스트는 다음과 같습니다.\n- 현재 적용 중인 내부 문서와 실제 운영 관행이 일치하는지 확인하기\n- 최근 개정 또는 최근 사례와 충돌하는 부분이 없는지 표시하기\n- 외부 설명이 필요한 경우 쟁점별 근거 문서를 따로 묶어두기\n- 담당자 변경이나 인수인계가 생겨도 같은 설명이 유지되도록 문장 정리하기\n\n이 정도만 해도 분쟁 예방 효과가 상당히 큽니다.\n반대로 이 단계가 빠지면, 사안이 커졌을 때 사실관계보다 설명의 혼선이 더 큰 리스크로 돌아옵니다.\n현장에서 바로 점검이 필요하면 노무 상담으로 연결하세요.",
-      "evidence": [],
-      "word_count": 457,
+      "title": "[소백 노무사] 산업재해와 직업병 대응",
+      "body": "## 📊 데이터 팩트\n\n- ⚖️ 산업재해 인정 기준 완벽 가이드 - 승인받는 핵심 포인트: 업데이트, strong, 2026년\n- 산업재해 산정 기준: 업무상 재해 인정 범위와 핵심 요건 총정리 - 권리찾기: 산업재해, 업무상, 사유로\n- 교재_적용_03건설업의 적용기준: 03건설업의, 적용기준, 사이버직무교육\n\n## 🔍 해석\n\n소백 노무사의 시선으로 보면 핵심은 근로자와 사업주가 실제로 무엇을 점검해야 하는지입니다.\n이번 산업재해와 직업병 대응 이슈가 시사하는 공통점은 규정 변화와 실무 대응 사이의 간극이 커지고 있다는 점입니다.\n법령 문구를 아는 것만으로는 부족하고 실제 절차와 증빙 흐름까지 함께 점검해야 합니다.\n\n## 💡 비유\n\n건물 소방 점검에 비유하면 이해가 쉽습니다. 소화기가 있다고 안전한 게 아니라, 유효기간을 확인하고 위치를 모두가 알아야 실제 화재에서 쓸 수 있습니다.\n마찬가지로 내부 규정이 존재한다고 끝이 아니라, 최신 기준에 맞는지, 담당자가 실제로 운용할 수 있는지까지 확인해야 합니다.\n\n## ✅ 체크리스트\n\n1. 현재 적용 중인 내부 문서와 실제 운영 관행이 일치하는지 확인하기\n2. 최근 개정 또는 최근 사례와 충돌하는 부분이 없는지 표시하기\n3. 외부 설명이 필요한 경우 쟁점별 근거 문서를 따로 묶어두기\n4. 담당자 변경이나 인수인계가 생겨도 같은 설명이 유지되도록 문장 정리하기\n5. 분쟁 발생 시 30일 이내 초기 대응 타임라인을 미리 수립하기\n\n## 📞 다음 단계\n\n현장에서 바로 점검이 필요하면 노무 상담으로 연결하세요.\n\n---\n\n검토에 사용한 근거 경로:\n- https://nenespace.tistory.com/entry/%E2%9A%96%EF%B8%8F-%EC%82%B0%EC%97%85%EC%9E%AC%ED%95%B4-%EC%9D%B8%EC%A0%95-%EA%B8%B0%EC%A4%80-%EC%99%84%EB%B2%BD-%EA%B0%80%EC%9D%B4%EB%93%9C-%EC%8A%B9%EC%9D%B8%EB%B0%9B%EB%8A%94-%ED%95%B5%EC%8B%AC-%ED%8F%AC%EC%9D%B8%ED%8A%B8\n- https://kboard.kr/%EC%82%B0%EC%97%85%EC%9E%AC%ED%95%B4-%EC%82%B0%EC%A0%95-%EA%B8%B0%EC%A4%80-%EC%97%85%EB%AC%B4%EC%83%81-%EC%9E%AC%ED%95%B4-%EC%9D%B8%EC%A0%95-%EB%B2%94%EC%9C%84%EC%99%80-%ED%95%B5%EC%8B%AC-%EC%9A%94/\n- 00_INBOX/drop/Vault_Upload/교재_적용_03건설업의 적용기준.md",
+      "evidence": [
+        "https://nenespace.tistory.com/entry/%E2%9A%96%EF%B8%8F-%EC%82%B0%EC%97%85%EC%9E%AC%ED%95%B4-%EC%9D%B8%EC%A0%95-%EA%B8%B0%EC%A4%80-%EC%99%84%EB%B2%BD-%EA%B0%80%EC%9D%B4%EB%93%9C-%EC%8A%B9%EC%9D%B8%EB%B0%9B%EB%8A%94-%ED%95%B5%EC%8B%AC-%ED%8F%AC%EC%9D%B8%ED%8A%B8",
+        "https://kboard.kr/%EC%82%B0%EC%97%85%EC%9E%AC%ED%95%B4-%EC%82%B0%EC%A0%95-%EA%B8%B0%EC%A4%80-%EC%97%85%EB%AC%B4%EC%83%81-%EC%9E%AC%ED%95%B4-%EC%9D%B8%EC%A0%95-%EB%B2%94%EC%9C%84%EC%99%80-%ED%95%B5%EC%8B%AC-%EC%9A%94/",
+        "00_INBOX/drop/Vault_Upload/교재_적용_03건설업의 적용기준.md"
+      ],
+      "word_count": 200,
       "quality_checks": [
-        "pass"
+        "too_short",
+        "sentences_too_long"
       ]
     },
     {
       "persona": "lawyer",
       "slug": "lawyer_draft",
-      "title": "[소백 변호사] 이번 주 노동·법률 실무 체크포인트",
-      "body": "이번 주 노동·법률 실무 체크포인트은 지금 바로 현장에서 설명이 필요한 주제입니다.\n소백 변호사의 시선으로 보면 핵심은 법률상 책임과 분쟁 대응 구조가 어떻게 달라지는지입니다.\n이번 초안은 최근 수집 자료를 바탕으로, 독자가 바로 이해하고 점검할 수 있게 정리했습니다.\n\n먼저 사실관계를 짚겠습니다.\n- Vault 또는 공공데이터 연결 상태를 먼저 점검하세요.\n\n이 자료들이 시사하는 공통점은 규정 변화와 실무 대응 사이의 간극이 커지고 있다는 점입니다.\n즉, 법령 문구를 아는 것만으로는 부족하고 실제 절차와 증빙 흐름까지 함께 점검해야 합니다.\n현장에서 문제가 커지는 방식은 늘 비슷합니다. 초기에는 '예전처럼 해도 되겠지' 하고 넘기지만, 분쟁이 시작되면 최근 기준을 확인하지 않은 흔적이 바로 드러납니다.\n그래서 이번 주제는 단순한 정보 소개가 아니라, 현재 시점의 업무 기준을 다시 맞추는 기준점으로 읽어야 합니다.\n\n실무적으로는 다음 순서가 안전합니다.\n1. 내 사안이 어느 법률 영역에 걸치는지 먼저 분류합니다.\n2. 최근 지침·판례·행정자료 중 무엇이 직접 영향을 주는지 확인합니다.\n3. 증빙자료를 바로 확보하고, 설명 가능한 타임라인으로 정리합니다.\n4. 내부 담당자와 외부 전문가의 역할을 나눠서 대응합니다.\n5. 공개 설명이 필요한 사안인지, 조용히 정리해야 하는 사안인지 초기에 선을 긋습니다.\n\n독자가 가장 많이 놓치는 부분은 '문제가 생긴 뒤에 자료를 찾는다'는 점입니다.\n이번 주제는 사후 대응보다 사전 점검의 가치가 훨씬 큽니다.\n그래서 현업 기준으로는 체크리스트를 미리 두고 반복 점검하는 편이 비용과 시간을 동시에 줄입니다.\n특히 노무·법률 이슈는 한 번 방향을 잘못 잡으면 해명 비용이 계속 쌓입니다.\n초기 대응 문장, 내부 보고 표현, 상대방에게 보내는 첫 안내문이 모두 나중의 증거가 되기 때문입니다.\n\n이번 이슈를 읽을 때는 두 가지 질문을 같이 가져가면 좋습니다.\n첫째, 지금 보이는 변화가 우리 조직의 계약서·지침·실무 프로세스에 바로 영향을 주는가입니다.\n둘째, 실제 분쟁이 발생했을 때 그 영향을 설명할 자료를 이미 갖고 있는가입니다.\n이 두 질문에 자신 있게 답하지 못하면, 이미 점검 우선순위가 높은 상태라고 보는 편이 맞습니다.\n\n소백 변호사 관점에서 특히 강조하고 싶은 부분도 있습니다.\n실무자는 보통 하나의 법률 조항만 보고 결론을 내리지만, 실제 사건은 자료의 흐름과 대응의 일관성까지 함께 봅니다.\n따라서 이번처럼 자료가 여러 갈래에서 모일 때는 개별 자료를 따로 보지 말고 하나의 설명 구조로 묶어야 합니다.\n그 구조가 있어야 상담 단계에서도 핵심 쟁점이 흔들리지 않고, 이후 검토나 발행 단계에서도 메시지가 안정됩니다.\n\n이번 초안은 실제 법률 자문이나 노무 자문을 대체하지 않습니다.\n다만 어떤 쟁점이 커지고 있는지, 지금 무엇을 먼저 챙겨야 하는지 빠르게 이해하는 데 목적이 있습니다.\n독자가 이 글을 읽고 바로 실행할 수 있어야 한다는 점도 중요합니다.\n그래서 용어를 줄이고, 행동 순서와 확인 포인트를 먼저 제시하는 방식으로 정리했습니다.\n현장에서는 긴 설명보다 '오늘 안에 무엇을 확인해야 하는가'가 더 중요하기 때문입니다.\n\n실행 관점에서 권하는 최소 체크리스트는 다음과 같습니다.\n- 현재 적용 중인 내부 문서와 실제 운영 관행이 일치하는지 확인하기\n- 최근 개정 또는 최근 사례와 충돌하는 부분이 없는지 표시하기\n- 외부 설명이 필요한 경우 쟁점별 근거 문서를 따로 묶어두기\n- 담당자 변경이나 인수인계가 생겨도 같은 설명이 유지되도록 문장 정리하기\n\n이 정도만 해도 분쟁 예방 효과가 상당히 큽니다.\n반대로 이 단계가 빠지면, 사안이 커졌을 때 사실관계보다 설명의 혼선이 더 큰 리스크로 돌아옵니다.\n분쟁이 이미 시작됐다면 증거를 정리한 뒤 법률 상담으로 이어가세요.",
-      "evidence": [],
-      "word_count": 460,
+      "title": "[소백 변호사] 임금체불과 근로시간 쟁점",
+      "body": "## 📊 데이터 팩트\n\n- 2026년 HR 실무자가 알아야 할 노동법 최신 이슈 4가지 (+노란봉투법, 포괄임금제): 산업재해, 사망사고와, 임금체불이\n- 산업재해 처리요령: 대국민, x27, 노동법\n\n## 🔍 해석\n\n소백 변호사의 시선으로 보면 핵심은 법률상 책임과 분쟁 대응 구조가 어떻게 달라지는지입니다.\n이번 임금체불과 근로시간 쟁점 이슈가 시사하는 공통점은 규정 변화와 실무 대응 사이의 간극이 커지고 있다는 점입니다.\n법령 문구를 아는 것만으로는 부족하고 실제 절차와 증빙 흐름까지 함께 점검해야 합니다.\n\n## 💡 비유\n\n건물 소방 점검에 비유하면 이해가 쉽습니다. 소화기가 있다고 안전한 게 아니라, 유효기간을 확인하고 위치를 모두가 알아야 실제 화재에서 쓸 수 있습니다.\n마찬가지로 내부 규정이 존재한다고 끝이 아니라, 최신 기준에 맞는지, 담당자가 실제로 운용할 수 있는지까지 확인해야 합니다.\n\n## ✅ 체크리스트\n\n1. 현재 적용 중인 내부 문서와 실제 운영 관행이 일치하는지 확인하기\n2. 최근 개정 또는 최근 사례와 충돌하는 부분이 없는지 표시하기\n3. 외부 설명이 필요한 경우 쟁점별 근거 문서를 따로 묶어두기\n4. 담당자 변경이나 인수인계가 생겨도 같은 설명이 유지되도록 문장 정리하기\n5. 분쟁 발생 시 30일 이내 초기 대응 타임라인을 미리 수립하기\n\n## 📞 다음 단계\n\n분쟁이 이미 시작됐다면 증거를 정리한 뒤 법률 상담으로 이어가세요.\n\n---\n\n검토에 사용한 근거 경로:\n- https://shopl.tistory.com/entry/2026%EB%85%84-HR-%EC%8B%A4%EB%AC%B4%EC%9E%90%EA%B0%80-%EC%95%8C%EC%95%84%EC%95%BC-%ED%95%A0-%EB%85%B8%EB%8F%99%EB%B2%95-%EC%B5%9C%EC%8B%A0-%EC%9D%B4%EC%8A%88-4%EA%B0%80%EC%A7%80-%EB%85%B8%EB%9E%80%EB%B4%89%ED%88%AC%EB%B2%95-%ED%8F%AC%EA%B4%84%EC%9E%84%EA%B8%88%EC%A0%9C\n- https://www.moel.go.kr/local/chungju/common/downloadFile.do?file_seq=21171020736&bbs_seq=1185945605369&bbs_id=LOCAL5",
+      "evidence": [
+        "https://shopl.tistory.com/entry/2026%EB%85%84-HR-%EC%8B%A4%EB%AC%B4%EC%9E%90%EA%B0%80-%EC%95%8C%EC%95%84%EC%95%BC-%ED%95%A0-%EB%85%B8%EB%8F%99%EB%B2%95-%EC%B5%9C%EC%8B%A0-%EC%9D%B4%EC%8A%88-4%EA%B0%80%EC%A7%80-%EB%85%B8%EB%9E%80%EB%B4%89%ED%88%AC%EB%B2%95-%ED%8F%AC%EA%B4%84%EC%9E%84%EA%B8%88%EC%A0%9C",
+        "https://www.moel.go.kr/local/chungju/common/downloadFile.do?file_seq=21171020736&bbs_seq=1185945605369&bbs_id=LOCAL5"
+      ],
+      "word_count": 185,
       "quality_checks": [
-        "pass"
+        "too_short",
+        "sentences_too_long"
       ]
     }
   ],
@@ -180,66 +1396,61 @@
     {
       "target": "local_markdown",
       "mode": "write",
-      "location": "C:\\Users\\user\\손원일\\documents\\sanjai-insight\\published\\2026-03-16\\nomu_draft.md",
+      "location": "/Users/son-won-il/sanjai-insight/published/2026-03-17/nomu_draft.md",
       "status": "published",
       "metadata": {}
     },
     {
       "target": "local_markdown",
       "mode": "write",
-      "location": "C:\\Users\\user\\손원일\\documents\\sanjai-insight\\published\\2026-03-16\\lawyer_draft.md",
+      "location": "/Users/son-won-il/sanjai-insight/published/2026-03-17/lawyer_draft.md",
       "status": "published",
       "metadata": {}
     },
     {
       "target": "local_manifest",
       "mode": "write",
-      "location": "C:\\Users\\user\\손원일\\documents\\sanjai-insight\\published\\2026-03-16\\manifest.json",
+      "location": "/Users/son-won-il/sanjai-insight/published/2026-03-17/manifest.json",
       "status": "published",
       "metadata": {
         "draft_count": 2
       }
     },
     {
-      "target": "wordpress",
-      "mode": "draft",
-      "location": "https://sobaeklaw.kr",
-      "status": "skipped_dry_run",
+      "target": "telegram_approval",
+      "mode": "approval",
+      "location": "nomu_draft",
+      "status": "timeout",
       "metadata": {
-        "title": "[소백 노무사] 이번 주 노동·법률 실무 체크포인트"
+        "title": "[소백 노무사] 산업재해와 직업병 대응",
+        "revision_count": 1,
+        "feedback": ""
       }
     },
     {
-      "target": "wordpress",
-      "mode": "draft",
-      "location": "https://sobaeklaw.kr",
-      "status": "skipped_dry_run",
+      "target": "telegram_approval",
+      "mode": "approval",
+      "location": "lawyer_draft",
+      "status": "timeout",
       "metadata": {
-        "title": "[소백 변호사] 이번 주 노동·법률 실무 체크포인트"
-      }
-    },
-    {
-      "target": "telegram",
-      "mode": "message",
-      "location": "preview",
-      "status": "skipped_dry_run",
-      "metadata": {
-        "preview": "[insight-engine] run_id=insight-20260316-024337-a8cd4763\n초안 2건이 생성되었습니다.\n- [소백 노무사] 이번 주 노동·법률 실무 체크포인트\n- [소백 변호사] 이번 주 노동·법률 실무 체크포인트\n검토 후 공개 여부만 결정하면 됩니다."
+        "title": "[소백 변호사] 임금체불과 근로시간 쟁점",
+        "revision_count": 0,
+        "feedback": ""
       }
     }
   ],
   "warnings": [
-    "vault_unavailable"
+    "approval_not_approved:lawyer_draft,nomu_draft"
   ],
   "config": {
-    "repo_root": "C:\\Users\\user\\손원일\\documents\\sanjai-insight",
-    "data_root": "C:\\Users\\user\\손원일\\documents\\sanjai-insight\\data",
-    "published_root": "C:\\Users\\user\\손원일\\documents\\sanjai-insight\\published",
-    "reports_root": "C:\\Users\\user\\손원일\\documents\\sanjai-insight\\reports",
-    "env_source": "doppler",
+    "repo_root": "/Users/son-won-il/sanjai-insight",
+    "data_root": "/Users/son-won-il/sanjai-insight/data",
+    "published_root": "/Users/son-won-il/sanjai-insight/published",
+    "reports_root": "/Users/son-won-il/sanjai-insight/reports",
+    "env_source": ".env.doppler",
     "doppler_project": "sanjai-ai",
     "doppler_config": "prd",
-    "vault_path": "\\Users\\son-won-il\\Vault",
+    "vault_path": "/Users/son-won-il/Vault",
     "secret_presence": {
       "anthropic": true,
       "dart": true,
@@ -281,8 +1492,8 @@
   },
   "options": {
     "days": 7,
-    "dry_run": true,
-    "publish_wordpress": true,
+    "dry_run": false,
+    "publish_wordpress": false,
     "notify_telegram": true
   }
 }
