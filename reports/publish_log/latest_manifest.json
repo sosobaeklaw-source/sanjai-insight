@@ -1,0 +1,47 @@
+[
+  {
+    "target": "local_markdown",
+    "mode": "write",
+    "location": "/Users/son-won-il/sanjai-insight/published/2026-03-17/nomu_draft.md",
+    "status": "published",
+    "metadata": {}
+  },
+  {
+    "target": "local_markdown",
+    "mode": "write",
+    "location": "/Users/son-won-il/sanjai-insight/published/2026-03-17/lawyer_draft.md",
+    "status": "published",
+    "metadata": {}
+  },
+  {
+    "target": "local_manifest",
+    "mode": "write",
+    "location": "/Users/son-won-il/sanjai-insight/published/2026-03-17/manifest.json",
+    "status": "published",
+    "metadata": {
+      "draft_count": 2
+    }
+  },
+  {
+    "target": "telegram_approval",
+    "mode": "approval",
+    "location": "nomu_draft",
+    "status": "timeout",
+    "metadata": {
+      "title": "[소백 노무사] 산업재해와 직업병 대응",
+      "revision_count": 1,
+      "feedback": ""
+    }
+  },
+  {
+    "target": "telegram_approval",
+    "mode": "approval",
+    "location": "lawyer_draft",
+    "status": "timeout",
+    "metadata": {
+      "title": "[소백 변호사] 임금체불과 근로시간 쟁점",
+      "revision_count": 0,
+      "feedback": ""
+    }
+  }
+]

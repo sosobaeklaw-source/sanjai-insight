@@ -5,7 +5,6 @@ Health Check Endpoints
 """
 
 import os
-import psutil
 from datetime import datetime
 from pathlib import Path
 from typing import Optional
@@ -13,6 +12,11 @@ from typing import Optional
 import aiosqlite
 
 from ..models import HealthStatus
+
+try:
+    import psutil
+except ImportError:  # pragma: no cover - exercised in dependency-light envs
+    psutil = None
 
 
 async def get_healthz(db_path: str) -> tuple[int, str]:
@@ -35,15 +39,16 @@ async def get_healthz(db_path: str) -> tuple[int, str]:
             if not row:
                 return (503, "Tables not initialized")
 
-        # Check memory usage (fail if > 90%)
-        memory = psutil.virtual_memory()
-        if memory.percent > 90:
-            return (503, f"Memory usage critical: {memory.percent}%")
+        if psutil is not None:
+            # Check memory usage (fail if > 90%)
+            memory = psutil.virtual_memory()
+            if memory.percent > 90:
+                return (503, f"Memory usage critical: {memory.percent}%")
 
-        # Check disk space (fail if < 5%)
-        disk = psutil.disk_usage('/')
-        if disk.percent > 95:
-            return (503, f"Disk space critical: {disk.percent}% used")
+            # Check disk space (fail if < 5%)
+            disk = psutil.disk_usage("/")
+            if disk.percent > 95:
+                return (503, f"Disk space critical: {disk.percent}% used")
 
         return (200, "OK")
 

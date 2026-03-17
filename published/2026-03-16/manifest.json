@@ -1,0 +1,24 @@
+{
+  "run_id": "insight-20260316-230001-acd41e20",
+  "generated_at": "2026-03-16T23:00:26.538108",
+  "drafts": [
+    {
+      "persona": "nomu",
+      "title": "[소백 노무사] 산업재해와 직업병 대응",
+      "path": "/Users/son-won-il/sanjai-insight/published/2026-03-16/nomu_draft.md",
+      "quality_checks": [
+        "too_short",
+        "sentences_too_long"
+      ]
+    },
+    {
+      "persona": "lawyer",
+      "title": "[소백 변호사] 임금체불과 근로시간 쟁점",
+      "path": "/Users/son-won-il/sanjai-insight/published/2026-03-16/lawyer_draft.md",
+      "quality_checks": [
+        "too_short",
+        "sentences_too_long"
+      ]
+    }
+  ]
+}

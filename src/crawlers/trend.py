@@ -49,7 +49,11 @@ class TrendCrawler(BaseCrawler):
         items = []
 
         if not self.client_id or not self.client_secret:
-            logger.error("Naver API credentials not configured")
+            logger.warning(
+                "[GRACEFUL SKIP] Naver DataLab API credentials not configured or expired (401). "
+                "Trend data collection skipped. "
+                "Alternative: Use Naver RSS feeds or Google Trends scraping."
+            )
             return items
 
         # 키워드를 5개씩 묶어서 요청 (API 제한)
